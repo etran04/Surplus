@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C07283E930440CA9F0D69 /* Pods_Surplus.framework */; };
 		83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */; };
 		83B16FCE1C5ED5A0001D7815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCD1C5ED5A0001D7815 /* ViewController.swift */; };
 		83B16FD11C5ED5A0001D7815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B16FCF1C5ED5A0001D7815 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
 		83B16FC81C5ED5A0001D7815 /* Surplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B16FCD1C5ED5A0001D7815 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		83B16FE71C5ED5A0001D7815 /* SurplusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurplusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FEB1C5ED5A0001D7815 /* SurplusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurplusUITests.swift; sourceTree = "<group>"; };
 		83B16FED1C5ED5A0001D7815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		961C07283E930440CA9F0D69 /* Pods_Surplus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Surplus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				83B16FDF1C5ED5A0001D7815 /* SurplusTests */,
 				83B16FEA1C5ED5A0001D7815 /* SurplusUITests */,
 				83B16FC91C5ED5A0001D7815 /* Products */,
+				8BC57A190E64A08E77806A01 /* Pods */,
+				DAA52CDA128C91823CBA741E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = SurplusUITests;
 			sourceTree = "<group>";
 		};
+		8BC57A190E64A08E77806A01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */,
+				BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DAA52CDA128C91823CBA741E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				961C07283E930440CA9F0D69 /* Pods_Surplus.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83B16FF01C5ED5A0001D7815 /* Build configuration list for PBXNativeTarget "Surplus" */;
 			buildPhases = (
+				C80CFCED1E55B7F840509912 /* Check Pods Manifest.lock */,
 				83B16FC41C5ED5A0001D7815 /* Sources */,
 				83B16FC51C5ED5A0001D7815 /* Frameworks */,
 				83B16FC61C5ED5A0001D7815 /* Resources */,
+				27AD3F636012E3E4080126FB /* Embed Pods Frameworks */,
+				FDD973827436D56308AD2006 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27AD3F636012E3E4080126FB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surplus/Pods-Surplus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C80CFCED1E55B7F840509912 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FDD973827436D56308AD2006 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surplus/Pods-Surplus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		83B16FC41C5ED5A0001D7815 /* Sources */ = {
@@ -397,6 +472,7 @@
 		};
 		83B16FF11C5ED5A0001D7815 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Surplus/Info.plist;
@@ -409,6 +485,7 @@
 		};
 		83B16FF21C5ED5A0001D7815 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Surplus/Info.plist;
@@ -486,6 +563,7 @@
 				83B16FF21C5ED5A0001D7815 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83B16FF31C5ED5A0001D7815 /* Build configuration list for PBXNativeTarget "SurplusTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +572,7 @@
 				83B16FF51C5ED5A0001D7815 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83B16FF61C5ED5A0001D7815 /* Build configuration list for PBXNativeTarget "SurplusUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +581,7 @@
 				83B16FF81C5ED5A0001D7815 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

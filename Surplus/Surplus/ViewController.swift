@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import FBSDKShareKit
 
 class ViewController: UIViewController {
 
@@ -20,6 +21,17 @@ class ViewController: UIViewController {
         var facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)
+
+        // Create a UIButton styled for sharing to messenger. You can leave
+        // the size at its default (365, 45) or change the size yourself
+        var messengerButton = FBSDKMessengerShareButton.circularButtonWithStyle(.Blue)
+        messengerButton.addTarget(self, action: "shareButtonPressed", forControlEvents: .TouchUpInside)
+        self.view.addSubview(messengerButton)
+    }
+    
+    func shareButtonPressed() {
+        print("share putton pressed")
+        FBSDKMessengerSharer.openMessenger()
     }
 
     override func didReceiveMemoryWarning() {

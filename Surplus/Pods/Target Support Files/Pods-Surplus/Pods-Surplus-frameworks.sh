@@ -85,12 +85,14 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Surplus/CMDQueryStringSerialization.framework"
+  install_framework "Pods-Surplus/Firebase.framework"
   install_framework "Pods-Surplus/SSKeychain.framework"
   install_framework "Pods-Surplus/VENCore.framework"
   install_framework "Pods-Surplus/Venmo_iOS_SDK.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Surplus/CMDQueryStringSerialization.framework"
+  install_framework "Pods-Surplus/Firebase.framework"
   install_framework "Pods-Surplus/SSKeychain.framework"
   install_framework "Pods-Surplus/VENCore.framework"
   install_framework "Pods-Surplus/Venmo_iOS_SDK.framework"

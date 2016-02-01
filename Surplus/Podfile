@@ -6,6 +6,7 @@
 target 'Surplus' do
 
 pod 'Venmo-iOS-SDK', '~>1.3'
+pod 'Firebase', '>= 2.5.0'
 
 end
 

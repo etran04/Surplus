@@ -15,6 +15,10 @@
 		83B16FD61C5ED5A0001D7815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B16FD41C5ED5A0001D7815 /* LaunchScreen.storyboard */; };
 		83B16FE11C5ED5A0001D7815 /* SurplusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FE01C5ED5A0001D7815 /* SurplusTests.swift */; };
 		83B16FEC1C5ED5A0001D7815 /* SurplusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FEB1C5ED5A0001D7815 /* SurplusUITests.swift */; };
+		83B16FFD1C5EDC2E001D7815 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B16FF91C5EDC2E001D7815 /* FBSDKCoreKit.framework */; };
+		83B16FFE1C5EDC2E001D7815 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B16FFA1C5EDC2E001D7815 /* FBSDKLoginKit.framework */; };
+		83B16FFF1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B16FFB1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework */; };
+		83B170001C5EDC2E001D7815 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		83B16FE71C5ED5A0001D7815 /* SurplusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurplusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FEB1C5ED5A0001D7815 /* SurplusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurplusUITests.swift; sourceTree = "<group>"; };
 		83B16FED1C5ED5A0001D7815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83B16FF91C5EDC2E001D7815 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		83B16FFA1C5EDC2E001D7815 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		83B16FFB1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = Frameworks/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		961C07283E930440CA9F0D69 /* Pods_Surplus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Surplus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B16FFD1C5EDC2E001D7815 /* FBSDKCoreKit.framework in Frameworks */,
+				83B16FFE1C5EDC2E001D7815 /* FBSDKLoginKit.framework in Frameworks */,
+				83B16FFF1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework in Frameworks */,
+				83B170001C5EDC2E001D7815 /* FBSDKShareKit.framework in Frameworks */,
 				61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +156,10 @@
 		DAA52CDA128C91823CBA741E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83B16FF91C5EDC2E001D7815 /* FBSDKCoreKit.framework */,
+				83B16FFA1C5EDC2E001D7815 /* FBSDKLoginKit.framework */,
+				83B16FFB1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework */,
+				83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */,
 				961C07283E930440CA9F0D69 /* Pods_Surplus.framework */,
 			);
 			name = Frameworks;
@@ -475,6 +491,10 @@
 			baseConfigurationReference = 766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Surplus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -488,6 +508,10 @@
 			baseConfigurationReference = BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Surplus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

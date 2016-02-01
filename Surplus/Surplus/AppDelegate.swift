@@ -8,15 +8,20 @@
 
 import UIKit
 import FBSDKCoreKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var ref = Firebase(url:"https://calpolysurplus.firebaseio.com")
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        ref.setValue("Do you have data? You'll love Firebase.")
+        
         return true
     }
 

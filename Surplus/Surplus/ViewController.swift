@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class ViewController: UIViewController {
         var facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

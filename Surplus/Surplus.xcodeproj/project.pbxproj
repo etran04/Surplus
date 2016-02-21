@@ -24,6 +24,7 @@
 		83B170001C5EDC2E001D7815 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */; };
 		83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */; };
 		83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */; };
+		83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FD1C79E91000BE705B /* FirebaseClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUserInfo.swift; sourceTree = "<group>"; };
 		83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderVC.swift; sourceTree = "<group>"; };
+		83EF48FD1C79E91000BE705B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		961C07283E930440CA9F0D69 /* Pods_Surplus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Surplus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */,
-				83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */,
 				0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */,
 				0754F5501C79B97900D0EA05 /* OrderCell.swift */,
 				83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */,
@@ -165,6 +166,7 @@
 		83B16FCA1C5ED5A0001D7815 /* Surplus */ = {
 			isa = PBXGroup;
 			children = (
+				83EF48FF1C79E92300BE705B /* API Wrappers */,
 				83B16FD21C5ED5A0001D7815 /* Assets.xcassets */,
 				83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */,
 				0754F54A1C79AA7500D0EA05 /* Support Files */,
@@ -191,6 +193,15 @@
 				83B16FED1C5ED5A0001D7815 /* Info.plist */,
 			);
 			path = SurplusUITests;
+			sourceTree = "<group>";
+		};
+		83EF48FF1C79E92300BE705B /* API Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */,
+				83EF48FD1C79E91000BE705B /* FirebaseClient.swift */,
+			);
+			name = "API Wrappers";
 			sourceTree = "<group>";
 		};
 		8BC57A190E64A08E77806A01 /* Pods */ = {
@@ -401,6 +412,7 @@
 				0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */,
 				83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */,
 				83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */,
+				83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */,
 				83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */,
 				0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */,
 			);

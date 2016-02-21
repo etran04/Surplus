@@ -8,7 +8,8 @@
 
 import UIKit
 
-class RecentOrdersTVC: UITableViewController {
+/* List of recent orders being requested */
+class OrdersTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,18 +17,44 @@ class RecentOrdersTVC: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
+    /* Default to 1: number of sections */
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
+    /* Details the number of orders in the tableview */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 10
     }
+    
+    /* Configure each order cell */
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath)
+        
+        // Configure the cell...
+    
+        return cell
+    }
+    
+    /* Callback for when a cell is selected */
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let alertTitle = "Confirm Order"
+        let alertMessage = "Are you sure you want to pick up the order?"
+        
+        let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+        
+        //warning finish the handler
+        let okAction = UIAlertAction(title: "Yes", style: .Default, handler: nil)
+        let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+        
+        confirmDialog.addAction(okAction)
+        confirmDialog.addAction(cancelAction)
+
+        self.presentViewController(confirmDialog, animated: true, completion: nil)
+    }
+    
 }

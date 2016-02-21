@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecentOrderCell: UITableViewCell {
+class OrderCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

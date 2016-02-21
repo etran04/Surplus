@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import Firebase
 import FBSDKShareKit
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

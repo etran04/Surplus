@@ -26,6 +26,7 @@ class FBUserInfo {
             if ((error) != nil) {
                 // Process error
                 print("Error: \(error)")
+                
             }
             else {
                 print("fetched user: \(result)")

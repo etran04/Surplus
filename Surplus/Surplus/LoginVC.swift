@@ -16,9 +16,21 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if (FBUserInfo.isLoggedIn()) {
+            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController : UITabBarController = storyboard.instantiateViewControllerWithIdentifier("mainFeedController") as! UITabBarController
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = viewController
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
+//        
+//        if (FBUserInfo.isLoggedIn()) {
+//            self.performSegueWithIdentifier("goToMainFeed", sender: self)
+//        }
+        
         let facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)

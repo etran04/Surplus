@@ -13,7 +13,7 @@ class FBUserInfo {
     static var name: String?
     static var id: String?
     
-//    class func isLoggedIn() -> Bool {
-//        
-//    }
+    class func isLoggedIn() -> Bool {
+        return FBSDKAccessToken.currentAccessToken() != nil
+    }
 }

@@ -85,6 +85,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="WfH-UX-Uxl">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                    <connections>
+                        <outlet property="refresh" destination="WfH-UX-Uxl" id="tnn-Pm-g9D"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnS-3Q-vBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,7 +150,7 @@
             </objects>
             <point key="canvasLocation" x="1594.5" y="-423.5"/>
         </scene>
-        <!--Log-->
+        <!--Transactions-->
         <scene sceneID="M4i-NS-9cr">
             <objects>
                 <tableViewController id="Hag-rM-s65" sceneMemberID="viewController">
@@ -167,7 +173,7 @@
                             <outlet property="delegate" destination="Hag-rM-s65" id="1hE-Pe-isL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Log" id="t3O-dF-CtJ"/>
+                    <navigationItem key="navigationItem" title="Transactions" id="t3O-dF-CtJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a02-xm-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

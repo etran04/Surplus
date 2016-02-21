@@ -13,10 +13,16 @@ class OrdersTVC: UITableViewController {
     
     let imagePath = "http://graph.facebook.com/1139255816085563/picture?type=large"
 
+    @IBOutlet weak var refresh: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.setUpRefresh()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -37,6 +43,26 @@ class OrdersTVC: UITableViewController {
         }).resume()
     }
 
+    /* Resets the refresh UI control */
+    func setUpRefresh() {
+        // Update the displayed "Last update: " time in the UIRefreshControl
+        //let date = NSDate()
+        //let formatter = NSDateFormatter()
+        //formatter.timeStyle = .MediumStyle
+        //let updateString = "Last updated: " + formatter.stringFromDate(date)
+        //self.refresh.attributedTitle = NSAttributedString(string: updateString)
+        
+        /* Set the callback for when pulled down */
+        self.refresh.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    /* Callback method for when user pulls down to refresh */
+    func refresh(sender:AnyObject) {
+        self.setUpRefresh()
+        self.tableView.reloadData()
+        self.refresh.endRefreshing()
+    }
+    
     // MARK: - Table view data source
 
     /* Default to 1: number of sections */

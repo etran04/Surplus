@@ -10,6 +10,8 @@ import UIKit
 
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController {
+    
+    let imagePath = "http://graph.facebook.com/1139255816085563/picture?type=large"
 
     @IBOutlet weak var refresh: UIRefreshControl!
     
@@ -23,6 +25,22 @@ class OrdersTVC: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func downloadImage(url: NSURL, picture: UIImageView){
+        print("Download Started")
+        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                print(response?.suggestedFilename ?? "")
+                print("Download Finished")
+                picture.image = UIImage(data: data)
+                picture.layer.cornerRadius = picture.frame.size.height / 2
+                picture.layer.masksToBounds = true
+                picture.layer.borderWidth = 0
+            }
+        }).resume()
     }
 
     /* Resets the refresh UI control */
@@ -59,7 +77,9 @@ class OrdersTVC: UITableViewController {
     
     /* Configure each order cell */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath) as! OrderCell
+        
+        downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         
         // Configure the cell...
     

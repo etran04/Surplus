@@ -10,6 +10,8 @@ import UIKit
 
 class OrderCell: UITableViewCell {
 
+    @IBOutlet weak var picture: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +21,7 @@ class OrderCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+    
+    
 
 }

@@ -30,6 +30,9 @@ class OrdersTVC: UITableViewController {
                 print(response?.suggestedFilename ?? "")
                 print("Download Finished")
                 picture.image = UIImage(data: data)
+                picture.layer.cornerRadius = picture.frame.size.height / 2
+                picture.layer.masksToBounds = true
+                picture.layer.borderWidth = 0
             }
         }).resume()
     }

@@ -27,6 +27,12 @@ class NewOrderVC: UIViewController {
         }
     }
     
+    @IBAction func savePressed(sender: AnyObject) {
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

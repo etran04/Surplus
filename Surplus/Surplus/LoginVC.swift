@@ -43,13 +43,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
         FBSDKMessengerSharer.openMessenger()
     }
     
-    func saveUserInfo() {
-        let ref = Firebase(url: "https://calpolysurplus.firebaseio.com")
-        let facebookLogin = FBSDKLoginManager()
-        
-        //facebookLogin.
-    }
-    
     // Facebook Delegate Methods
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -68,37 +61,14 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 //saveUserInfo()
+                FBUserInfo.fetchUserInfo()
                 self.performSegueWithIdentifier("goToMainFeed", sender: self)
-                returnUserData()
             }
         }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
-    }
-    
-    func returnUserData() {
-        let ref = Firebase(url: "https://calpolysurplus.firebaseio.com")
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil) {
-                // Process error
-                print("Error: \(error)")
-            }
-            else {
-                print("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                print("User Name is: \(userName)")
-                
-                let id = result.valueForKey("id") as! NSString
-                let usersRef = ref.childByAppendingPath("users/\(id)")
-                let newUser = ["username" : "\(userName)"]
-                
-                usersRef.setValue(newUser)
-            }
-        })
     }
 
     override func didReceiveMemoryWarning() {

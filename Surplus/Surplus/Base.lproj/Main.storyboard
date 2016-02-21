@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--LoginVC-->
@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W6s-T4-ss9" id="mQu-fB-Swd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="131.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAP-cC-fKl">
@@ -57,12 +57,66 @@
                     <navigationItem key="navigationItem" title="Orders" id="RqC-13-kV3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Duh-yo-nz1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="1tB-iX-n01" kind="show" id="1V8-Fm-Rxs"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnS-3Q-vBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.5" y="-423.5"/>
+        </scene>
+        <!--New Order-->
+        <scene sceneID="Hv0-fy-a9e">
+            <objects>
+                <viewController id="1tB-iX-n01" customClass="NewOrderVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aeE-XY-TTu"/>
+                        <viewControllerLayoutGuide type="bottom" id="k2L-ob-91V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Krq-Uf-CBE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0 – $5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-nB-0Bf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="101"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
+                                <color key="textColor" red="0.25882352941176467" green="0.46666666666666667" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38T-PY-K3o">
+                                <rect key="frame" x="20" y="173" width="335" height="29"/>
+                                <segments>
+                                    <segment title="$"/>
+                                    <segment title="$$"/>
+                                    <segment title="$$$"/>
+                                    <segment title="$$$$"/>
+                                </segments>
+                                <color key="tintColor" red="0.25882352941176467" green="0.46666666666666667" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Order" id="MsF-yU-CnB">
+                        <barButtonItem key="backBarButtonItem" title=" " style="done" id="vIh-bS-iLq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QxL-Dx-2KC">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="1tB-iX-n01" id="n5S-6a-cAh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="f7y-ip-hb7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="63R-SB-Z21" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1594.5" y="-423.5"/>
         </scene>
         <!--Log-->
         <scene sceneID="M4i-NS-9cr">
@@ -77,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LGH-dg-KMI" id="4Z5-DG-vQ2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -117,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="-249" y="14"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--OrderNav-->
         <scene sceneID="A7M-5c-Asi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9cq-VX-tXc" sceneMemberID="viewController">
+                <navigationController title="OrderNav" automaticallyAdjustsScrollViewInsets="NO" id="9cq-VX-tXc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="7m6-PV-al6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oWw-di-pej">
@@ -140,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="444.5" y="-423.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--LogNav-->
         <scene sceneID="VLQ-GE-xja">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hkw-BW-csa" sceneMemberID="viewController">
+                <navigationController title="LogNav" automaticallyAdjustsScrollViewInsets="NO" id="Hkw-BW-csa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="history" id="Lcn-Ij-UVG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhp-J5-rlP">

@@ -15,7 +15,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         if (FBUserInfo.isLoggedIn()) {
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -26,11 +25,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-//        
-//        if (FBUserInfo.isLoggedIn()) {
-//            self.performSegueWithIdentifier("goToMainFeed", sender: self)
-//        }
-        
         let facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)
@@ -74,6 +68,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 //saveUserInfo()
+                self.performSegueWithIdentifier("goToMainFeed", sender: self)
                 returnUserData()
             }
         }

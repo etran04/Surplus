@@ -48,8 +48,8 @@ class OrdersTVC: UITableViewController {
         let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
         
         //warning finish the handler
-        let okAction = UIAlertAction(title: "Yes", style: .Default, handler: nil)
-        let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+        let okAction = UIAlertAction(title: "Confirm", style: .Default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         confirmDialog.addAction(okAction)
         confirmDialog.addAction(cancelAction)

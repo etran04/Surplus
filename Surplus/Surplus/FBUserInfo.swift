@@ -19,7 +19,6 @@ class FBUserInfo {
     }
     
     class func fetchUserInfo() {
-        let ref = Firebase(url: "https://calpolysurplus.firebaseio.com")
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -30,16 +29,12 @@ class FBUserInfo {
             }
             else {
                 print("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
+                let name = result.valueForKey("name") as! String
+                let id = result.valueForKey("id") as! String
                 
-                let id = result.valueForKey("id") as! NSString
-                let usersRef = ref.childByAppendingPath("users/\(id)")
-                let newUser = ["username" : "\(userName)"]
-                
-                usersRef.setValue(newUser)
-                
-                self.name = userName as String
-                self.id = id as String
+                FirebaseClient.saveUser(name, id: id)
+                self.name = name
+                self.id = id
             }
         })
     }

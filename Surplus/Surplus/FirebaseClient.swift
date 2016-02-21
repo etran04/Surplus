@@ -10,5 +10,16 @@ import Foundation
 import Firebase
 
 class FirebaseClient {
+    static let ref = Firebase(url: "https://calpolysurplus.firebaseio.com")
     
+    class func saveUser(name: String, id: String) {
+        let usersRef = ref.childByAppendingPath("users/\(id)")
+        let newUser = ["name" : "\(name)"]
+        
+        usersRef.setValue(newUser)
+    }
+    
+    class func addOrder(startTime: NSDate, endTime: NSDate, location: String, estimate: String, status: Status, userId: String) {
+        let ordersRef = ref.childByAppendingPath("Orders/")
+    }
 }

@@ -25,6 +25,7 @@
 		83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */; };
 		83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */; };
 		83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FD1C79E91000BE705B /* FirebaseClient.swift */; };
+		83EF49011C79EBB100BE705B /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF49001C79EBB100BE705B /* Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUserInfo.swift; sourceTree = "<group>"; };
 		83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderVC.swift; sourceTree = "<group>"; };
 		83EF48FD1C79E91000BE705B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		83EF49001C79EBB100BE705B /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		961C07283E930440CA9F0D69 /* Pods_Surplus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Surplus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA459FCA6C504E5E07B5157 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +202,7 @@
 			children = (
 				83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */,
 				83EF48FD1C79E91000BE705B /* FirebaseClient.swift */,
+				83EF49001C79EBB100BE705B /* Status.swift */,
 			);
 			name = "API Wrappers";
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				83B16FCE1C5ED5A0001D7815 /* LoginVC.swift in Sources */,
 				0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */,
 				83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */,
+				83EF49011C79EBB100BE705B /* Status.swift in Sources */,
 				83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */,
 				83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */,
 				83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */,

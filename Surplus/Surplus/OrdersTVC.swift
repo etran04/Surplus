@@ -24,7 +24,7 @@ class OrdersTVC: UITableViewController {
     func downloadImage(url: NSURL, picture: UIImageView){
         print("Download Started")
         print("lastPathComponent: " + (url.lastPathComponent ?? ""))
-        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: imagePath)!, completionHandler: {(data, response, error) in
+        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
                 print(response?.suggestedFilename ?? "")
@@ -50,7 +50,7 @@ class OrdersTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath) as! OrderCell
         
-        
+        downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         
         // Configure the cell...
     

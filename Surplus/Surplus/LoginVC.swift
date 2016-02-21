@@ -15,7 +15,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -62,6 +61,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 //saveUserInfo()
+                self.performSegueWithIdentifier("goToMainFeed", sender: self)
                 returnUserData()
             }
         }

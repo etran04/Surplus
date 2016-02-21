@@ -18,7 +18,7 @@ class FBUserInfo {
         return FBSDKAccessToken.currentAccessToken() != nil
     }
     
-    class func fetchUserInfo() {
+    class func fetchUserInfo(shouldSave: Bool) {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -32,9 +32,12 @@ class FBUserInfo {
                 let name = result.valueForKey("name") as! String
                 let id = result.valueForKey("id") as! String
                 
-                FirebaseClient.saveUser(name, id: id)
                 self.name = name
                 self.id = id
+                
+                if (shouldSave) {
+                    FirebaseClient.saveUser(name, id: id)
+                }
             }
         })
     }

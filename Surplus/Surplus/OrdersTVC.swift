@@ -11,20 +11,32 @@ import UIKit
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController {
     
-    let imagePath = "http://graph.facebook.com/1139255816085563/picture?type=large"
+    @IBOutlet weak var loadingActivityView: UIActivityIndicatorView!
+    var orders = [Order]()
 
     @IBOutlet weak var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 
     override func viewDidAppear(animated: Bool) {
+//        self.loadingActivityView.startAnimating()
         self.setUpRefresh()
+        self.fetchOrders()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func fetchOrders() {
+        FirebaseClient.getOrders({(result: [Order]) in
+            self.orders = result
+            self.tableView.reloadData()
+//            self.loadingActivityView.stopAnimating()
+        })
     }
     
     func downloadImage(url: NSURL, picture: UIImageView){
@@ -72,12 +84,14 @@ class OrdersTVC: UITableViewController {
 
     /* Details the number of orders in the tableview */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return orders.count
     }
     
     /* Configure each order cell */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath) as! OrderCell
+        let order = orders[indexPath.row]
+        let imagePath = "http://graph.facebook.com/\(order.ownerId)/picture?type=large"
         
         downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         

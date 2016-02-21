@@ -20,6 +20,8 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController : UITabBarController = storyboard.instantiateViewControllerWithIdentifier("mainFeedController") as! UITabBarController
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            FBUserInfo.fetchUserInfo(false)
             appDelegate.window?.rootViewController = viewController
         }
     }
@@ -39,7 +41,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func shareButtonPressed() {
-        print("share putton pressed")
+        print("share button pressed")
         FBSDKMessengerSharer.openMessenger()
     }
     
@@ -60,8 +62,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                //saveUserInfo()
-                FBUserInfo.fetchUserInfo()
+                FBUserInfo.fetchUserInfo(true)
                 self.performSegueWithIdentifier("goToMainFeed", sender: self)
             }
         }

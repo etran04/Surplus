@@ -30,6 +30,9 @@ class NewOrderVC: UIViewController {
     
     @IBAction func savePressed(sender: AnyObject) {
         if let navController = self.navigationController {
+            let order = Order(startTime: NSDate(), endTime: NSDate(timeIntervalSinceNow: 3), location: "Village Market", estimate: "$", status: Status.Pending, ownerId: FBUserInfo.id!)
+            FirebaseClient.addOrder(order)
+            
             navController.popViewControllerAnimated(true)
         }
     }

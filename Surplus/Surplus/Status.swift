@@ -8,6 +8,8 @@
 
 import Foundation
 
-enum Status {
-    case Pending, Completed, InProgress
+enum Status : String {
+    case Pending = "Pending"
+    case Completed = "Completed"
+    case InProgress = "InProgress"
 }

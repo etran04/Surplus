@@ -19,7 +19,42 @@ class FirebaseClient {
         usersRef.setValue(newUser)
     }
     
-    class func addOrder(startTime: NSDate, endTime: NSDate, location: String, estimate: String, status: Status, userId: String) {
+    class func addOrder(order: Order) {
         let ordersRef = ref.childByAppendingPath("Orders/")
+        let uniqueRef = ordersRef.childByAutoId()
+        let orderObj: NSDictionary = [
+            "start_time": String(order.startTime),
+            "end_time": String(order.endTime),
+            "location": order.location,
+            "estimate": order.estimate,
+            "status": String(order.status),
+            "owner_id": "1139255816085563",
+            "recepient_id": order.recepientId]
+        
+        uniqueRef.setValue(orderObj)
+    }
+    
+    class func getOrders(completion: (result: [Order]) -> Void) {
+        let ordersRef = ref.childByAppendingPath("Orders/")
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+        var results = [Order]()
+        
+        ordersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            let orders = snapshot.value as! NSDictionary
+            
+            for order in orders.allValues {
+                let startDate = dateFormatter.dateFromString(order["start_time"] as! String)
+                let endDate = dateFormatter.dateFromString(order["end_time"] as! String)
+                let location = order["location"] as! String
+                let estimate = order["estimate"] as! String
+                let status = Status(rawValue: order["status"] as! String)
+                let ownerId = order["owner_id"] as! String
+
+                let currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
+                results.append(currentOrder)
+            }
+            completion(result: results)
+        })
     }
 }

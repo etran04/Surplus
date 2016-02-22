@@ -8,6 +8,7 @@
 
 import UIKit
 import DatePickerCell
+import DownPicker
 
 class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -17,16 +18,33 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var estimateLabel: UILabel!
     /* Reference to estimates segmented control */
     @IBOutlet weak var estimatesControl: UISegmentedControl!
+    /* Reference to location downpicker */
+    @IBOutlet weak var locationPicker: UITextField!
     
     /* Constants and local vars */
     let kDefaultCellHeight = 44
     var cells : NSArray = []
     var curOrder : Order = Order()
+    var curEstimate = "$"
+    
+    var locationsDownPicker: DownPicker!
+    var locationChoices = [String]()
     
     /* Called when view is loaded */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
+    }
+    
+    /* Called when view appears */
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        /* populate location choices */
+        self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
+        
+        self.locationsDownPicker = DownPicker(textField: self.locationPicker, withData: locationChoices)
+        self.locationsDownPicker.setPlaceholder("Choose a location")
     }
     
     /* Helper function for initializing tableview to allow for collapsible datepickercell */
@@ -58,15 +76,19 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         switch (estimatesControl.selectedSegmentIndex) {
         case 0:
             estimateLabel.text = "$0 – $5"
+            curEstimate = "$"
             break
         case 1:
             estimateLabel.text = "$5 – $10"
+            curEstimate = "$$"
             break
         case 2:
             estimateLabel.text = "$10 – $20"
+            curEstimate = "$$$"
             break
         case 3:
             estimateLabel.text = "$20 – $50"
+            curEstimate = "$$$$"
             break
         default:
             print("estimateChanged - error")
@@ -85,7 +107,13 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Callback for when the save button is pressed */
     @IBAction func savePressed(sender: AnyObject) {
         if let navController = self.navigationController {
-            let order = Order(startTime: NSDate(), endTime: NSDate(timeIntervalSinceNow: 3), location: "Village Market", estimate: "$", status: Status.Pending, ownerId: FBUserInfo.id!)
+            let order = Order(
+                startTime: NSDate(),
+                endTime: NSDate(timeIntervalSinceNow: 3),
+                location: self.locationsDownPicker.text,
+                estimate: self.curEstimate,
+                status: Status.Pending,
+                ownerId: FBUserInfo.id!)
             FirebaseClient.addOrder(order)
             
             navController.popViewControllerAnimated(true)

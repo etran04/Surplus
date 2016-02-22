@@ -52,7 +52,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Location">
                                                     <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
                                                     </attributes>
                                                 </fragment>
@@ -178,6 +178,7 @@
                     <connections>
                         <outlet property="estimateLabel" destination="UWM-nB-0Bf" id="Re7-sV-Qhb"/>
                         <outlet property="estimatesControl" destination="38T-PY-K3o" id="CEn-aH-Afu"/>
+                        <outlet property="locationPicker" destination="COg-tu-uDw" id="6Uq-Xn-XSq"/>
                         <outlet property="tableView" destination="Ylk-vb-BC5" id="NYw-xo-WF0"/>
                     </connections>
                 </viewController>
@@ -194,7 +195,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LGH-dg-KMI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="LGH-dg-KMI">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LGH-dg-KMI" id="4Z5-DG-vQ2">

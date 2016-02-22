@@ -28,7 +28,7 @@ class FirebaseClient {
             "location": order.location,
             "estimate": order.estimate,
             "status": String(order.status),
-            "owner_id": "1139255816085563",
+            "owner_id": order.ownerId,
             "recepient_id": order.recepientId]
         
         uniqueRef.setValue(orderObj)

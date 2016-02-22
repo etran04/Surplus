@@ -13,6 +13,10 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     /* Tableview used to hold datepickercell*/
     @IBOutlet weak var tableView: UITableView!
+    /* Reference to estimate label */
+    @IBOutlet weak var estimateLabel: UILabel!
+    /* Reference to estimates segmented control */
+    @IBOutlet weak var estimatesControl: UISegmentedControl!
     
     /* Constants and local vars */
     let kDefaultCellHeight = 44
@@ -46,6 +50,27 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Replaces the extra cells at the end with a clear view 
         tableView.tableFooterView = UIView(frame: CGRect.zero)
 
+    }
+    
+    /* Callback for when the estimate segment control is changed, to change estimate label */
+    @IBAction func estimateChanged(sender: UISegmentedControl) {
+        switch (estimatesControl.selectedSegmentIndex) {
+        case 0:
+            estimateLabel.text = "$0 – $5"
+            break
+        case 1:
+            estimateLabel.text = "$5 – $10"
+            break
+        case 2:
+            estimateLabel.text = "$10 – $20"
+            break
+        case 3:
+            estimateLabel.text = "$20 – $50"
+            break
+        default:
+            print("estimateChanged - error")
+            break
+        }
     }
     
     /* Callback for when the cancel button is pressed */

@@ -90,6 +90,13 @@ class OrdersTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
+        
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+
+        let startTime = formatter.stringFromDate(order.startTime!)
+        let endTime = formatter.stringFromDate(order.endTime!)
+        cell.availableTimeFrameLabel.text = startTime + " – " + endTime
     
         return cell
     }

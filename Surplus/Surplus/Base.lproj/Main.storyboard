@@ -30,7 +30,7 @@
         <scene sceneID="0xz-mN-btd">
             <objects>
                 <tableViewController title="Orders" id="oI9-oV-RqP" customClass="OrdersTVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" id="q1w-6X-Jvo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" id="q1w-6X-Jvo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,6 +76,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="availableTimeFrameLabel" destination="TQ3-Ha-kb3" id="VVv-U6-yS4"/>
+                                    <outlet property="estimateCostLabel" destination="hEe-fL-xa0" id="Ala-iz-dx6"/>
+                                    <outlet property="locationLabel" destination="omu-E4-wLI" id="sck-jx-h7s"/>
                                     <outlet property="picture" destination="fAP-cC-fKl" id="yEM-S3-7TJ"/>
                                 </connections>
                             </tableViewCell>
@@ -122,6 +125,19 @@
                                 <color key="textColor" red="0.25882352941176467" green="0.46666666666666667" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38T-PY-K3o">
+                                <rect key="frame" x="20" y="173" width="335" height="29"/>
+                                <segments>
+                                    <segment title="$"/>
+                                    <segment title="$$"/>
+                                    <segment title="$$$"/>
+                                    <segment title="$$$$"/>
+                                </segments>
+                                <color key="tintColor" red="0.25882352941176467" green="0.46666666666666667" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="estimateChanged:" destination="1tB-iX-n01" eventType="valueChanged" id="R4K-mX-T3f"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylk-vb-BC5">
                                 <rect key="frame" x="20" y="209" width="335" height="393"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,19 +152,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="38T-PY-K3o">
-                                <rect key="frame" x="20" y="173" width="335" height="29"/>
-                                <segments>
-                                    <segment title="$"/>
-                                    <segment title="$$"/>
-                                    <segment title="$$$"/>
-                                    <segment title="$$$$"/>
-                                </segments>
-                                <color key="tintColor" red="0.25882352941176467" green="0.46666666666666667" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="estimateChanged:" destination="1tB-iX-n01" eventType="valueChanged" id="R4K-mX-T3f"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

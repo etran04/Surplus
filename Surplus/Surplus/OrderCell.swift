@@ -10,7 +10,11 @@ import UIKit
 
 class OrderCell: UITableViewCell {
 
+    /* References to UI elements */
     @IBOutlet weak var picture: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var availableTimeFrameLabel: UILabel!
+    @IBOutlet weak var estimateCostLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +26,4 @@ class OrderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-
 }

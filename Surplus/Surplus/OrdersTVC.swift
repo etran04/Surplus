@@ -88,7 +88,8 @@ class OrdersTVC: UITableViewController {
         
         downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         
-        // Configure the cell...
+        cell.locationLabel.text = order.location
+        cell.estimateCostLabel.text = order.estimate
     
         return cell
     }

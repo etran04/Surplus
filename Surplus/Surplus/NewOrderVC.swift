@@ -21,6 +21,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Constants and local vars */
     let kDefaultCellHeight = 44
     var cells : NSArray = []
+    var curOrder : Order = Order()
     
     /* Called when view is loaded */
     override func viewDidLoad() {
@@ -71,6 +72,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("estimateChanged - error")
             break
         }
+        curOrder.estimate = estimateLabel.text
     }
     
     /* Callback for when the cancel button is pressed */

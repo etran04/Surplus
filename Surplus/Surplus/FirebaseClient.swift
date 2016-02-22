@@ -25,11 +25,11 @@ class FirebaseClient {
         let orderObj: NSDictionary = [
             "start_time": String(order.startTime),
             "end_time": String(order.endTime),
-            "location": order.location,
-            "estimate": order.estimate,
+            "location": order.location!,
+            "estimate": order.estimate!,
             "status": String(order.status),
-            "owner_id": order.ownerId,
-            "recepient_id": order.recepientId]
+            "owner_id": order.ownerId!,
+            "recepient_id": order.recepientId!]
         
         uniqueRef.setValue(orderObj)
     }

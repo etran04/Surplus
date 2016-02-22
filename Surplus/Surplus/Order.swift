@@ -9,13 +9,23 @@
 import Foundation
 
 struct Order {
-    var startTime: NSDate
-    var endTime: NSDate
-    var location: String
-    var estimate: String
-    var status: Status
-    var ownerId: String
-    var recepientId: String
+    var startTime: NSDate?
+    var endTime: NSDate?
+    var location: String?
+    var estimate: String?
+    var status: Status?
+    var ownerId: String?
+    var recepientId: String?
+    
+    init() {
+        self.startTime = nil
+        self.endTime = nil
+        self.location = nil
+        self.estimate = nil
+        self.status = nil
+        self.ownerId = nil
+        self.recepientId = "null"
+    }
     
     init(startTime: NSDate, endTime: NSDate, location: String, estimate: String, status: Status, ownerId: String) {
         self.startTime = startTime

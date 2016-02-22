@@ -29,15 +29,15 @@ class DurationPickerCell: DatePickerCell {
         let countdown = datePicker.countDownDuration
         let hours = Int(countdown) / 3600
         let minutes = Int(countdown) / 60 % 60
+        
         if (hours > 1 && minutes > 1) {
-            super.rightLabel.text = String(hours) + " hours, " + String(minutes) + " minutes remaining"
+            super.rightLabel.text = String(hours) + " hours, " + String(minutes) + " minutes"
         } else if (hours > 1) {
-            super.rightLabel.text = String(hours) + " hours, " + String(minutes) + " minute remaining"
+            super.rightLabel.text = String(hours) + " hours, " + String(minutes) + " minute"
         } else if (minutes > 1) {
-            super.rightLabel.text = String(hours) + " hour, " + String(minutes) + " minutes remaining"
+            super.rightLabel.text = String(hours) + " hour, " + String(minutes) + " minutes"
         } else {
-            super.rightLabel.text = String(hours) + " hour, " + String(minutes) + " minute remaining"
-
+            super.rightLabel.text = String(hours) + " hour, " + String(minutes) + " minute"
         }
     }
     

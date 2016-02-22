@@ -84,7 +84,7 @@ class OrdersTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath) as! OrderCell
         let order = orders[indexPath.row]
-        let imagePath = "http://graph.facebook.com/\(order.ownerId)/picture?type=large"
+        let imagePath = "http://graph.facebook.com/\(order.ownerId!)/picture?type=large"
         
         downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         

@@ -57,13 +57,6 @@ class OrdersTVC: UITableViewController {
 
     /* Resets the refresh UI control */
     func setUpRefresh() {
-        // Update the displayed "Last update: " time in the UIRefreshControl
-        //let date = NSDate()
-        //let formatter = NSDateFormatter()
-        //formatter.timeStyle = .MediumStyle
-        //let updateString = "Last updated: " + formatter.stringFromDate(date)
-        //self.refresh.attributedTitle = NSAttributedString(string: updateString)
-        
         /* Set the callback for when pulled down */
         self.refresh.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
     }

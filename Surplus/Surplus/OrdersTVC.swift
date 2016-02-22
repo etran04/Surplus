@@ -96,7 +96,7 @@ class OrdersTVC: UITableViewController {
 
         let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
-        cell.availableTimeFrameLabel.text = startTime + " – " + endTime
+        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
     
         return cell
     }

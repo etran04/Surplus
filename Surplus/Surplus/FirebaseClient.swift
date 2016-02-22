@@ -31,7 +31,7 @@ class FirebaseClient {
             "owner_id": order.ownerId!,
             "recepient_id": order.recepientId!]
         
-        uniqueRef.setValue(orderObj)
+        //uniqueRef.setValue(orderObj)
     }
     
     class func getOrders(completion: (result: [Order]) -> Void) {
@@ -50,7 +50,7 @@ class FirebaseClient {
                 let estimate = order["estimate"] as! String
                 let status = Status(rawValue: order["status"] as! String)
                 let ownerId = order["owner_id"] as! String
-
+                
                 let currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
                 results.append(currentOrder)
             }

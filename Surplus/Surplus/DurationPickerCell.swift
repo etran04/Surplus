@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import DatePickerCell
 
+/* Wrapper class for DatePickerCell to use as a countdown timer */
 class DurationPickerCell: DatePickerCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

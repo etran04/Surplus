@@ -113,6 +113,13 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let datePickerTableViewCell = cell as! DatePickerCell
             datePickerTableViewCell.selectedInTableView(tableView)
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+            // Collapses all other cells
+            for (var i = 0; i < cells.count; i++) {
+                if (i != indexPath.row && cells[i].expanded == true) {
+                    cells[i].selectedInTableView(tableView)
+                }
+            }
         }
     }
     

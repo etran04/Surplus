@@ -110,7 +110,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 startTime: NSDate(),
                 endTime: NSDate(timeIntervalSinceNow: 3),
                 location: locationPicker.text!,
-                estimate: "$$",
+                estimate: curOrder.estimate!,
                 status: Status.Pending,
                 ownerId: FBUserInfo.id!)
             FirebaseClient.addOrder(order)

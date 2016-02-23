@@ -18,15 +18,11 @@ class OrdersTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Starts the loading spinner
-        SwiftLoader.show(animated: true)
-        
-        // Gets the orders from Firebase to display
-        self.fetchOrders()
     }
 
     override func viewDidAppear(animated: Bool) {
+        // Gets the orders from Firebase to display
+        self.fetchOrders()
         
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -40,6 +36,8 @@ class OrdersTVC: UITableViewController {
     }
     
     func fetchOrders() {
+        // Starts the loading spinner
+        SwiftLoader.show(animated: true)
         FirebaseClient.getOrders({(result: [Order]) in
             self.orders = result
             SwiftLoader.hide()

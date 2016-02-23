@@ -11,6 +11,7 @@
 		0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F5501C79B97900D0EA05 /* OrderCell.swift */; };
 		0754F5541C79D4E800D0EA05 /* ProfPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 0754F5531C79D4E800D0EA05 /* ProfPic.png */; };
 		0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */; };
+		0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */; };
 		61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C07283E930440CA9F0D69 /* Pods_Surplus.framework */; };
 		83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */; };
 		83B16FCE1C5ED5A0001D7815 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */; };
@@ -53,6 +54,7 @@
 		0754F5501C79B97900D0EA05 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		0754F5531C79D4E800D0EA05 /* ProfPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfPic.png; sourceTree = "<group>"; };
 		0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerCell.swift; sourceTree = "<group>"; };
+		0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTVC.swift; sourceTree = "<group>"; };
 		766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
 		83B16FC81C5ED5A0001D7815 /* Surplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				0754F5501C79B97900D0EA05 /* OrderCell.swift */,
 				83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */,
 				0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */,
+				0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */,
 				83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */,
 				0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */,
+				0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */,
 				0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

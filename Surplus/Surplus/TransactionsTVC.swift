@@ -74,7 +74,9 @@ class TransactionsTVC: UITableViewController {
                         }
                         break
                     case .InProgress:
-                        self.progressOrders.append(curOrder)
+                        if (FBUserInfo.id == curOrder.ownerId) {
+                            self.progressOrders.append(curOrder)
+                        }
                         break
                     case .Completed:
                         self.completedOrders.append(curOrder)
@@ -83,7 +85,6 @@ class TransactionsTVC: UITableViewController {
             }
             
             // temp holder so we can see progress and completed cells
-            self.progressOrders.append(Order())
             self.completedOrders.append(Order())
             
             // array to hold all orders by section
@@ -103,9 +104,25 @@ class TransactionsTVC: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tableData.count
     }
+    
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData[section].count
+        let numCellsInSection = tableData[section].count
+        
+        // If not empty
+        if (numCellsInSection != 0) {
+            // Sets up a "No data available" background
+            // TODO: Get x, y location of where the section starts
+//            let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: CGFloat(numCellsInSection * 81)))
+//
+//            noDataLabel.text = "No data available"
+//            noDataLabel.textColor = UIColor.blackColor()
+//            noDataLabel.textAlignment = NSTextAlignment.Center
+//            tableView.backgroundView = noDataLabel;
+//            tableView.separatorStyle = .None;
+        }
+        
+        return numCellsInSection
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -126,6 +143,7 @@ class TransactionsTVC: UITableViewController {
                 break
             case "In Progress":
                 cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
+                populateProgressCell(indexPath, cell: (cell as! InProgressCell))
                 break
             case "Completed":
                 cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
@@ -155,6 +173,35 @@ class TransactionsTVC: UITableViewController {
         let endTime = formatter.stringFromDate(order.endTime!)
         cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
     }
+    
+    /* Helper function for filling in the inProgress cell with its information */
+    func populateProgressCell(indexPath: NSIndexPath, cell: InProgressCell) {
+        cell.tableController = self
+        
+        let order = progressOrders[indexPath.row]
+
+        var pictureId : String?
+        if (order.ownerId == FBUserInfo.id) {
+            pictureId = order.recepientId!
+        }
+        else {
+            pictureId = order.ownerId!
+        }
+        
+        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+        
+        cell.locationLabel.text = order.location
+        cell.estimateCostLabel.text = order.estimate
+        
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        
+        let startTime = formatter.stringFromDate(order.startTime!)
+        let endTime = formatter.stringFromDate(order.endTime!)
+        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+    }
+    
     
     /* Downloads and sets the profile picture in a cell */
     func downloadImage(url: NSURL, picture: UIImageView){

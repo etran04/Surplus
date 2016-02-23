@@ -16,6 +16,20 @@ class InProgressCell: UITableViewCell {
     @IBOutlet weak var availableTimeFrameLabel: UILabel!
     @IBOutlet weak var estimateCostLabel: UILabel!
     
+    /* Reference to the parent table view controller */
+    var tableController : UITableViewController
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        tableController = UITableViewController()
+        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        //fatalError("init(coder:) has not been implemented")
+        tableController = UITableViewController()
+        super.init(coder: aDecoder)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

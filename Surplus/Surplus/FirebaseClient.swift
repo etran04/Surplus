@@ -55,6 +55,7 @@ class FirebaseClient {
                     
                     var currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
                     currentOrder.id = key as! String
+                    currentOrder.recepientId = order["recepient_id"] as! String
                     results.append(currentOrder)
                 }
                 completion(result: results)

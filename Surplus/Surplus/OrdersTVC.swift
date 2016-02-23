@@ -40,7 +40,6 @@ class OrdersTVC: UITableViewController {
         SwiftLoader.show(animated: true)
         FirebaseClient.getOrders(Status.Pending, completion: {(result: [Order]) in
             self.orders = result
-            print(self.orders.count)
             SwiftLoader.hide()
             self.tableView.reloadData()
         })

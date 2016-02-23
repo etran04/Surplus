@@ -84,7 +84,8 @@ class FirebaseClient {
         status.setValue(Status.InProgress.rawValue)
     }
     
-    class func removeOrder(order: Order) {
-            // TODO
+    class func removeOrder(id: String) {
+        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+        orderRef.removeValue()
     }
 }

@@ -263,9 +263,6 @@
                                             <rect key="frame" x="142" y="50" width="48" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Edit"/>
-                                            <connections>
-                                                <action selector="cancelPressed:" destination="LGH-dg-KMI" eventType="touchUpInside" id="lHS-sG-ptp"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

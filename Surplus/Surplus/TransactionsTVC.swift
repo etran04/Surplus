@@ -222,11 +222,26 @@ class TransactionsTVC: UITableViewController {
      * Takes in the row of the cell we'd like to remove from pending
      * Will need to eventually fix this to act upon a delegate rather than passing an instance directly */
     func cancelPendingTransaction(row: Int) {
-        pendingOrders.removeAtIndex(row)
         
-        // array to hold all orders by section
-        self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
-        self.tableView.reloadData()
+        let confirmDialog = UIAlertController(title: "Are you sure?", message: "Are you sure you want to cancel your current request?", preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
+            
+            // removes order from firebase and then the table
+            FirebaseClient.removeOrder(self.pendingOrders[row].id)
+            self.pendingOrders.removeAtIndex(row)
+            
+            
+            // array to hold all orders by section
+            self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
+            self.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        confirmDialog.addAction(okAction)
+        confirmDialog.addAction(cancelAction)
+        
+        self.presentViewController(confirmDialog, animated: true, completion: nil)
     }
 
 

@@ -115,15 +115,30 @@ class OrdersTVC: UITableViewController {
         
         let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
         
-        //warning finish the handler
-        let okAction = UIAlertAction(title: "Confirm", style: .Default, handler: nil)
+        let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
+            self.confirmPressed(indexPath.row)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         confirmDialog.addAction(okAction)
         confirmDialog.addAction(cancelAction)
 
-        self.presentViewController(confirmDialog, animated: true) { () -> Void in
-            print("got here!")
+        self.presentViewController(confirmDialog, animated: true, completion: nil)
+    }
+    
+    func confirmPressed(index: Int) {
+        FirebaseClient.claimOrder(self.orders[index].id)
+        
+        let window = UIApplication.sharedApplication().delegate?.window
+        
+        if window!!.rootViewController as? UITabBarController != nil {
+            let tabbarController = window!!.rootViewController as! UITabBarController
+            let fromView = tabbarController.selectedViewController!.view
+            let toView = tabbarController.viewControllers![1].view
+            
+            UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
+                tabbarController.selectedIndex = 1
+            })
         }
     }
 }

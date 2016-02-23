@@ -66,6 +66,15 @@ class FirebaseClient {
         })
     }
     
+    class func claimOrder(id: String) {
+        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+        let recepientId = orderRef.childByAppendingPath("recepient_id")
+        let status = orderRef.childByAppendingPath("status")
+        
+        recepientId.setValue(FBUserInfo.id)
+        status.setValue(Status.InProgress.rawValue)
+    }
+    
     class func removeOrder(order: Order) {
             // TODO
     }

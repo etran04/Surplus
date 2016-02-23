@@ -44,6 +44,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         self.locationsDownPicker = DownPicker(textField: self.locationPicker, withData: locationChoices)
         self.locationsDownPicker.setPlaceholder("Choose a location")
+        
+        self.curOrder.estimate = "$"
     }
     
     /* Helper function for initializing tableview to allow for collapsible datepickercell */

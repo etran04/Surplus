@@ -35,9 +35,9 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
         
         // Create a UIButton styled for sharing to messenger. You can leave
         // the size at its default (365, 45) or change the size yourself
-        let messengerButton = FBSDKMessengerShareButton.circularButtonWithStyle(.Blue)
-        messengerButton.addTarget(self, action: "shareButtonPressed", forControlEvents: .TouchUpInside)
-        self.view.addSubview(messengerButton)
+//        let messengerButton = FBSDKMessengerShareButton.circularButtonWithStyle(.Blue)
+//        messengerButton.addTarget(self, action: "shareButtonPressed", forControlEvents: .TouchUpInside)
+//        self.view.addSubview(messengerButton)
     }
     
     func shareButtonPressed() {

@@ -10,6 +10,9 @@ import UIKit
 
 class TransactionsTVC: UITableViewController {
 
+    let headerTitles = ["Pending", "In Progress", "Completed"]
+    let data = [["0,0", "0,1", "0,2"], ["1,0", "1,1", "1,2"], ["2,0", "2,1", "2,2"]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,23 +38,44 @@ class TransactionsTVC: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return data.count
+
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return data[section].count
     }
 
-    /*
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section < headerTitles.count {
+            return headerTitles[section]
+        }
+        
+        return nil
+    }
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        var cell = UITableViewCell()
+        switch (headerTitles[indexPath.section]) {
+            case "Pending":
+                cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath) 
+                break
+            case "In Progress":
+                cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
+                break
+            case "Completed":
+                cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
+                break
+            default:
+                break
+        }
 
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

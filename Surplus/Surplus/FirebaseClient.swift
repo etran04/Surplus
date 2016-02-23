@@ -66,7 +66,7 @@ class FirebaseClient {
         })
     }
     
-    class func removeOrder(completion: (result: [Order]) -> Void) {
-        //TODO
+    class func removeOrder(order: Order) {
+            // TODO
     }
 }

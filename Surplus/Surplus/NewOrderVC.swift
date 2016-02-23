@@ -76,25 +76,24 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         switch (estimatesControl.selectedSegmentIndex) {
         case 0:
             estimateLabel.text = "$0 – $5"
-            curEstimate = "$"
+            curOrder.estimate = "$"
             break
         case 1:
             estimateLabel.text = "$5 – $10"
-            curEstimate = "$$"
+            curOrder.estimate = "$$"
             break
         case 2:
             estimateLabel.text = "$10 – $20"
-            curEstimate = "$$$"
+            curOrder.estimate = "$$$"
             break
         case 3:
             estimateLabel.text = "$20 – $50"
-            curEstimate = "$$$$"
+            curOrder.estimate = "$$$$"
             break
         default:
             print("estimateChanged - error")
             break
         }
-        curOrder.estimate = estimateLabel.text
     }
     
     /* Callback for when the cancel button is pressed */
@@ -110,7 +109,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let order = Order(
                 startTime: NSDate(),
                 endTime: NSDate(timeIntervalSinceNow: 3),
-                location: "Campus Market",
+                location: locationPicker.text!,
                 estimate: "$$",
                 status: Status.Pending,
                 ownerId: FBUserInfo.id!)

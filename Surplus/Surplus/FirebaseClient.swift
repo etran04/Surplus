@@ -41,20 +41,28 @@ class FirebaseClient {
         var results = [Order]()
         
         ordersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-            let orders = snapshot.value as! NSDictionary
-            
-            for order in orders.allValues {
-                let startDate = dateFormatter.dateFromString(order["start_time"] as! String)
-                let endDate = dateFormatter.dateFromString(order["end_time"] as! String)
-                let location = order["location"] as! String
-                let estimate = order["estimate"] as! String
-                let status = Status(rawValue: order["status"] as! String)
-                let ownerId = order["owner_id"] as! String
+            if !(snapshot.value is NSNull) {
+                let orders = snapshot.value as! NSDictionary
                 
-                let currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
-                results.append(currentOrder)
+                for (key, value) in orders {
+                    let order = value as! NSDictionary
+                    let startDate = dateFormatter.dateFromString(order["start_time"] as! String)
+                    let endDate = dateFormatter.dateFromString(order["end_time"] as! String)
+                    let location = order["location"] as! String
+                    let estimate = order["estimate"] as! String
+                    let status = Status(rawValue: order["status"] as! String)
+                    let ownerId = order["owner_id"] as! String
+                    
+                    var currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
+                    currentOrder.id = key as! String
+                    results.append(currentOrder)
+                }
+                completion(result: results)
             }
-            completion(result: results)
+            else {
+                print("getOrders error")
+            }
+            
         })
     }
 }

@@ -16,6 +16,7 @@ struct Order {
     var status: Status?
     var ownerId: String?
     var recepientId: String?
+    var id: String
     
     init() {
         self.startTime = nil
@@ -25,6 +26,7 @@ struct Order {
         self.status = nil
         self.ownerId = nil
         self.recepientId = "null"
+        self.id = ""
     }
     
     init(startTime: NSDate, endTime: NSDate, location: String, estimate: String, status: Status, ownerId: String) {
@@ -35,5 +37,6 @@ struct Order {
         self.status = status
         self.ownerId = ownerId
         self.recepientId = "null"
+        self.id = ""
     }
 }

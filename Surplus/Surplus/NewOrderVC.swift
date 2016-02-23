@@ -25,7 +25,6 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let kDefaultCellHeight = 44
     var cells : NSArray = []
     var curOrder : Order = Order()
-    var curEstimate = "$"
     
     var locationsDownPicker: DownPicker!
     var locationChoices = [String]()
@@ -59,6 +58,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         startPickerCell.leftLabel.text = "Start Time"
         startPickerCell.rightLabel.text = "Choose a start time"
         startPickerCell.datePicker.datePickerMode = .Time
+        startPickerCell.selectedInTableView(tableView)
         
         // Uses custom class to set up duration DatePickerCell
         let durationPickerCell = DurationPickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
@@ -110,7 +110,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 startTime: NSDate(),
                 endTime: NSDate(timeIntervalSinceNow: 3),
                 location: locationPicker.text!,
-                estimate: "$$",
+                estimate: curOrder.estimate!,
                 status: Status.Pending,
                 ownerId: FBUserInfo.id!)
             FirebaseClient.addOrder(order)

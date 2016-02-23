@@ -63,8 +63,7 @@ class OrdersTVC: UITableViewController {
     
     /* Callback method for when user pulls down to refresh */
     func refresh(sender:AnyObject) {
-        self.setUpRefresh()
-        self.tableView.reloadData()
+        self.fetchOrders()
         self.refresh.endRefreshing()
     }
     

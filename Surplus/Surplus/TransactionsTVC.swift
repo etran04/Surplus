@@ -74,7 +74,7 @@ class TransactionsTVC: UITableViewController {
                         }
                         break
                     case .InProgress:
-                        if (FBUserInfo.id == curOrder.ownerId) {
+                        if (FBUserInfo.id == curOrder.ownerId || FBUserInfo.id == curOrder.recepientId) {
                             self.progressOrders.append(curOrder)
                         }
                         break

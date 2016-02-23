@@ -23,6 +23,10 @@ class OrdersTVC: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
 //        self.loadingActivityView.startAnimating()
+        
+        // Replaces the extra cells at the end with a clear view
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
         self.setUpRefresh()
         self.fetchOrders()
     }

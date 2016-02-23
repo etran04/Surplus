@@ -108,9 +108,12 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Callback for when the save button is pressed */
     @IBAction func savePressed(sender: AnyObject) {
         if let navController = self.navigationController {
+            
+            // TODO: Check and make sure all fields are filled in
+            
             let order = Order(
-                startTime: NSDate(),
-                endTime: NSDate(timeIntervalSinceNow: 3),
+                startTime: cells[0].date,
+                endTime: NSDate(timeInterval: cells[1].datePicker.countDownDuration , sinceDate: cells[0].date),
                 location: locationPicker.text!,
                 estimate: curOrder.estimate!,
                 status: Status.Pending,

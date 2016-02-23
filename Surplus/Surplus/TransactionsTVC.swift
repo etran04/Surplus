@@ -224,7 +224,6 @@ class TransactionsTVC: UITableViewController {
     func cancelPendingTransaction(row: Int) {
         
         let confirmDialog = UIAlertController(title: "Are you sure?", message: "Are you sure you want to cancel your current request?", preferredStyle: .Alert)
-        
         let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
             
             // removes order from firebase and then the table

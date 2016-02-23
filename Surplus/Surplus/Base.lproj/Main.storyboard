@@ -272,7 +272,7 @@
                                     <outlet property="picture" destination="Nye-Go-CTY" id="ITx-Qb-0ES"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressCell" rowHeight="81" id="Dyo-id-905">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressCell" rowHeight="81" id="Dyo-id-905" customClass="InProgressCell" customModule="Surplus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="194.5" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dyo-id-905" id="amX-3j-F5G">
@@ -298,11 +298,17 @@
                                             <rect key="frame" x="79" y="50" width="51" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Message"/>
+                                            <connections>
+                                                <action selector="messagePressed:" destination="Dyo-id-905" eventType="touchUpInside" id="9NT-kh-Hti"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxc-2f-cmY">
                                             <rect key="frame" x="150" y="50" width="55" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Complete"/>
+                                            <connections>
+                                                <action selector="completedPressed:" destination="Dyo-id-905" eventType="touchUpInside" id="Nl1-Dz-zjD"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 – $5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioq-19-0lH">
                                             <rect key="frame" x="327" y="19" width="39.5" height="14"/>
@@ -310,7 +316,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Time – End Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYW-Rs-hcC">
-                                            <rect key="frame" x="79" y="35" width="288" height="21"/>
+                                            <rect key="frame" x="78" y="35" width="288" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -321,6 +327,12 @@
                                         <constraint firstItem="ioq-19-0lH" firstAttribute="top" secondItem="amX-3j-F5G" secondAttribute="topMargin" constant="11" id="rsu-I8-JxO"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="availableTimeFrameLabel" destination="PYW-Rs-hcC" id="eV3-Al-sYU"/>
+                                    <outlet property="estimateCostLabel" destination="ioq-19-0lH" id="bHx-Ol-EuU"/>
+                                    <outlet property="locationLabel" destination="hCM-x2-jvc" id="Mtx-Qo-SrL"/>
+                                    <outlet property="picture" destination="5CW-vv-6ay" id="Abg-gU-FJS"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="81" id="aqO-9J-Mq9">
                                 <rect key="frame" x="0.0" y="275.5" width="375" height="81"/>

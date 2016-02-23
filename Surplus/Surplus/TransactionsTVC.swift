@@ -130,6 +130,7 @@ class TransactionsTVC: UITableViewController {
         return cell
     }
     
+    /* Helper function for filling in pending cell with its information */
     func populatePendingCell(indexPath: NSIndexPath, cell: PendingCell) {
         let order = pendingOrders[indexPath.row]
         let imagePath = "http://graph.facebook.com/\(order.ownerId!)/picture?type=large"

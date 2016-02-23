@@ -13,7 +13,7 @@ import SwiftLoader
 class TransactionsTVC: UITableViewController {
 
     /* Header titles, can be changed if needed */
-    let headerTitles = ["Pending", "In Progress", "Completed"]
+    let headerTitles = ["Your Pending", "In Progress", "Completed"]
     
     /* Arrays used to hold each section of orders */
     var pendingOrders = [Order]()
@@ -120,7 +120,7 @@ class TransactionsTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         switch (headerTitles[indexPath.section]) {
-            case "Pending":
+            case "Your Pending":
                 cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
                 populatePendingCell(indexPath, cell: (cell as! PendingCell))
                 break

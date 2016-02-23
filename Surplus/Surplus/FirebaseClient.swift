@@ -23,15 +23,15 @@ class FirebaseClient {
         let ordersRef = ref.childByAppendingPath("Orders/")
         let uniqueRef = ordersRef.childByAutoId()
         let orderObj: NSDictionary = [
-            "start_time": String(order.startTime),
-            "end_time": String(order.endTime),
+            "start_time": String(order.startTime!),
+            "end_time": String(order.endTime!),
             "location": order.location!,
             "estimate": order.estimate!,
-            "status": String(order.status),
+            "status": order.status!.rawValue as String,
             "owner_id": order.ownerId!,
             "recepient_id": order.recepientId!]
         
-        //uniqueRef.setValue(orderObj)
+        uniqueRef.setValue(orderObj)
     }
     
     class func getOrders(completion: (result: [Order]) -> Void) {

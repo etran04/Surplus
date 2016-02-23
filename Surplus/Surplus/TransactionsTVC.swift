@@ -132,6 +132,8 @@ class TransactionsTVC: UITableViewController {
     
     /* Helper function for filling in pending cell with its information */
     func populatePendingCell(indexPath: NSIndexPath, cell: PendingCell) {
+        cell.tableController = self
+        
         let order = pendingOrders[indexPath.row]
         let imagePath = "http://graph.facebook.com/\(order.ownerId!)/picture?type=large"
         self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
@@ -158,6 +160,17 @@ class TransactionsTVC: UITableViewController {
                 picture.layer.borderWidth = 0
             }
         }).resume()
+    }
+    
+    /* Helper function that updates the tvc when a cancel button is pressed in the pending cell 
+     * Takes in the row of the cell we'd like to remove from pending
+     * Will need to eventually fix this to act upon a delegate rather than passing an instance directly */
+    func cancelPendingTransaction(row: Int) {
+        pendingOrders.removeAtIndex(row)
+        
+        // array to hold all orders by section
+        self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
+        self.tableView.reloadData()
     }
 
 

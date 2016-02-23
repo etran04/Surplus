@@ -32,9 +32,6 @@ class TransactionsTVC: UITableViewController {
         // Starts the loading spinner
         SwiftLoader.show(animated: true)
         
-        // Gets the orders from Firebase
-        self.fetchAndOrganizeOrders()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,6 +44,9 @@ class TransactionsTVC: UITableViewController {
         
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        // Gets the orders from Firebase
+        self.fetchAndOrganizeOrders()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +56,13 @@ class TransactionsTVC: UITableViewController {
 
     /* Helper method to get the orders from firebase */
     func fetchAndOrganizeOrders() {
+        
+        // Reinitialize all orders
+        pendingOrders = [Order]()
+        progressOrders = [Order]()
+        completedOrders = [Order]()
+        tableData = [[Order]]()
+        
         FirebaseClient.getOrders({(result: [Order]) in
             self.orders = result
             

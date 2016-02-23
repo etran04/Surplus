@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftLoader
 
 /* Transactions Table View Controller holds all transactions relevant to the user */
 class TransactionsTVC: UITableViewController {
@@ -15,26 +16,24 @@ class TransactionsTVC: UITableViewController {
     let headerTitles = ["Pending", "In Progress", "Completed"]
     
     /* Arrays used to hold each section of orders */
-    var pendingOrders = [String]()
-    var progressOrders = [String]()
-    var completedOrders = [String]()
+    var pendingOrders = [Order]()
+    var progressOrders = [Order]()
+    var completedOrders = [Order]()
     
     /* Used in populating the table. Holds each section */
-    var data = [[String]]()
+    var tableData = [[Order]]()
+    
+    /* Used to hold ALL orders fetch from database */
+    var orders = [Order]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Get the all the different orders
-        pendingOrders.append("1")
-        pendingOrders.append("2")
-        pendingOrders.append("3")
-        progressOrders.append("1")
-        progressOrders.append("2")
-        completedOrders.append("1")
-        completedOrders.append("2")
         
-        data = [pendingOrders, progressOrders, completedOrders]
+        // Starts the loading spinner
+        SwiftLoader.show(animated: true)
+        
+        // Gets the orders from Firebase
+        self.fetchAndOrganizeOrders()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -55,15 +54,51 @@ class TransactionsTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /* Helper method to get the orders from firebase */
+    func fetchAndOrganizeOrders() {
+        FirebaseClient.getOrders({(result: [Order]) in
+            self.orders = result
+            
+            for curOrder in result {
+                switch (curOrder.status!) {
+                    case .Pending:
+                        if (FBUserInfo.id == curOrder.ownerId) {
+                            self.pendingOrders.append(curOrder)
+                        }
+                        break
+                    case .InProgress:
+                        self.progressOrders.append(curOrder)
+                        break
+                    case .Completed:
+                        self.completedOrders.append(curOrder)
+                        break
+                }
+            }
+            
+            // temp holder so we can see progress and completed cells
+            self.progressOrders.append(Order())
+            self.completedOrders.append(Order())
+            
+            // array to hold all orders by section
+            self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
+            
+            // finished loading, so hide spinner
+            SwiftLoader.hide()
+            
+            // refreshes the table
+            self.tableView.reloadData()
+            
+        })
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return data.count
-
+        return tableData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].count
+        return tableData[section].count
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -79,7 +114,8 @@ class TransactionsTVC: UITableViewController {
         var cell = UITableViewCell()
         switch (headerTitles[indexPath.section]) {
             case "Pending":
-                cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath) 
+                cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
+                populatePendingCell(indexPath, cell: (cell as! PendingCell))
                 break
             case "In Progress":
                 cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
@@ -90,10 +126,38 @@ class TransactionsTVC: UITableViewController {
             default:
                 break
         }
-
-        // Configure the cell...
-
+        
         return cell
     }
+    
+    func populatePendingCell(indexPath: NSIndexPath, cell: PendingCell) {
+        let order = pendingOrders[indexPath.row]
+        let imagePath = "http://graph.facebook.com/\(order.ownerId!)/picture?type=large"
+        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+        
+        cell.locationLabel.text = order.location
+        cell.estimateCostLabel.text = order.estimate
+        
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        
+        let startTime = formatter.stringFromDate(order.startTime!)
+        let endTime = formatter.stringFromDate(order.endTime!)
+        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+    }
+    
+    /* Downloads and sets the profile picture in a cell */
+    func downloadImage(url: NSURL, picture: UIImageView){
+        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                picture.image = UIImage(data: data)
+                picture.layer.cornerRadius = picture.frame.size.height / 2
+                picture.layer.masksToBounds = true
+                picture.layer.borderWidth = 0
+            }
+        }).resume()
+    }
+
 
 }

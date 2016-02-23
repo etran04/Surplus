@@ -7,28 +7,32 @@
 //
 
 import UIKit
+import SwiftLoader
 
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController {
     
-    @IBOutlet weak var loadingActivityView: UIActivityIndicatorView!
     var orders = [Order]()
 
     @IBOutlet weak var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Starts the loading spinner
+        SwiftLoader.show(animated: true)
+        
+        // Gets the orders from Firebase to display
+        self.fetchOrders()
     }
 
     override func viewDidAppear(animated: Bool) {
-//        self.loadingActivityView.startAnimating()
         
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
+        // Initial set up for pull down to refresh
         self.setUpRefresh()
-        self.fetchOrders()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,8 +42,8 @@ class OrdersTVC: UITableViewController {
     func fetchOrders() {
         FirebaseClient.getOrders({(result: [Order]) in
             self.orders = result
+            SwiftLoader.hide()
             self.tableView.reloadData()
-//            self.loadingActivityView.stopAnimating()
         })
     }
     

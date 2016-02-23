@@ -267,9 +267,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="availableTimeFrameLabel" destination="WqV-o8-DpY" id="MXF-NG-Fme"/>
-                                    <outlet property="estimateCostLabel" destination="WqV-o8-DpY" id="0fa-ij-coc"/>
+                                    <outlet property="estimateCostLabel" destination="CH0-Lm-ybL" id="Eqg-5T-zcg"/>
                                     <outlet property="locationLabel" destination="9x7-B7-r3j" id="1fA-l4-eQ8"/>
-                                    <outlet property="picture" destination="Nye-Go-CTY" id="LWo-4X-vey"/>
+                                    <outlet property="picture" destination="Nye-Go-CTY" id="ITx-Qb-0ES"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressCell" rowHeight="81" id="Dyo-id-905">

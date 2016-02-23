@@ -38,8 +38,9 @@ class OrdersTVC: UITableViewController {
     func fetchOrders() {
         // Starts the loading spinner
         SwiftLoader.show(animated: true)
-        FirebaseClient.getOrders({(result: [Order]) in
+        FirebaseClient.getOrders(Status.Pending, completion: {(result: [Order]) in
             self.orders = result
+            print(self.orders.count)
             SwiftLoader.hide()
             self.tableView.reloadData()
         })

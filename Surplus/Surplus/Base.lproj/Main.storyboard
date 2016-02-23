@@ -259,6 +259,14 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-3T-OFq">
+                                            <rect key="frame" x="142" y="50" width="48" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <state key="normal" title="Edit"/>
+                                            <connections>
+                                                <action selector="cancelPressed:" destination="LGH-dg-KMI" eventType="touchUpInside" id="lHS-sG-ptp"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="CH0-Lm-ybL" secondAttribute="trailing" constant="0.5" id="fEa-p9-3Uv"/>

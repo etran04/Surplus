@@ -63,7 +63,7 @@ class TransactionsTVC: UITableViewController {
         completedOrders = [Order]()
         tableData = [[Order]]()
         
-        FirebaseClient.getOrders({(result: [Order]) in
+        FirebaseClient.getOrders(Status.All, completion: {(result: [Order]) in
             self.orders = result
             
             for curOrder in result {
@@ -80,6 +80,8 @@ class TransactionsTVC: UITableViewController {
                         break
                     case .Completed:
                         self.completedOrders.append(curOrder)
+                        break
+                    default:
                         break
                 }
             }

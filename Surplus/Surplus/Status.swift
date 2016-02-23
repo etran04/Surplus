@@ -12,4 +12,5 @@ enum Status : String {
     case Pending = "Pending"
     case Completed = "Completed"
     case InProgress = "InProgress"
+    case All = "All"
 }

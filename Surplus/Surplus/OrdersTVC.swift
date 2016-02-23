@@ -114,7 +114,8 @@ class OrdersTVC: UITableViewController {
         confirmDialog.addAction(okAction)
         confirmDialog.addAction(cancelAction)
 
-        self.presentViewController(confirmDialog, animated: true, completion: nil)
+        self.presentViewController(confirmDialog, animated: true) { () -> Void in
+            print("got here!")
+        }
     }
-    
 }

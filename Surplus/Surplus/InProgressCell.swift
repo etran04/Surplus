@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Popover
 
 class InProgressCell: UITableViewCell {
 
@@ -15,6 +16,8 @@ class InProgressCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableTimeFrameLabel: UILabel!
     @IBOutlet weak var estimateCostLabel: UILabel!
+    
+    @IBOutlet weak var completeBtn: UIButton!
     
     /* Reference to the parent table view controller */
     var tableController : UITableViewController
@@ -46,6 +49,10 @@ class InProgressCell: UITableViewCell {
     
     @IBAction func completedPressed(sender: UIButton) {
         tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
+
+        //let aView = UIView(frame: CGRect(x: 0, y: 0, width: 180, height: 180))
+        //let popover = Popover()
+        //popover.show(aView, point: sender.bounds.origin)
     }
     
 }

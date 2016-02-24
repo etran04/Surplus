@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftLoader
+import FBSDKShareKit
 
 /* Transactions Table View Controller holds all transactions relevant to the user */
 class TransactionsTVC: UITableViewController {

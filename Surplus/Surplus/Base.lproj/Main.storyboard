@@ -337,6 +337,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="availableTimeFrameLabel" destination="PYW-Rs-hcC" id="eV3-Al-sYU"/>
+                                    <outlet property="completeBtn" destination="rxc-2f-cmY" id="umL-ZK-F6d"/>
                                     <outlet property="estimateCostLabel" destination="ioq-19-0lH" id="bHx-Ol-EuU"/>
                                     <outlet property="locationLabel" destination="hCM-x2-jvc" id="Mtx-Qo-SrL"/>
                                     <outlet property="picture" destination="5CW-vv-6ay" id="Abg-gU-FJS"/>

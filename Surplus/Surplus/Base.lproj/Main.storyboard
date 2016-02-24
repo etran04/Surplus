@@ -263,6 +263,9 @@
                                             <rect key="frame" x="142" y="50" width="48" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Edit"/>
+                                            <connections>
+                                                <action selector="editPressed:" destination="LGH-dg-KMI" eventType="touchUpInside" id="NaU-PG-5ct"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -339,7 +342,7 @@
                                     <outlet property="picture" destination="5CW-vv-6ay" id="Abg-gU-FJS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="81" id="aqO-9J-Mq9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="81" id="aqO-9J-Mq9" customClass="CompletedCell" customModule="Surplus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="275.5" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aqO-9J-Mq9" id="9bK-K5-Fuy">
@@ -378,6 +381,12 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="FW9-xc-yOk" secondAttribute="trailing" constant="0.5" id="vtp-ax-WPQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="availableTimeFrameLabel" destination="95E-FY-Jll" id="Lvu-DS-8LH"/>
+                                    <outlet property="estimateCostLabel" destination="FW9-xc-yOk" id="IC2-1B-Wde"/>
+                                    <outlet property="locationLabel" destination="4Fl-uG-Ij4" id="60N-qO-ro2"/>
+                                    <outlet property="picture" destination="zoy-Xf-KfJ" id="dt2-ph-sjy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -387,10 +396,32 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Transactions" id="t3O-dF-CtJ"/>
+                    <connections>
+                        <segue destination="1NX-tY-1Ru" kind="show" identifier="goToInputCharge" id="OV9-Wf-OzJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a02-xm-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.5" y="374.5"/>
+        </scene>
+        <!--Input Charge-->
+        <scene sceneID="je6-px-5Vb">
+            <objects>
+                <viewController title="Input Charge" id="1NX-tY-1Ru" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PY8-WA-Xce"/>
+                        <viewControllerLayoutGuide type="bottom" id="ylx-kg-DaJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hhl-Mh-lyu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAK-vq-FhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1594.5" y="374.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OwZ-4t-LWl">

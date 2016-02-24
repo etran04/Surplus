@@ -204,6 +204,32 @@ class TransactionsTVC: UITableViewController {
         cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
     }
     
+//    /* Helper function for filling in the inProgress cell with its information */
+//    func populateCompleteCell(indexPath: NSIndexPath, cell: CompleteCell) {
+//        
+//        let order = progressOrders[indexPath.row]
+//        
+//        var pictureId : String?
+//        if (order.ownerId == FBUserInfo.id) {
+//            pictureId = order.recepientId!
+//        }
+//        else {
+//            pictureId = order.ownerId!
+//        }
+//        
+//        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+//        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+//        
+//        cell.locationLabel.text = order.location
+//        cell.estimateCostLabel.text = order.estimate
+//        
+//        let formatter = NSDateFormatter()
+//        formatter.timeStyle = .ShortStyle
+//        
+//        let startTime = formatter.stringFromDate(order.startTime!)
+//        let endTime = formatter.stringFromDate(order.endTime!)
+//        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+//    }
     
     /* Downloads and sets the profile picture in a cell */
     func downloadImage(url: NSURL, picture: UIImageView){
@@ -230,7 +256,6 @@ class TransactionsTVC: UITableViewController {
             FirebaseClient.removeOrder(self.pendingOrders[row].id)
             self.pendingOrders.removeAtIndex(row)
             
-            
             // array to hold all orders by section
             self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
             self.tableView.reloadData()
@@ -243,5 +268,9 @@ class TransactionsTVC: UITableViewController {
         self.presentViewController(confirmDialog, animated: true, completion: nil)
     }
 
+    /* Will need to fix to act upon a delegate rather than passing as an instance directly */
+    func completePressed() {
+        
+    }
 
 }

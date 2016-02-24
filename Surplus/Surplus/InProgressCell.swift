@@ -45,7 +45,7 @@ class InProgressCell: UITableViewCell {
     }
     
     @IBAction func completedPressed(sender: UIButton) {
-        //TODO
+        tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
     }
     
 }

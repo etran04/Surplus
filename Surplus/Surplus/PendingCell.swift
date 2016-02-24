@@ -50,4 +50,8 @@ class PendingCell: UITableViewCell {
         myTransactions.cancelPendingTransaction(indexPath!.row)
     }
     
+    @IBAction func editPressed(sender: UIButton) {
+        print("edit pressed")
+    }
+    
 }

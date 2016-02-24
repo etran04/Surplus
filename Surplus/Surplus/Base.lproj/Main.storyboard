@@ -144,20 +144,20 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylk-vb-BC5">
-                                <rect key="frame" x="19" y="287" width="335" height="331"/>
+                                <rect key="frame" x="0.0" y="287" width="375" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tjc-kW-c8b" customClass="DatePickerCell" customModule="DatePickerCell">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tjc-kW-c8b" id="oZt-NP-lcY">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COg-tu-uDw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose the campus dining location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COg-tu-uDw">
                                 <rect key="frame" x="20" y="235" width="335" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -168,16 +168,16 @@
                             <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="COg-tu-uDw" secondAttribute="leading" id="DVE-dU-Tsk"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="centerX" secondItem="38T-PY-K3o" secondAttribute="centerX" id="Dco-lh-vNt"/>
                             <constraint firstItem="COg-tu-uDw" firstAttribute="top" secondItem="38T-PY-K3o" secondAttribute="bottom" constant="34" id="N4W-bo-eN5"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leadingMargin" constant="3" id="Oah-Q9-hWs"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="COg-tu-uDw" secondAttribute="bottom" constant="22" id="Ov7-ep-Zxp"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="top" secondItem="UWM-nB-0Bf" secondAttribute="bottom" constant="8" symbolic="YES" id="RTB-Lv-bRi"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="trailing" secondItem="COg-tu-uDw" secondAttribute="trailing" id="VqZ-Lg-3i2"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="YVk-O0-q6n"/>
                             <constraint firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="d0B-PD-0Sq"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leading" id="fsA-Oh-AYz"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="bottom" secondItem="k2L-ob-91V" secondAttribute="top" id="hgC-Bx-8rh"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="top" secondItem="aeE-XY-TTu" secondAttribute="bottom" id="nKx-S6-cEy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ylk-vb-BC5" secondAttribute="trailing" constant="5" id="oTp-j1-j0P"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="leading" secondItem="UWM-nB-0Bf" secondAttribute="leading" id="qGc-rk-vLI"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leadingMargin" constant="4" id="rP0-My-qpf"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="COg-tu-uDw" secondAttribute="bottom" constant="22" id="rWt-W4-Byf"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="bottom" secondItem="k2L-ob-91V" secondAttribute="top" id="tIF-23-KWj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Order" id="MsF-yU-CnB">

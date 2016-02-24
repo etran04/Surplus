@@ -16,10 +16,10 @@ class DurationPickerCell: DatePickerCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         super.leftLabel.text = "Duration"
-        super.rightLabel.text = "Choose a duration"
+        super.rightLabel.text = "Choose how long you are free"
         super.datePicker.datePickerMode = .CountDownTimer
-        super.datePicker.minuteInterval = 10
-        super.datePicker.addTarget(self, action: "saveCountdown", forControlEvents: UIControlEvents.ValueChanged)
+        super.datePicker.minuteInterval = 15
+        super.datePicker.addTarget(self, action: "saveCountdown", forControlEvents: UIControlEvents.AllEvents)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +41,5 @@ class DurationPickerCell: DatePickerCell {
             super.rightLabel.text = String(hours) + " hour, " + String(minutes) + " minute"
         }
     }
-    
-    
-    
+
 }

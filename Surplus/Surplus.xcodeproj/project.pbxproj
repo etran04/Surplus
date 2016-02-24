@@ -14,6 +14,7 @@
 		0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */; };
 		0767D3CF1C7C46650039B2C4 /* PendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767D3CE1C7C46650039B2C4 /* PendingCell.swift */; };
 		078FD2F01C7C662600EBAB62 /* InProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */; };
+		07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */; };
 		07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919C1C7D2AA700FE586D /* CompletedCell.swift */; };
 		07EF919F1C7D2FA100FE586D /* InputChargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */; };
 		61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C07283E930440CA9F0D69 /* Pods_Surplus.framework */; };
@@ -61,6 +62,7 @@
 		0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTVC.swift; sourceTree = "<group>"; };
 		0767D3CE1C7C46650039B2C4 /* PendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingCell.swift; sourceTree = "<group>"; };
 		078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressCell.swift; sourceTree = "<group>"; };
+		07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTimePickerCell.swift; sourceTree = "<group>"; };
 		07EF919C1C7D2AA700FE586D /* CompletedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedCell.swift; sourceTree = "<group>"; };
 		07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputChargeVC.swift; sourceTree = "<group>"; };
 		766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		07EF91A01C7D2FA600FE586D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */,
 				0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */,
 				0767D3CE1C7C46650039B2C4 /* PendingCell.swift */,
 				078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */,
@@ -455,6 +458,7 @@
 				0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */,
 				0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */,
 				07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */,
+				07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

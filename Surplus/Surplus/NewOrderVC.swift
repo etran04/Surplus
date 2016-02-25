@@ -59,11 +59,11 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = CGFloat(kDefaultCellHeight)
         
+        // Sets up scroll picker cell for locations
         let locationPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
         
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
-        startPickerCell.selectedInTableView(tableView)
         
         // Uses custom class to set up duration DatePickerCell
         let durationPickerCell = DurationPickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)

@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 /**
- *  Inline/Expanding scroll view  for table views.
+ *  Inline/Expanding scroll view for table views.
  */
 public class ScrollPickerCell: UITableViewCell {
     
@@ -38,33 +38,6 @@ public class ScrollPickerCell: UITableViewCell {
         }
     }
     
-    // Only create one NSDateFormatter to save resources.
-//    static let dateFormatter = NSDateFormatter()
-    
-    /// The selected date, set to current date/time on initialization.
-//    public var date:NSDate = NSDate() {
-//        didSet {
-//            datePicker.date = date
-//            DatePickerCell.dateFormatter.dateStyle = dateStyle
-//            DatePickerCell.dateFormatter.timeStyle = timeStyle
-//            rightLabel.text = DatePickerCell.dateFormatter.stringFromDate(date)
-//        }
-//    }
-    /// The timestyle.
-//    public var timeStyle = NSDateFormatterStyle.ShortStyle {
-//        didSet {
-//            DatePickerCell.dateFormatter.timeStyle = timeStyle
-//            rightLabel.text = DatePickerCell.dateFormatter.stringFromDate(date)
-//        }
-//    }
-    /// The datestyle.
-//    public var dateStyle = NSDateFormatterStyle.MediumStyle {
-//        didSet {
-//            DatePickerCell.dateFormatter.dateStyle = dateStyle
-//            rightLabel.text = DatePickerCell.dateFormatter.stringFromDate(date)
-//        }
-//    }
-    
     /// Label on the left side of the cell.
     public var leftLabel = UILabel()
     /// Label on the right side of the cell.
@@ -78,16 +51,16 @@ public class ScrollPickerCell: UITableViewCell {
     
     var seperator = DVColorLockView()
     
-    var datePickerContainer = UIView()
-    /// The datepicker embeded in the cell.
-    public var datePicker: UIPickerView = UIPickerView()
+    var pickerContainer = UIView()
+    /// The scroll picker embeded in the cell.
+    public var scrollPicker: UIPickerView = UIPickerView()
     
     /// Is the cell expanded?
     public var expanded = false
     var unexpandedHeight = CGFloat(44)
     
     /**
-     Creates the DatePickerCell
+     Creates the ScrollPickerCell
      
      - parameter style:           A constant indicating a cell style. See UITableViewCellStyle for descriptions of these constants.
      - parameter reuseIdentifier: A string used to identify the cell object if it is to be reused for drawing multiple rows of a table view. Pass nil if the cell object is not to be reused. You should use the same reuse identifier for all cells of the same form.
@@ -104,24 +77,24 @@ public class ScrollPickerCell: UITableViewCell {
         // The datePicker overhangs the view slightly to avoid invalid constraints.
         self.clipsToBounds = true
         
-        let views = [leftLabel, rightLabel, seperator, datePickerContainer, datePicker]
+        let views = [leftLabel, rightLabel, seperator, pickerContainer, scrollPicker]
         for view in views {
             self.contentView .addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        datePickerContainer.clipsToBounds = true
-        datePickerContainer.addSubview(datePicker)
+        pickerContainer.clipsToBounds = true
+        pickerContainer.addSubview(scrollPicker)
         
         // Add a seperator between the date text display, and the datePicker. Lighter grey than a normal seperator.
         seperator.lockedBackgroundColor = UIColor(white: 0, alpha: 0.1)
-        datePickerContainer.addSubview(seperator)
-        datePickerContainer.addConstraints([
+        pickerContainer.addSubview(seperator)
+        pickerContainer.addConstraints([
             NSLayoutConstraint(
                 item: seperator,
                 attribute: NSLayoutAttribute.Left,
                 relatedBy: NSLayoutRelation.Equal,
-                toItem: datePickerContainer,
+                toItem: pickerContainer,
                 attribute: NSLayoutAttribute.Left,
                 multiplier: 1.0,
                 constant: 0
@@ -130,7 +103,7 @@ public class ScrollPickerCell: UITableViewCell {
                 item: seperator,
                 attribute: NSLayoutAttribute.Right,
                 relatedBy: NSLayoutRelation.Equal,
-                toItem: datePickerContainer,
+                toItem: pickerContainer,
                 attribute: NSLayoutAttribute.Right,
                 multiplier: 1.0,
                 constant: 0
@@ -148,7 +121,7 @@ public class ScrollPickerCell: UITableViewCell {
                 item: seperator,
                 attribute: NSLayoutAttribute.Top,
                 relatedBy: NSLayoutRelation.Equal,
-                toItem: datePickerContainer,
+                toItem: pickerContainer,
                 attribute: NSLayoutAttribute.Top,
                 multiplier: 1.0,
                 constant: 0
@@ -224,7 +197,7 @@ public class ScrollPickerCell: UITableViewCell {
         // Container.
         self.contentView.addConstraints([
             NSLayoutConstraint(
-                item: datePickerContainer,
+                item: pickerContainer,
                 attribute: NSLayoutAttribute.Left,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: self.contentView,
@@ -233,7 +206,7 @@ public class ScrollPickerCell: UITableViewCell {
                 constant: 0
             ),
             NSLayoutConstraint(
-                item: datePickerContainer,
+                item: pickerContainer,
                 attribute: NSLayoutAttribute.Right,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: self.contentView,
@@ -242,7 +215,7 @@ public class ScrollPickerCell: UITableViewCell {
                 constant: 0
             ),
             NSLayoutConstraint(
-                item: datePickerContainer,
+                item: pickerContainer,
                 attribute: NSLayoutAttribute.Top,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: leftLabel,
@@ -251,7 +224,7 @@ public class ScrollPickerCell: UITableViewCell {
                 constant: 0
             ),
             NSLayoutConstraint(
-                item: datePickerContainer,
+                item: pickerContainer,
                 attribute: NSLayoutAttribute.Bottom,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: self.contentView,
@@ -262,30 +235,30 @@ public class ScrollPickerCell: UITableViewCell {
             ])
         
         // Picker constraints.
-        datePickerContainer.addConstraints([
+        pickerContainer.addConstraints([
             NSLayoutConstraint(
-                item: datePicker,
+                item: scrollPicker,
                 attribute: NSLayoutAttribute.Left,
                 relatedBy: NSLayoutRelation.Equal,
-                toItem: datePickerContainer,
+                toItem: pickerContainer,
                 attribute: NSLayoutAttribute.Left,
                 multiplier: 1.0,
                 constant: 0
             ),
             NSLayoutConstraint(
-                item: datePicker,
+                item: scrollPicker,
                 attribute: NSLayoutAttribute.Right,
                 relatedBy: NSLayoutRelation.Equal,
-                toItem: datePickerContainer,
+                toItem: pickerContainer,
                 attribute: NSLayoutAttribute.Right,
                 multiplier: 1.0,
                 constant: 0
             ),
             NSLayoutConstraint(
-                item: datePicker,
+                item: scrollPicker,
                 attribute: NSLayoutAttribute.Top,
                 relatedBy: NSLayoutRelation.Equal,
-                toItem: datePickerContainer,
+                toItem: pickerContainer,
                 attribute: NSLayoutAttribute.Top,
                 multiplier: 1.0,
                 constant: 0
@@ -293,9 +266,6 @@ public class ScrollPickerCell: UITableViewCell {
             ])
         
         //datePicker.addTarget(self, action: "datePicked", forControlEvents: UIControlEvents.ValueChanged)
-        // Clear seconds.
-//        let timeIntervalSinceReferenceDateWithoutSeconds = floor(date.timeIntervalSinceReferenceDate / 60.0) * 60.0
-//        self.date = NSDate(timeIntervalSinceReferenceDate: timeIntervalSinceReferenceDateWithoutSeconds)
         leftLabel.text = "Location"
     }
     
@@ -303,7 +273,7 @@ public class ScrollPickerCell: UITableViewCell {
      Needed for initialization from a storyboard.
      
      - parameter aDecoder: An unarchiver object.
-     - returns: An initialized DatePickerCell object or nil if the object could not be created.
+     - returns: An initialized ScrollPickerCell object or nil if the object could not be created.
      */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -316,19 +286,17 @@ public class ScrollPickerCell: UITableViewCell {
      - returns: The cell's height.
      */
     public func datePickerHeight() -> CGFloat {
-        let expandedHeight = unexpandedHeight + CGFloat(datePicker.frame.size.height)
+        let expandedHeight = unexpandedHeight + CGFloat(scrollPicker.frame.size.height)
         return expanded ? expandedHeight : unexpandedHeight
     }
     
     /**
-     Used to notify the DatePickerCell that it was selected. The DatePickerCell will then run its selection animation and expand or collapse.
+     Used to notify the ScrollPickerCell that it was selected. The DatePickerCell will then run its selection animation and expand or collapse.
      
      - parameter tableView: The tableview the DatePickerCell was selected in.
      */
     public func selectedInTableView(tableView: UITableView) {
         expanded = !expanded
-        
-        print(expanded)
         
         UIView.transitionWithView(rightLabel, duration: 0.25, options:UIViewAnimationOptions.TransitionCrossDissolve, animations: { () -> Void in
             self.rightLabel.textColor = self.expanded ? self.tintColor : self.rightLabelTextColor
@@ -338,8 +306,7 @@ public class ScrollPickerCell: UITableViewCell {
         tableView.endUpdates()
     }
     
-    // Action for the datePicker ValueChanged event.
-//    func datePicked() {
-//        date = datePicker.date
-//    }
+    public func setChoices(options: [AnyObject]) {
+//        self.scrollPicker 
+    }
 }

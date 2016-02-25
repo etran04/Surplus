@@ -270,8 +270,24 @@ class TransactionsTVC: UITableViewController {
     }
 
     /* Will need to fix to act upon a delegate rather than passing as an instance directly */
-    func completePressed() {
+    func completeTransaction(row: Int) {
+        self.performSegueWithIdentifier("goToInputCharge", sender: row)
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "goToInputCharge") {
+            let svc = segue.destinationViewController as! InputChargeVC
+            svc.curOrder = self.progressOrders[(sender as! Int)]
+        }
         
     }
+    
 
 }

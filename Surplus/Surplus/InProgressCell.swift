@@ -48,7 +48,15 @@ class InProgressCell: UITableViewCell {
     }
     
     @IBAction func completedPressed(sender: UIButton) {
-        tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
+        let tableView = self.superview!.superview as! UITableView
+        
+        let buttonPosition = sender.convertPoint(CGPointZero, toView: tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(buttonPosition)
+        
+        let myTransactions = tableController as! TransactionsTVC
+        myTransactions.cancelPendingTransaction(indexPath!.row)
+        myTransactions.completeTransaction(indexPath!.row)
+//        tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
 
         //let aView = UIView(frame: CGRect(x: 0, y: 0, width: 180, height: 180))
         //let popover = Popover()

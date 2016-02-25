@@ -10,6 +10,8 @@ import UIKit
 
 class InputChargeVC: UIViewController {
 
+    var curOrder: Order?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +34,4 @@ class InputChargeVC: UIViewController {
             navController.popViewControllerAnimated(true)
         }
     }
-    
-
 }

@@ -10,6 +10,7 @@ pod 'DatePickerCell'
 pod 'DownPicker'
 pod 'SwiftLoader'
 pod 'Popover'
+pod 'Google/CloudMessaging'
 
 end
 

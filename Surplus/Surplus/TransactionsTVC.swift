@@ -10,11 +10,15 @@ import UIKit
 import SwiftLoader
 import FBSDKShareKit
 
+let kPendingHeader = "Awaiting pickup"
+let kProgressHeader = "Currently in progress"
+let kCompleteHeader = " Completed"
+
 /* Transactions Table View Controller holds all transactions relevant to the user */
 class TransactionsTVC: UITableViewController {
-
+    
     /* Header titles, can be changed if needed */
-    let headerTitles = ["Your Pending", "In Progress", "Completed"]
+    let headerTitles = [kPendingHeader, kProgressHeader, kCompleteHeader]
     
     /* Arrays used to hold each section of orders */
     var pendingOrders = [Order]()
@@ -140,16 +144,17 @@ class TransactionsTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         switch (headerTitles[indexPath.section]) {
-            case "Your Pending":
+            case kPendingHeader:
                 cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
                 populatePendingCell(indexPath, cell: (cell as! PendingCell))
                 break
-            case "In Progress":
+            case kProgressHeader:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
                 populateProgressCell(indexPath, cell: (cell as! InProgressCell))
                 break
-            case "Completed":
+            case kCompleteHeader:
                 cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
+                populateCompleteCell(indexPath, cell: (cell as! CompletedCell))
                 break
             default:
                 break
@@ -202,35 +207,35 @@ class TransactionsTVC: UITableViewController {
         
         let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
-        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+        cell.availableTimeFrameLabel.text = "Completed on " + endTime
     }
     
-//    /* Helper function for filling in the inProgress cell with its information */
-//    func populateCompleteCell(indexPath: NSIndexPath, cell: CompleteCell) {
-//        
-//        let order = progressOrders[indexPath.row]
-//        
-//        var pictureId : String?
-//        if (order.ownerId == FBUserInfo.id) {
-//            pictureId = order.recepientId!
-//        }
-//        else {
-//            pictureId = order.ownerId!
-//        }
-//        
-//        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
-//        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
-//        
-//        cell.locationLabel.text = order.location
-//        cell.estimateCostLabel.text = order.estimate
-//        
-//        let formatter = NSDateFormatter()
-//        formatter.timeStyle = .ShortStyle
-//        
-//        let startTime = formatter.stringFromDate(order.startTime!)
-//        let endTime = formatter.stringFromDate(order.endTime!)
-//        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
-//    }
+    /* Helper function for filling in the inProgress cell with its information */
+    func populateCompleteCell(indexPath: NSIndexPath, cell: CompletedCell) {
+        
+        let order = progressOrders[indexPath.row]
+        
+        var pictureId : String?
+        if (order.ownerId == FBUserInfo.id) {
+            pictureId = order.recepientId!
+        }
+        else {
+            pictureId = order.ownerId!
+        }
+        
+        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+        
+        cell.locationLabel.text = order.location
+        cell.estimateCostLabel.text = order.estimate
+        
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        
+        let startTime = formatter.stringFromDate(order.startTime!)
+        let endTime = formatter.stringFromDate(order.endTime!)
+        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+    }
     
     /* Downloads and sets the profile picture in a cell */
     func downloadImage(url: NSURL, picture: UIImageView){

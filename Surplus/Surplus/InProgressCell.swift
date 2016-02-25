@@ -54,7 +54,6 @@ class InProgressCell: UITableViewCell {
         let indexPath = tableView.indexPathForRowAtPoint(buttonPosition)
         
         let myTransactions = tableController as! TransactionsTVC
-        myTransactions.cancelPendingTransaction(indexPath!.row)
         myTransactions.completeTransaction(indexPath!.row)
 //        tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
 

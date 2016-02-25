@@ -88,4 +88,12 @@ class FirebaseClient {
         let orderRef = ref.childByAppendingPath("Orders/\(id)/")
         orderRef.removeValue()
     }
+    
+    class func completeOrder(id: String) {
+        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+        let status = orderRef.childByAppendingPath("status")
+        
+        status.setValue(Status.Completed.rawValue)
+        
+    }
 }

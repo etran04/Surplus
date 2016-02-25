@@ -408,7 +408,7 @@
         <!--Input Charge-->
         <scene sceneID="je6-px-5Vb">
             <objects>
-                <viewController title="Input Charge" id="1NX-tY-1Ru" sceneMemberID="viewController">
+                <viewController title="Input Charge" id="1NX-tY-1Ru" customClass="InputChargeVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bqV-3L-sZG"/>
                         <viewControllerLayoutGuide type="bottom" id="RrU-O5-TQ0"/>
@@ -422,9 +422,15 @@
                     <navigationItem key="navigationItem" title="Input Charge" id="9fp-nW-hS2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jrQ-Eq-G4u">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="1NX-tY-1Ru" id="E9P-g8-tsi"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="QfV-nS-BFy">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="donePressed:" destination="1NX-tY-1Ru" id="CVd-jt-tGm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

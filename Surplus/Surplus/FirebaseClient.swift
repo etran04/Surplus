@@ -34,7 +34,7 @@ class FirebaseClient {
         uniqueRef.setValue(orderObj)
     }
     
-    class func getOrders(completion: (result: [Order]) -> Void) {
+    class func getOrders(sortFlag: Status, completion: (result: [Order]) -> Void) {
         let ordersRef = ref.childByAppendingPath("Orders/")
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
@@ -55,7 +55,16 @@ class FirebaseClient {
                     
                     var currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
                     currentOrder.id = key as! String
-                    results.append(currentOrder)
+                    currentOrder.recepientId = order["recepient_id"] as? String
+                    
+                    // If we want sorted orders, only return orders that are of selected status
+                    if (sortFlag != .All) {
+                        if (currentOrder.status == sortFlag) {
+                            results.append(currentOrder)
+                        }
+                    } else {
+                        results.append(currentOrder)   
+                    }
                 }
                 completion(result: results)
             }
@@ -75,7 +84,16 @@ class FirebaseClient {
         status.setValue(Status.InProgress.rawValue)
     }
     
-    class func removeOrder(order: Order) {
-            // TODO
+    class func removeOrder(id: String) {
+        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+        orderRef.removeValue()
+    }
+    
+    class func completeOrder(id: String) {
+        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+        let status = orderRef.childByAppendingPath("status")
+        
+        status.setValue(Status.Completed.rawValue)
+        
     }
 }

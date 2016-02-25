@@ -144,20 +144,20 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylk-vb-BC5">
-                                <rect key="frame" x="19" y="287" width="335" height="331"/>
+                                <rect key="frame" x="0.0" y="287" width="375" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tjc-kW-c8b" customClass="DatePickerCell" customModule="DatePickerCell">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tjc-kW-c8b" id="oZt-NP-lcY">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COg-tu-uDw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose the campus dining location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COg-tu-uDw">
                                 <rect key="frame" x="20" y="235" width="335" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -168,16 +168,16 @@
                             <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="COg-tu-uDw" secondAttribute="leading" id="DVE-dU-Tsk"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="centerX" secondItem="38T-PY-K3o" secondAttribute="centerX" id="Dco-lh-vNt"/>
                             <constraint firstItem="COg-tu-uDw" firstAttribute="top" secondItem="38T-PY-K3o" secondAttribute="bottom" constant="34" id="N4W-bo-eN5"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leadingMargin" constant="3" id="Oah-Q9-hWs"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="COg-tu-uDw" secondAttribute="bottom" constant="22" id="Ov7-ep-Zxp"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="top" secondItem="UWM-nB-0Bf" secondAttribute="bottom" constant="8" symbolic="YES" id="RTB-Lv-bRi"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="trailing" secondItem="COg-tu-uDw" secondAttribute="trailing" id="VqZ-Lg-3i2"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="YVk-O0-q6n"/>
                             <constraint firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="d0B-PD-0Sq"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leading" id="fsA-Oh-AYz"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="bottom" secondItem="k2L-ob-91V" secondAttribute="top" id="hgC-Bx-8rh"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="top" secondItem="aeE-XY-TTu" secondAttribute="bottom" id="nKx-S6-cEy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ylk-vb-BC5" secondAttribute="trailing" constant="5" id="oTp-j1-j0P"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="leading" secondItem="UWM-nB-0Bf" secondAttribute="leading" id="qGc-rk-vLI"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leadingMargin" constant="4" id="rP0-My-qpf"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="COg-tu-uDw" secondAttribute="bottom" constant="22" id="rWt-W4-Byf"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="bottom" secondItem="k2L-ob-91V" secondAttribute="top" id="tIF-23-KWj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Order" id="MsF-yU-CnB">
@@ -259,6 +259,14 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-3T-OFq">
+                                            <rect key="frame" x="142" y="50" width="48" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <state key="normal" title="Edit"/>
+                                            <connections>
+                                                <action selector="editPressed:" destination="LGH-dg-KMI" eventType="touchUpInside" id="NaU-PG-5ct"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="CH0-Lm-ybL" secondAttribute="trailing" constant="0.5" id="fEa-p9-3Uv"/>
@@ -329,12 +337,13 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="availableTimeFrameLabel" destination="PYW-Rs-hcC" id="eV3-Al-sYU"/>
+                                    <outlet property="completeBtn" destination="rxc-2f-cmY" id="umL-ZK-F6d"/>
                                     <outlet property="estimateCostLabel" destination="ioq-19-0lH" id="bHx-Ol-EuU"/>
                                     <outlet property="locationLabel" destination="hCM-x2-jvc" id="Mtx-Qo-SrL"/>
                                     <outlet property="picture" destination="5CW-vv-6ay" id="Abg-gU-FJS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="81" id="aqO-9J-Mq9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="81" id="aqO-9J-Mq9" customClass="CompletedCell" customModule="Surplus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="275.5" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aqO-9J-Mq9" id="9bK-K5-Fuy">
@@ -373,6 +382,12 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="FW9-xc-yOk" secondAttribute="trailing" constant="0.5" id="vtp-ax-WPQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="availableTimeFrameLabel" destination="95E-FY-Jll" id="Lvu-DS-8LH"/>
+                                    <outlet property="estimateCostLabel" destination="FW9-xc-yOk" id="IC2-1B-Wde"/>
+                                    <outlet property="locationLabel" destination="4Fl-uG-Ij4" id="60N-qO-ro2"/>
+                                    <outlet property="picture" destination="zoy-Xf-KfJ" id="dt2-ph-sjy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -382,10 +397,106 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Transactions" id="t3O-dF-CtJ"/>
+                    <connections>
+                        <segue destination="1NX-tY-1Ru" kind="show" identifier="goToInputCharge" id="OV9-Wf-OzJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a02-xm-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.5" y="374.5"/>
+        </scene>
+        <!--Input Charge-->
+        <scene sceneID="je6-px-5Vb">
+            <objects>
+                <viewController title="Input Charge" id="1NX-tY-1Ru" customClass="InputChargeVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bqV-3L-sZG"/>
+                        <viewControllerLayoutGuide type="bottom" id="RrU-O5-TQ0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Zm-Mi-pfB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-9I-s2t">
+                                <rect key="frame" x="20" y="165" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB4-9y-ZPo">
+                                <rect key="frame" x="20" y="309" width="335" height="101"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="$0.00">
+                                        <attributes>
+                                            <color key="NSColor" red="0.011764705882352941" green="0.33725490196078434" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="64" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBo-ak-rhS">
+                                <rect key="frame" x="20" y="257" width="344" height="68"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Please charge your new friend...">
+                                        <attributes>
+                                            <color key="NSColor" red="0.011764705882352941" green="0.33725490196078434" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="24" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Input Charge" id="9fp-nW-hS2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jrQ-Eq-G4u">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="1NX-tY-1Ru" id="E9P-g8-tsi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QfV-nS-BFy">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="donePressed:" destination="1NX-tY-1Ru" id="CVd-jt-tGm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="doneButton" destination="QfV-nS-BFy" id="qkV-yn-FyR"/>
+                        <outlet property="finalChargeLabel" destination="bB4-9y-ZPo" id="0gN-cC-oEI"/>
+                        <outlet property="textField" destination="UfJ-9I-s2t" id="whc-7y-pdd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAK-vq-FhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1594.5" y="374.5"/>
+        </scene>
+        <!--Final Charge-->
+        <scene sceneID="Ff2-jx-ZtX">
+            <objects>
+                <viewController title="Final Charge" id="GG4-79-8fQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sFq-aE-qbd"/>
+                        <viewControllerLayoutGuide type="bottom" id="2QU-gp-Uxa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q0T-YS-tCY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Lh-vR-GCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2158.5" y="374.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OwZ-4t-LWl">

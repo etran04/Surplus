@@ -9,6 +9,7 @@ pod 'Firebase', '>= 2.5.0'
 pod 'DatePickerCell'
 pod 'DownPicker'
 pod 'SwiftLoader'
+pod 'Popover'
 
 end
 

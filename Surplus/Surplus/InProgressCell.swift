@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Popover
 
 class InProgressCell: UITableViewCell {
 
@@ -15,6 +16,22 @@ class InProgressCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableTimeFrameLabel: UILabel!
     @IBOutlet weak var estimateCostLabel: UILabel!
+    
+    @IBOutlet weak var completeBtn: UIButton!
+    
+    /* Reference to the parent table view controller */
+    var tableController : UITableViewController
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        tableController = UITableViewController()
+        super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        //fatalError("init(coder:) has not been implemented")
+        tableController = UITableViewController()
+        super.init(coder: aDecoder)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +48,18 @@ class InProgressCell: UITableViewCell {
     }
     
     @IBAction func completedPressed(sender: UIButton) {
-        //TODO
+        let tableView = self.superview!.superview as! UITableView
+        
+        let buttonPosition = sender.convertPoint(CGPointZero, toView: tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(buttonPosition)
+        
+        let myTransactions = tableController as! TransactionsTVC
+        myTransactions.completeTransaction(indexPath!.row)
+//        tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
+
+        //let aView = UIView(frame: CGRect(x: 0, y: 0, width: 180, height: 180))
+        //let popover = Popover()
+        //popover.show(aView, point: sender.bounds.origin)
     }
     
 }

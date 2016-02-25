@@ -43,7 +43,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
         
         self.locationsDownPicker = DownPicker(textField: self.locationPicker, withData: locationChoices)
-        self.locationsDownPicker.setPlaceholder("Choose a location")
+        self.locationsDownPicker.setPlaceholder("Choose the campus dining location")
         
         self.curOrder.estimate = "$"
     }
@@ -56,10 +56,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.estimatedRowHeight = CGFloat(kDefaultCellHeight)
         
         // Sets up Start Time DatePickerCell
-        let startPickerCell = DatePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
-        startPickerCell.leftLabel.text = "Start Time"
-        startPickerCell.rightLabel.text = "Choose a start time"
-        startPickerCell.datePicker.datePickerMode = .Time
+        let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         startPickerCell.selectedInTableView(tableView)
         
         // Uses custom class to set up duration DatePickerCell
@@ -108,9 +105,12 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Callback for when the save button is pressed */
     @IBAction func savePressed(sender: AnyObject) {
         if let navController = self.navigationController {
+            
+            // TODO: Check and make sure all fields are filled in
+            
             let order = Order(
-                startTime: NSDate(),
-                endTime: NSDate(timeIntervalSinceNow: 3),
+                startTime: cells[0].date,
+                endTime: NSDate(timeInterval: cells[1].datePicker.countDownDuration , sinceDate: cells[0].date),
                 location: locationPicker.text!,
                 estimate: curOrder.estimate!,
                 status: Status.Pending,

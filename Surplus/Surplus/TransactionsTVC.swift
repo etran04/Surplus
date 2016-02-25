@@ -8,12 +8,17 @@
 
 import UIKit
 import SwiftLoader
+import FBSDKShareKit
+
+let kPendingHeader = "Awaiting pickup"
+let kProgressHeader = "Currently in progress"
+let kCompleteHeader = " Completed"
 
 /* Transactions Table View Controller holds all transactions relevant to the user */
 class TransactionsTVC: UITableViewController {
-
+    
     /* Header titles, can be changed if needed */
-    let headerTitles = ["Your Pending", "In Progress", "Completed"]
+    let headerTitles = [kPendingHeader, kProgressHeader, kCompleteHeader]
     
     /* Arrays used to hold each section of orders */
     var pendingOrders = [Order]()
@@ -63,7 +68,7 @@ class TransactionsTVC: UITableViewController {
         completedOrders = [Order]()
         tableData = [[Order]]()
         
-        FirebaseClient.getOrders({(result: [Order]) in
+        FirebaseClient.getOrders(Status.All, completion: {(result: [Order]) in
             self.orders = result
             
             for curOrder in result {
@@ -74,17 +79,17 @@ class TransactionsTVC: UITableViewController {
                         }
                         break
                     case .InProgress:
-                        self.progressOrders.append(curOrder)
+                        if (FBUserInfo.id == curOrder.ownerId || FBUserInfo.id == curOrder.recepientId) {
+                            self.progressOrders.append(curOrder)
+                        }
                         break
                     case .Completed:
                         self.completedOrders.append(curOrder)
                         break
+                    default:
+                        break
                 }
             }
-            
-            // temp holder so we can see progress and completed cells
-            self.progressOrders.append(Order())
-            self.completedOrders.append(Order())
             
             // array to hold all orders by section
             self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
@@ -103,9 +108,25 @@ class TransactionsTVC: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tableData.count
     }
+    
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData[section].count
+        let numCellsInSection = tableData[section].count
+        
+        // If not empty
+        if (numCellsInSection != 0) {
+            // Sets up a "No data available" background
+            // TODO: Get x, y location of where the section starts
+//            let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: CGFloat(numCellsInSection * 81)))
+//
+//            noDataLabel.text = "No data available"
+//            noDataLabel.textColor = UIColor.blackColor()
+//            noDataLabel.textAlignment = NSTextAlignment.Center
+//            tableView.backgroundView = noDataLabel;
+//            tableView.separatorStyle = .None;
+        }
+        
+        return numCellsInSection
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -120,15 +141,17 @@ class TransactionsTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         switch (headerTitles[indexPath.section]) {
-            case "Your Pending":
+            case kPendingHeader:
                 cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
                 populatePendingCell(indexPath, cell: (cell as! PendingCell))
                 break
-            case "In Progress":
+            case kProgressHeader:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
+                populateProgressCell(indexPath, cell: (cell as! InProgressCell))
                 break
-            case "Completed":
+            case kCompleteHeader:
                 cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
+                populateCompleteCell(indexPath, cell: (cell as! CompletedCell))
                 break
             default:
                 break
@@ -156,6 +179,62 @@ class TransactionsTVC: UITableViewController {
         cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
     }
     
+    /* Helper function for filling in the inProgress cell with its information */
+    func populateProgressCell(indexPath: NSIndexPath, cell: InProgressCell) {
+        cell.tableController = self
+        
+        let order = progressOrders[indexPath.row]
+
+        var pictureId : String?
+        if (order.ownerId == FBUserInfo.id) {
+            pictureId = order.recepientId!
+        }
+        else {
+            pictureId = order.ownerId!
+        }
+        
+        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+        
+        cell.locationLabel.text = order.location
+        cell.estimateCostLabel.text = order.estimate
+        
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        
+        let startTime = formatter.stringFromDate(order.startTime!)
+        let endTime = formatter.stringFromDate(order.endTime!)
+        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+    }
+    
+    /* Helper function for filling in the inProgress cell with its information */
+    func populateCompleteCell(indexPath: NSIndexPath, cell: CompletedCell) {
+        
+        let order = completedOrders[indexPath.row]
+        
+        var pictureId : String?
+        if (order.ownerId == FBUserInfo.id) {
+            pictureId = order.recepientId!
+        }
+        else {
+            pictureId = order.ownerId!
+        }
+        
+        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+        self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+        
+        cell.locationLabel.text = order.location
+        cell.estimateCostLabel.text = order.estimate
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        
+//        let startTime = formatter.stringFromDate(order.startTime!)
+        let endTime = formatter.stringFromDate(order.endTime!)
+        cell.availableTimeFrameLabel.text = "Completed on " + endTime
+
+    }
+    
     /* Downloads and sets the profile picture in a cell */
     func downloadImage(url: NSURL, picture: UIImageView){
         NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
@@ -173,12 +252,45 @@ class TransactionsTVC: UITableViewController {
      * Takes in the row of the cell we'd like to remove from pending
      * Will need to eventually fix this to act upon a delegate rather than passing an instance directly */
     func cancelPendingTransaction(row: Int) {
-        pendingOrders.removeAtIndex(row)
         
-        // array to hold all orders by section
-        self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
-        self.tableView.reloadData()
+        let confirmDialog = UIAlertController(title: "Are you sure?", message: "Are you sure you want to cancel your current request?", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
+            
+            // removes order from firebase and then the table
+            FirebaseClient.removeOrder(self.pendingOrders[row].id)
+            self.pendingOrders.removeAtIndex(row)
+            
+            // array to hold all orders by section
+            self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
+            self.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        confirmDialog.addAction(okAction)
+        confirmDialog.addAction(cancelAction)
+        
+        self.presentViewController(confirmDialog, animated: true, completion: nil)
     }
 
+    /* Will need to fix to act upon a delegate rather than passing as an instance directly */
+    func completeTransaction(row: Int) {
+        self.performSegueWithIdentifier("goToInputCharge", sender: row)
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "goToInputCharge") {
+            let svc = segue.destinationViewController as! InputChargeVC
+            svc.curOrder = self.progressOrders[(sender as! Int)]
+        }
+        
+    }
+    
 
 }

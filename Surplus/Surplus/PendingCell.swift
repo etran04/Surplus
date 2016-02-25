@@ -40,6 +40,7 @@ class PendingCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /* When cancel is pressed, callsback on the tvc method to delete the cell and clear from database */
     @IBAction func cancelPressed(sender: UIButton) {
         let tableView = self.superview!.superview as! UITableView
         
@@ -48,6 +49,10 @@ class PendingCell: UITableViewCell {
                 
         let myTransactions = tableController as! TransactionsTVC
         myTransactions.cancelPendingTransaction(indexPath!.row)
+    }
+    
+    @IBAction func editPressed(sender: UIButton) {
+        print("edit pressed")
     }
     
 }

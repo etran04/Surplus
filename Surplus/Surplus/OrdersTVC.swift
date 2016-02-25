@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftLoader
+//import SwiftLoader
 
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController {
@@ -37,10 +37,10 @@ class OrdersTVC: UITableViewController {
     
     func fetchOrders() {
         // Starts the loading spinner
-        SwiftLoader.show(animated: true)
-        FirebaseClient.getOrders({(result: [Order]) in
+        //SwiftLoader.show(animated: true)
+        FirebaseClient.getOrders(Status.Pending, completion: {(result: [Order]) in
             self.orders = result
-            SwiftLoader.hide()
+            //SwiftLoader.hide()
             self.tableView.reloadData()
         })
     }
@@ -108,23 +108,42 @@ class OrdersTVC: UITableViewController {
     
     /* Callback for when a cell is selected */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let alertTitle = "Confirm Order"
-        let alertMessage = "Are you sure you want to pick up the order?"
         
-        let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
-            self.confirmPressed(indexPath.row)
+        // Makes sure order you selected is not yourself, otherwise, signal it
+        if (self.orders[indexPath.row].ownerId != FBUserInfo.id) {
+            
+            let alertTitle = "Confirm Order"
+            let alertMessage = "Are you sure you want to pick up the order?"
+            
+            let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
+                self.confirmPressed(indexPath.row)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            
+            confirmDialog.addAction(okAction)
+            confirmDialog.addAction(cancelAction)
+            
+            self.presentViewController(confirmDialog, animated: true, completion: nil)
+            
+        } else {
+            let alertTitle = "Sorry!"
+            let alertMessage = "You can't pick up your own order."
+            
+            let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            
+            confirmDialog.addAction(okAction)
+            
+            self.presentViewController(confirmDialog, animated: true, completion: nil)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        confirmDialog.addAction(okAction)
-        confirmDialog.addAction(cancelAction)
-
-        self.presentViewController(confirmDialog, animated: true, completion: nil)
     }
     
+    /* Callback for when confirm is pressed on claiming an order */
     func confirmPressed(index: Int) {
+        
         FirebaseClient.claimOrder(self.orders[index].id)
         
         let window = UIApplication.sharedApplication().delegate?.window

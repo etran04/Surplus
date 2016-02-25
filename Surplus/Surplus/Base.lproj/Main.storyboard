@@ -469,6 +469,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="doneButton" destination="QfV-nS-BFy" id="qkV-yn-FyR"/>
                         <outlet property="finalChargeLabel" destination="bB4-9y-ZPo" id="0gN-cC-oEI"/>
                         <outlet property="textField" destination="UfJ-9I-s2t" id="whc-7y-pdd"/>
                     </connections>

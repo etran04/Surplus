@@ -14,13 +14,23 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var finalChargeLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     var curOrder: Order?
-    var currentString = ""
+    var currentCharge = ""
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textField.textAlignment = .Center
+        
+        // Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        // Disables done button until valid charge is entered
+        self.doneButton.enabled = false
         
         //self.finalChargeLabel.hidden = true
         self.textField.delegate = self
@@ -37,10 +47,18 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func donePressed(sender: UIBarButtonItem) {
-        if let navController = self.navigationController {
-            FirebaseClient.completeOrder(curOrder!.id)
-            navController.popViewControllerAnimated(true)
+        if (currentCharge != "") {
+            if let navController = self.navigationController {
+                FirebaseClient.completeOrder(curOrder!.id)
+                navController.popViewControllerAnimated(true)
+            }
         }
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     // MARK : Textfield delegate
@@ -49,18 +67,20 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         
         switch string {
         case "0","1","2","3","4","5","6","7","8","9":
-            currentString += string
-            formatCurrency(currentString)
+            doneButton.enabled = true
+            currentCharge += string
+            formatCurrency(currentCharge)
         default:
+            doneButton.enabled = true
             let array = Array(arrayLiteral: string)
-            var currentStringArray = Array(arrayLiteral: currentString)
+            var currentStringArray = Array(arrayLiteral: currentCharge)
             if array.count == 0 && currentStringArray.count != 0 {
                 currentStringArray.removeLast()
-                currentString = ""
+                currentCharge = ""
                 for character in currentStringArray {
-                    currentString += String(character)
+                    currentCharge += String(character)
                 }
-                formatCurrency(currentString)
+                formatCurrency(currentCharge)
             }
         }
         return false
@@ -70,7 +90,7 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         formatter.locale = NSLocale(localeIdentifier: "en_US")
-        let numberFromField = (NSString(string: currentString).doubleValue)/100
+        let numberFromField = (NSString(string: currentCharge).doubleValue)/100
         textField.text = formatter.stringFromNumber(numberFromField)
         finalChargeLabel.text = formatter.stringFromNumber(numberFromField - (numberFromField * kPercentDiscount))
     }

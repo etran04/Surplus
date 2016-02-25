@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0736BF5A1C7EDA2200001E74 /* FinalChargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736BF591C7EDA2200001E74 /* FinalChargeVC.swift */; };
 		0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */; };
 		0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F5501C79B97900D0EA05 /* OrderCell.swift */; };
 		0754F5541C79D4E800D0EA05 /* ProfPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 0754F5531C79D4E800D0EA05 /* ProfPic.png */; };
@@ -56,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		07093DD01C5EE33A0020FE79 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		0736BF591C7EDA2200001E74 /* FinalChargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalChargeVC.swift; sourceTree = "<group>"; };
 		0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		0754F5501C79B97900D0EA05 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		0754F5531C79D4E800D0EA05 /* ProfPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfPic.png; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */,
 				0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */,
 				07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */,
-				0736BF591C7EDA2200001E74 /* FinalChargeVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -456,7 +453,6 @@
 				83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */,
 				078FD2F01C7C662600EBAB62 /* InProgressCell.swift in Sources */,
 				83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */,
-				0736BF5A1C7EDA2200001E74 /* FinalChargeVC.swift in Sources */,
 				0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */,
 				0767D3CF1C7C46650039B2C4 /* PendingCell.swift in Sources */,
 				0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */,

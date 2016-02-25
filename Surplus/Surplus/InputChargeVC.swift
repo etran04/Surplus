@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kPercentDiscount = 0.10
+
 class InputChargeVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var finalChargeLabel: UILabel!
@@ -70,6 +72,6 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         formatter.locale = NSLocale(localeIdentifier: "en_US")
         let numberFromField = (NSString(string: currentString).doubleValue)/100
         textField.text = formatter.stringFromNumber(numberFromField)
-        finalChargeLabel.text = formatter.stringFromNumber(numberFromField)
+        finalChargeLabel.text = formatter.stringFromNumber(numberFromField - (numberFromField * kPercentDiscount))
     }
 }

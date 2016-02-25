@@ -91,9 +91,6 @@ class TransactionsTVC: UITableViewController {
                 }
             }
             
-            // temp holder so we can see progress and completed cells
-            self.completedOrders.append(Order())
-            
             // array to hold all orders by section
             self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
             
@@ -207,13 +204,13 @@ class TransactionsTVC: UITableViewController {
         
         let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
-        cell.availableTimeFrameLabel.text = "Completed on " + endTime
+        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
     }
     
     /* Helper function for filling in the inProgress cell with its information */
     func populateCompleteCell(indexPath: NSIndexPath, cell: CompletedCell) {
         
-        let order = progressOrders[indexPath.row]
+        let order = completedOrders[indexPath.row]
         
         var pictureId : String?
         if (order.ownerId == FBUserInfo.id) {
@@ -230,11 +227,12 @@ class TransactionsTVC: UITableViewController {
         cell.estimateCostLabel.text = order.estimate
         
         let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
+        formatter.dateStyle = .ShortStyle
         
-        let startTime = formatter.stringFromDate(order.startTime!)
+//        let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
-        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+        cell.availableTimeFrameLabel.text = "Completed on " + endTime
+
     }
     
     /* Downloads and sets the profile picture in a cell */

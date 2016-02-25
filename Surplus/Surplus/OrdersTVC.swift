@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftLoader
+//import SwiftLoader
 
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController {
@@ -37,10 +37,10 @@ class OrdersTVC: UITableViewController {
     
     func fetchOrders() {
         // Starts the loading spinner
-        SwiftLoader.show(animated: true)
+        //SwiftLoader.show(animated: true)
         FirebaseClient.getOrders(Status.Pending, completion: {(result: [Order]) in
             self.orders = result
-            SwiftLoader.hide()
+            //SwiftLoader.hide()
             self.tableView.reloadData()
         })
     }

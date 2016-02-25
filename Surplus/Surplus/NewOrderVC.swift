@@ -21,6 +21,9 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Reference to location downpicker */
     @IBOutlet weak var locationPicker: UITextField!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    
     /* Constants and local vars */
     let kDefaultCellHeight = 44
     var cells : NSArray = []
@@ -33,6 +36,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpTableView()
+        self.saveButton.enabled = false
     }
     
     /* Called when view appears */
@@ -150,6 +154,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
+        
+        self.saveButton.enabled = true;
     }
     
     /* Called to determine number of sections in tableView */

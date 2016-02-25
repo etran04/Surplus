@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07542E931C7FC36C0056CED6 /* ScrollPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */; };
 		0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */; };
 		0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F5501C79B97900D0EA05 /* OrderCell.swift */; };
 		0754F5541C79D4E800D0EA05 /* ProfPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 0754F5531C79D4E800D0EA05 /* ProfPic.png */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		07093DD01C5EE33A0020FE79 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPickerCell.swift; sourceTree = "<group>"; };
 		0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		0754F5501C79B97900D0EA05 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		0754F5531C79D4E800D0EA05 /* ProfPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfPic.png; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */,
 				0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */,
 				07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */,
+				07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */,
 				0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */,
 				07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */,
+				07542E931C7FC36C0056CED6 /* ScrollPickerCell.swift in Sources */,
 				07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

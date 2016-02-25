@@ -59,6 +59,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = CGFloat(kDefaultCellHeight)
         
+        let locationPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
+        
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         startPickerCell.selectedInTableView(tableView)
@@ -67,7 +69,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let durationPickerCell = DurationPickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         
         // Cells is a cells to be used
-        cells = [startPickerCell, durationPickerCell]
+        cells = [locationPickerCell, startPickerCell, durationPickerCell]
         
         // Replaces the extra cells at the end with a clear view 
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -134,6 +136,9 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if (cell.isKindOfClass(DatePickerCell)) {
             return (cell as! DatePickerCell).datePickerHeight()
         }
+        else if (cell.isKindOfClass(ScrollPickerCell)) {
+            return (cell as! ScrollPickerCell).datePickerHeight()
+        }
         
         return CGFloat(kDefaultCellHeight)
     }
@@ -143,8 +148,20 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Deselect automatically if the cell is a DatePickerCell.
         let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
         if (cell.isKindOfClass(DatePickerCell)) {
-            let datePickerTableViewCell = cell as! DatePickerCell
-            datePickerTableViewCell.selectedInTableView(tableView)
+            let pickerTableViewCell = cell as! DatePickerCell
+            pickerTableViewCell.selectedInTableView(tableView)
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+            // Collapses all other cells
+            for (var i = 0; i < cells.count; i++) {
+                if (i != indexPath.row && cells[i].expanded == true) {
+                    cells[i].selectedInTableView(tableView)
+                }
+            }
+        }
+        else if (cell.isKindOfClass(ScrollPickerCell)) {
+            let pickerTableViewCell = cell as! ScrollPickerCell
+            pickerTableViewCell.selectedInTableView(tableView)
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
             // Collapses all other cells
@@ -165,7 +182,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     /* Called to determine number of rows in tableView */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return cells.count
     }
     
     /* Configures each cell in tableView */

@@ -124,7 +124,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 – $5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWM-nB-0Bf">
                                 <rect key="frame" x="0.0" y="64" width="375" height="101"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="101" id="vSU-OB-P5f"/>
+                                    <constraint firstAttribute="height" constant="101" id="S57-g2-k5C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
                                 <color key="textColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -144,40 +144,32 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylk-vb-BC5">
-                                <rect key="frame" x="0.0" y="287" width="375" height="331"/>
+                                <rect key="frame" x="0.0" y="209" width="375" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tjc-kW-c8b" customClass="DatePickerCell" customModule="DatePickerCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tjc-kW-c8b" id="oZt-NP-lcY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose the campus dining location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="COg-tu-uDw">
-                                <rect key="frame" x="20" y="235" width="335" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="COg-tu-uDw" secondAttribute="leading" id="DVE-dU-Tsk"/>
-                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="centerX" secondItem="38T-PY-K3o" secondAttribute="centerX" id="Dco-lh-vNt"/>
-                            <constraint firstItem="COg-tu-uDw" firstAttribute="top" secondItem="38T-PY-K3o" secondAttribute="bottom" constant="34" id="N4W-bo-eN5"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="COg-tu-uDw" secondAttribute="bottom" constant="22" id="Ov7-ep-Zxp"/>
-                            <constraint firstItem="38T-PY-K3o" firstAttribute="top" secondItem="UWM-nB-0Bf" secondAttribute="bottom" constant="8" symbolic="YES" id="RTB-Lv-bRi"/>
-                            <constraint firstItem="38T-PY-K3o" firstAttribute="trailing" secondItem="COg-tu-uDw" secondAttribute="trailing" id="VqZ-Lg-3i2"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="YVk-O0-q6n"/>
-                            <constraint firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="d0B-PD-0Sq"/>
-                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leading" id="fsA-Oh-AYz"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="bottom" secondItem="k2L-ob-91V" secondAttribute="top" id="hgC-Bx-8rh"/>
-                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="top" secondItem="aeE-XY-TTu" secondAttribute="bottom" id="nKx-S6-cEy"/>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="leading" secondItem="UWM-nB-0Bf" secondAttribute="leading" id="qGc-rk-vLI"/>
-                            <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leadingMargin" constant="4" id="rP0-My-qpf"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="38T-PY-K3o" secondAttribute="bottom" constant="8" symbolic="YES" id="6ux-Mj-vbR"/>
+                            <constraint firstItem="38T-PY-K3o" firstAttribute="top" secondItem="UWM-nB-0Bf" secondAttribute="bottom" constant="8" symbolic="YES" id="9VG-gm-M9N"/>
+                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="trailing" secondItem="Ylk-vb-BC5" secondAttribute="trailing" id="Bvf-NV-22z"/>
+                            <constraint firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="FMC-69-Mrb"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="bottom" secondItem="k2L-ob-91V" secondAttribute="top" id="JFI-f9-6Xe"/>
+                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leading" id="MwS-hk-FYv"/>
+                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="leading" secondItem="Ylk-vb-BC5" secondAttribute="leading" id="TSd-jR-wpN"/>
+                            <constraint firstItem="38T-PY-K3o" firstAttribute="leading" secondItem="Krq-Uf-CBE" secondAttribute="leadingMargin" constant="4" id="rbF-y0-0NF"/>
+                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="centerX" secondItem="38T-PY-K3o" secondAttribute="centerX" id="sFr-rd-j4n"/>
+                            <constraint firstItem="UWM-nB-0Bf" firstAttribute="top" secondItem="aeE-XY-TTu" secondAttribute="bottom" id="wZj-a0-LEv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Order" id="MsF-yU-CnB">
@@ -201,7 +193,6 @@
                     <connections>
                         <outlet property="estimateLabel" destination="UWM-nB-0Bf" id="Re7-sV-Qhb"/>
                         <outlet property="estimatesControl" destination="38T-PY-K3o" id="CEn-aH-Afu"/>
-                        <outlet property="locationPicker" destination="COg-tu-uDw" id="6Uq-Xn-XSq"/>
                         <outlet property="saveButton" destination="f7y-ip-hb7" id="FGk-Mf-UfJ"/>
                         <outlet property="tableView" destination="Ylk-vb-BC5" id="NYw-xo-WF0"/>
                     </connections>

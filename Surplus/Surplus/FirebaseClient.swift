@@ -92,7 +92,9 @@ class FirebaseClient {
     class func completeOrder(id: String) {
         let orderRef = ref.childByAppendingPath("Orders/\(id)/")
         let status = orderRef.childByAppendingPath("status")
+        let endTime = orderRef.childByAppendingPath("end_time")
         
+        endTime.setValue(NSDate())
         status.setValue(Status.Completed.rawValue)
     }
     

@@ -238,7 +238,6 @@ class TransactionsTVC: UITableViewController {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
         
-//        let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
         cell.availableTimeFrameLabel.text = "Completed on " + endTime
 
@@ -260,14 +259,31 @@ class TransactionsTVC: UITableViewController {
     /* Helper function that updates the tvc when a cancel button is pressed in the pending cell 
      * Takes in the row of the cell we'd like to remove from pending
      * Will need to eventually fix this to act upon a delegate rather than passing an instance directly */
-    func cancelPendingTransaction(row: Int) {
+    func cancelTransaction(status: Status, row: Int) {
         
-        let confirmDialog = UIAlertController(title: "Are you sure?", message: "Are you sure you want to cancel your current request?", preferredStyle: .Alert)
+        var titleMsg = ""
+        var msg = ""
+        
+        if (status == .Pending) {
+            titleMsg = "Are you sure?"
+            msg = "Are you sure you want to cancel your current request?"
+        } else if (status == .InProgress) {
+            titleMsg = "Are you sure?"
+            msg = "Are you sure you want to cancel this transaction?"
+        }
+        
+        let confirmDialog = UIAlertController(title: titleMsg, message: msg, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
             
-            // removes order from firebase and then the table
-            FirebaseClient.removeOrder(self.pendingOrders[row].id)
-            self.pendingOrders.removeAtIndex(row)
+            if (status == .Pending) {
+                // removes order from firebase and then the table
+                FirebaseClient.removeOrder(self.pendingOrders[row].id)
+                self.pendingOrders.removeAtIndex(row)
+            } else if (status == .InProgress) {
+                // removes order from firebase and then the table
+                FirebaseClient.removeOrder(self.progressOrders[row].id)
+                self.progressOrders.removeAtIndex(row)
+            }
             
             // array to hold all orders by section
             self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]

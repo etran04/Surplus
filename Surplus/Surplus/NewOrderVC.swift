@@ -18,9 +18,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var estimateLabel: UILabel!
     /* Reference to estimates segmented control */
     @IBOutlet weak var estimatesControl: UISegmentedControl!
-    
+    /* Reference to the save button */
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     
     /* Constants and local vars */
     let kDefaultCellHeight = 44
@@ -52,6 +51,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         // Sets up scroll picker cell for locations
         let locationPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
+        self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
+        locationPickerCell.setChoices(self.locationChoices)
         
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)

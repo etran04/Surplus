@@ -15,7 +15,7 @@ import UIKit
  */
 public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate  {
     
-    let pickerData = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
+    var pickerData = [String]()
     
     /// Label on the left side of the cell.
     public var leftLabel = UILabel()
@@ -71,7 +71,6 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
      */
     override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
@@ -312,10 +311,10 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
         tableView.endUpdates()
     }
     
-//    public func setChoices(options: [AnyObject]) {
-////        self.scrollPicker 
-//    }
-//    
+    public func setChoices (options: [String]) {
+        self.pickerData = options
+    }
+    
     // MARK: Picker View Delegate Methdods
     
     public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

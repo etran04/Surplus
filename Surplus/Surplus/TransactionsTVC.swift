@@ -31,6 +31,9 @@ class TransactionsTVC: UITableViewController {
     /* Used to hold ALL orders fetch from database */
     var orders = [Order]()
     
+    /* Keeps track of new messages received by remote notification */
+    var newMessages = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +45,12 @@ class TransactionsTVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Listens for remote notifications
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayReceivedMessage:",
+            name: appDelegate.messageKey, object: nil)
+        newMessages = 0
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -292,5 +301,15 @@ class TransactionsTVC: UITableViewController {
         
     }
     
+    func displayReceivedMessage(notification: NSNotification) {
+        if let info = notification.userInfo as? Dictionary<String,AnyObject> {
+            if let aps = info["aps"] as? Dictionary<String, String> {
+                print("message received \(aps["alert"]!)")
+                self.tabBarController?.tabBarItem.badgeValue = "\(++self.newMessages)"
+            }
+        } else {
+            print("Software failure. Guru meditation.")
+        }
+    }
 
 }

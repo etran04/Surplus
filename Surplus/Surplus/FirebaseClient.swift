@@ -13,8 +13,8 @@ class FirebaseClient {
     static let ref = Firebase(url: "https://calpolysurplus.firebaseio.com")
     
     class func saveUser(name: String, id: String) {
-        let usersRef = ref.childByAppendingPath("users/\(id)")
-        let newUser = ["name" : "\(name)"]
+        let usersRef = ref.childByAppendingPath("Users/\(id)")
+        let newUser = ["name" : "\(name)", "gcmToken" : "null"]
         
         usersRef.setValue(newUser)
     }
@@ -94,6 +94,12 @@ class FirebaseClient {
         let status = orderRef.childByAppendingPath("status")
         
         status.setValue(Status.Completed.rawValue)
+    }
+    
+    class func setUserGCMRegistrationToken(token: String) {
+        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id)")
+        let updatedUser = ["name" : "\(FBUserInfo.name)", "gcmToken" : "\(token)"]
         
+        usersRef.setValue(updatedUser)
     }
 }

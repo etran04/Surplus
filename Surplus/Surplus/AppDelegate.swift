@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     var gcmSenderID: String?
     var registrationToken: String?
     var registrationOptions = [String: AnyObject]()
-    let registrationKey = "onRegistrationCompleted"
+    let messageKey = "onMessageReceived"
+    
     let subscriptionTopic = "/topics/global"
     let apiKey = "AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM"
 
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         
         var configureError:NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -67,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         
         if (!connectedToGCM) {
             GCMService.sharedInstance().connectWithHandler({
@@ -107,7 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         print("Notification received: \(userInfo)")
         // This works only if the app started the GCM service
         GCMService.sharedInstance().appDidReceiveMessage(userInfo);
-        // Handle the received message
+//        GCMClient.receivedNotification(userInfo)
+        NSNotificationCenter.defaultCenter().postNotificationName(messageKey, object: nil,
+            userInfo: userInfo)
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
@@ -136,15 +141,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         if (registrationToken != nil) {
             self.registrationToken = registrationToken
             print("Registration Token: \(registrationToken)")
+            
             self.subscribeToTopic()
-            let userInfo = ["registrationToken": registrationToken]
-            NSNotificationCenter.defaultCenter().postNotificationName(
-                self.registrationKey, object: nil, userInfo: userInfo)
+            FirebaseClient.setUserGCMRegistrationToken(registrationToken)
         } else {
             print("Registration to GCM failed with error: \(error.localizedDescription)")
-            let userInfo = ["error": error.localizedDescription]
-            NSNotificationCenter.defaultCenter().postNotificationName(
-                self.registrationKey, object: nil, userInfo: userInfo)
         }
     }
 
@@ -163,5 +164,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         GGLInstanceID.sharedInstance().tokenWithAuthorizedEntity(gcmSenderID,
             scope: kGGLInstanceIDScopeGCM, options: registrationOptions, handler: registrationHandler)
     }
+    
+    func willSendDataMessageWithID(messageID: String!, error: NSError!) {
+        if (error != nil) {
+            // Failed to send the message.
+        } else {
+            // Will send message, you can save the messageID to track the message
+        }
+    }
+    
+    func didSendDataMessageWithID(messageID: String!) {
+        // Did successfully send message identified by messageID
+    }
+    // [END upstream_callbacks]
 }
 

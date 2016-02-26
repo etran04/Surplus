@@ -18,9 +18,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var estimateLabel: UILabel!
     /* Reference to estimates segmented control */
     @IBOutlet weak var estimatesControl: UISegmentedControl!
-    
+    /* Reference to the save button */
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     
     /* Constants and local vars */
     let kDefaultCellHeight = 44
@@ -52,6 +51,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         // Sets up scroll picker cell for locations
         let locationPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
+        self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
+        locationPickerCell.setChoices(self.locationChoices)
         
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
@@ -106,9 +107,9 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             // TODO: Check and make sure all fields are filled in
             
             let order = Order(
-                startTime: cells[0].date,
-                endTime: NSDate(timeInterval: cells[1].datePicker.countDownDuration , sinceDate: cells[0].date),
-                location: "location",
+                startTime: (cells[1] as! DatePickerCell).date,
+                endTime: NSDate(timeInterval: (cells[2] as! DatePickerCell).datePicker.countDownDuration , sinceDate: (cells[1] as! DatePickerCell).date),
+                location: (cells[0] as! ScrollPickerCell).getChoice(),
                 estimate: curOrder.estimate!,
                 status: Status.Pending,
                 ownerId: FBUserInfo.id!)

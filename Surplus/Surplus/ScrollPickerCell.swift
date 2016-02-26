@@ -13,8 +13,31 @@ import UIKit
 /**
  *  Inline/Expanding scroll view for table views.
  */
-public class ScrollPickerCell: UITableViewCell {
+public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate  {
     
+    var pickerData = [String]()
+    
+    /// Label on the left side of the cell.
+    public var leftLabel = UILabel()
+    /// Label on the right side of the cell.
+    public var rightLabel = UILabel()
+    /// Color of the right label. Default is the color of a normal detail label.
+    public var rightLabelTextColor = UIColor(hue: 0.639, saturation: 0.041, brightness: 0.576, alpha: 1.0) {
+        didSet {
+            rightLabel.textColor = rightLabelTextColor
+        }
+    }
+    
+    var seperator = DVColorLockView()
+    
+    var pickerContainer = UIView()
+    /// The scroll picker embeded in the cell.
+    public var scrollPicker: UIPickerView = UIPickerView()
+    
+    /// Is the cell expanded?
+    public var expanded = false
+    var unexpandedHeight = CGFloat(44)
+
     /**
      *  UIView subclass. Used as a subview in UITableViewCells. Does not change color when the UITableViewCell is selected.
      */
@@ -38,27 +61,6 @@ public class ScrollPickerCell: UITableViewCell {
         }
     }
     
-    /// Label on the left side of the cell.
-    public var leftLabel = UILabel()
-    /// Label on the right side of the cell.
-    public var rightLabel = UILabel()
-    /// Color of the right label. Default is the color of a normal detail label.
-    public var rightLabelTextColor = UIColor(hue: 0.639, saturation: 0.041, brightness: 0.576, alpha: 1.0) {
-        didSet {
-            rightLabel.textColor = rightLabelTextColor
-        }
-    }
-    
-    var seperator = DVColorLockView()
-    
-    var pickerContainer = UIView()
-    /// The scroll picker embeded in the cell.
-    public var scrollPicker: UIPickerView = UIPickerView()
-    
-    /// Is the cell expanded?
-    public var expanded = false
-    var unexpandedHeight = CGFloat(44)
-    
     /**
      Creates the ScrollPickerCell
      
@@ -69,11 +71,14 @@ public class ScrollPickerCell: UITableViewCell {
      */
     override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
     private func setup() {
+        // sets the delegate of the picker view
+        self.scrollPicker.delegate = self
+        self.scrollPicker.dataSource = self
+        
         // The datePicker overhangs the view slightly to avoid invalid constraints.
         self.clipsToBounds = true
         
@@ -306,7 +311,28 @@ public class ScrollPickerCell: UITableViewCell {
         tableView.endUpdates()
     }
     
-    public func setChoices(options: [AnyObject]) {
-//        self.scrollPicker 
+    public func setChoices (options: [String]) {
+        self.pickerData = options
+    }
+    
+    public func getChoice() -> String {
+        return self.pickerData[scrollPicker.selectedRowInComponent(0)]
+    }
+    
+    // MARK: Picker View Delegate Methdods
+    
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        rightLabel.text = pickerData[row]
     }
 }

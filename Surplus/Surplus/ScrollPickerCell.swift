@@ -315,6 +315,10 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
         self.pickerData = options
     }
     
+    public func getChoice() -> String {
+        return self.pickerData[scrollPicker.selectedRowInComponent(0)]
+    }
+    
     // MARK: Picker View Delegate Methdods
     
     public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

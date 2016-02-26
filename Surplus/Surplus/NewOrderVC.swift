@@ -107,9 +107,9 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             // TODO: Check and make sure all fields are filled in
             
             let order = Order(
-                startTime: cells[0].date,
-                endTime: NSDate(timeInterval: cells[1].datePicker.countDownDuration , sinceDate: cells[0].date),
-                location: "location",
+                startTime: (cells[1] as! DatePickerCell).date,
+                endTime: NSDate(timeInterval: (cells[2] as! DatePickerCell).datePicker.countDownDuration , sinceDate: (cells[1] as! DatePickerCell).date),
+                location: (cells[0] as! ScrollPickerCell).getChoice(),
                 estimate: curOrder.estimate!,
                 status: Status.Pending,
                 ownerId: FBUserInfo.id!)

@@ -10,5 +10,6 @@
 #define Bridging_Header_h
 
 #import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
+#import <Google/CloudMessaging.h>
 
 #endif /* Bridging_Header_h */

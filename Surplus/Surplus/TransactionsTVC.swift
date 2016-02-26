@@ -252,7 +252,18 @@ class TransactionsTVC: UITableViewController {
      * Will need to eventually fix this to act upon a delegate rather than passing an instance directly */
     func cancelTransaction(status: Status, row: Int) {
         
-        let confirmDialog = UIAlertController(title: "Are you sure?", message: "Are you sure you want to cancel your current request?", preferredStyle: .Alert)
+        var titleMsg = ""
+        var msg = ""
+        
+        if (status == .Pending) {
+            titleMsg = "Are you sure?"
+            msg = "Are you sure you want to cancel your current request?"
+        } else if (status == .InProgress) {
+            titleMsg = "Are you sure?"
+            msg = "Are you sure you want to cancel this transaction?"
+        }
+        
+        let confirmDialog = UIAlertController(title: titleMsg, message: msg, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
             
             if (status == .Pending) {

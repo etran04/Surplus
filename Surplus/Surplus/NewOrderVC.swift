@@ -18,8 +18,6 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var estimateLabel: UILabel!
     /* Reference to estimates segmented control */
     @IBOutlet weak var estimatesControl: UISegmentedControl!
-    /* Reference to location downpicker */
-    @IBOutlet weak var locationPicker: UITextField!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -42,13 +40,6 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Called when view appears */
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        /* populate location choices */
-        self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
-        
-        self.locationsDownPicker = DownPicker(textField: self.locationPicker, withData: locationChoices)
-        self.locationsDownPicker.setPlaceholder("Choose the campus dining location")
-        
         self.curOrder.estimate = "$"
     }
     
@@ -117,7 +108,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let order = Order(
                 startTime: cells[0].date,
                 endTime: NSDate(timeInterval: cells[1].datePicker.countDownDuration , sinceDate: cells[0].date),
-                location: locationPicker.text!,
+                location: "location",
                 estimate: curOrder.estimate!,
                 status: Status.Pending,
                 ownerId: FBUserInfo.id!)

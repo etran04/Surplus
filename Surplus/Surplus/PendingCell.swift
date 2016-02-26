@@ -48,7 +48,7 @@ class PendingCell: UITableViewCell {
         let indexPath = tableView.indexPathForRowAtPoint(buttonPosition)
                 
         let myTransactions = tableController as! TransactionsTVC
-        myTransactions.cancelPendingTransaction(indexPath!.row)
+        myTransactions.cancelTransaction(Status.Pending, row: indexPath!.row)
     }
     
     @IBAction func editPressed(sender: UIButton) {

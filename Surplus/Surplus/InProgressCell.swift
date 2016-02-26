@@ -42,7 +42,17 @@ class InProgressCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func cancelPressed(sender: UIButton) {
+        let tableView = self.superview!.superview as! UITableView
+        
+        let buttonPosition = sender.convertPoint(CGPointZero, toView: tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(buttonPosition)
+        
+        let myTransactions = tableController as! TransactionsTVC
+        myTransactions.cancelTransaction(Status.InProgress, row: indexPath!.row)
+    }
+    
     @IBAction func messagePressed(sender: UIButton) {
         FBSDKMessengerSharer.openMessenger()
     }
@@ -55,11 +65,6 @@ class InProgressCell: UITableViewCell {
         
         let myTransactions = tableController as! TransactionsTVC
         myTransactions.completeTransaction(indexPath!.row)
-//        tableController.performSegueWithIdentifier("goToInputCharge", sender: self)
-
-        //let aView = UIView(frame: CGRect(x: 0, y: 0, width: 180, height: 180))
-        //let popover = Popover()
-        //popover.show(aView, point: sender.bounds.origin)
     }
     
 }

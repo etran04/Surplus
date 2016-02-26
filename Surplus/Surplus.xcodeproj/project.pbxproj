@@ -135,7 +135,6 @@
 				83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */,
 				0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */,
 				07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */,
-				07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -169,6 +168,7 @@
 		07EF91A01C7D2FA600FE586D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */,
 				07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */,
 				0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */,
 				0767D3CE1C7C46650039B2C4 /* PendingCell.swift */,

@@ -32,6 +32,7 @@
 		83B170001C5EDC2E001D7815 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */; };
 		83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */; };
 		83E15D021C7FC9B20068423E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83E15D011C7FC9B20068423E /* GoogleService-Info.plist */; };
+		83E15D3F1C7FE6A20068423E /* GCMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15D3E1C7FE6A20068423E /* GCMClient.swift */; };
 		83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */; };
 		83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FD1C79E91000BE705B /* FirebaseClient.swift */; };
 		83EF49011C79EBB100BE705B /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF49001C79EBB100BE705B /* Status.swift */; };
@@ -88,6 +89,7 @@
 		83B16FFC1C5EDC2E001D7815 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		83B7BAD91C79B10A00DF36DD /* FBUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUserInfo.swift; sourceTree = "<group>"; };
 		83E15D011C7FC9B20068423E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83E15D3E1C7FE6A20068423E /* GCMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCMClient.swift; sourceTree = "<group>"; };
 		83EF48FB1C79CBFC00BE705B /* NewOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderVC.swift; sourceTree = "<group>"; };
 		83EF48FD1C79E91000BE705B /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		83EF49001C79EBB100BE705B /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				83EF48FD1C79E91000BE705B /* FirebaseClient.swift */,
 				83EF49001C79EBB100BE705B /* Status.swift */,
 				83EF49021C79F72800BE705B /* Order.swift */,
+				83E15D3E1C7FE6A20068423E /* GCMClient.swift */,
 			);
 			name = "API Wrappers";
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */,
 				07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */,
 				07542E931C7FC36C0056CED6 /* ScrollPickerCell.swift in Sources */,
+				83E15D3F1C7FE6A20068423E /* GCMClient.swift in Sources */,
 				07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

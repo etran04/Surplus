@@ -319,11 +319,18 @@ class TransactionsTVC: UITableViewController {
     
     func displayReceivedMessage(notification: NSNotification) {
         if let info = notification.userInfo as? Dictionary<String,AnyObject> {
-            if let aps = info["aps"] as? Dictionary<String, String> {
-                print("message received \(aps["alert"]!)")
-                self.tabBarController?.tabBarItem.badgeValue = "\(++self.newMessages)"
+            if let aps = info["aps"] as? Dictionary<String, AnyObject> {
+                if let alert = aps["alert"] as? Dictionary<String, String> {
+                    print("woah")
+                }
+                print("message received \(aps["alert"] as! NSDictionary)")
+                
+                let tabArray = self.tabBarController?.tabBar.items as NSArray!
+                let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
+                tabItem.badgeValue = "\(++self.newMessages)"
             }
-        } else {
+        }
+        else {
             print("Software failure. Guru meditation.")
         }
     }

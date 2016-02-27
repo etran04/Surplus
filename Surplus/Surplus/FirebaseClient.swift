@@ -94,7 +94,7 @@ class FirebaseClient {
         let status = orderRef.childByAppendingPath("status")
         let endTime = orderRef.childByAppendingPath("end_time")
         
-        endTime.setValue(NSDate())
+        endTime.setValue(String(NSDate()))
         status.setValue(Status.Completed.rawValue)
     }
     

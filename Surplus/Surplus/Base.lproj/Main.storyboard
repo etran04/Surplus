@@ -498,10 +498,10 @@
             </objects>
             <point key="canvasLocation" x="2158.5" y="374.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="OwZ-4t-LWl">
             <objects>
-                <tabBarController storyboardIdentifier="mainFeedController" id="ZH0-oA-yIY" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainFeedController" id="ZH0-oA-yIY" customClass="MainTabBarController" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ZGG-W3-WcD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -23,6 +23,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.paymentMethodTable.backgroundColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        let imagePath = "http://graph.facebook.com/\(FBUserInfo.id!)/picture?type=large"
+        
+        downloadImage(NSURL(string: imagePath)!, picture: profilePic)
+        
+        profileName.text = FBUserInfo.name
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,6 +67,22 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
         return "Payment Preferences Failed"
+    }
+    
+    func downloadImage(url: NSURL, picture: UIImageView){
+        //print("Download Started")
+        //print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                //print(response?.suggestedFilename ?? "")
+                //print("Download Finished")
+                picture.image = UIImage(data: data)
+                picture.layer.cornerRadius = picture.frame.size.height / 2
+                picture.layer.masksToBounds = true
+                picture.layer.borderWidth = 0
+            }
+        }).resume()
     }
     
 

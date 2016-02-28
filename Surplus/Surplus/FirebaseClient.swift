@@ -19,7 +19,7 @@ class FirebaseClient {
         usersRef.setValue(newUser)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        setUserGCMRegistrationToken(appDelegate.registrationToken!)
+        //setUserGCMRegistrationToken(appDelegate.registrationToken!)
     }
     
     class func addOrder(order: Order) {
@@ -94,11 +94,30 @@ class FirebaseClient {
         notifyOwnerOfOrder(order.ownerId!)
     }
     
+    /**
+     * Converts an in progress order to a pending order.
+     * Used primarily to cancel in progress orders.
+     */
+    class func cancelProgressOrder(id: String) {
+        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+        let status = orderRef.childByAppendingPath("status")
+        
+        status.setValue(Status.Pending.rawValue)
+    }
+    
+    /**
+     * Removes an order entirely from the database. 
+     * Used primarily to cancel pending orders.
+     */
     class func removeOrder(id: String) {
         let orderRef = ref.childByAppendingPath("Orders/\(id)/")
         orderRef.removeValue()
     }
     
+    /**
+     * Turns an in progress order to complete.
+     * Used primarily to complete in progress orders.
+     */
     class func completeOrder(id: String) {
         let orderRef = ref.childByAppendingPath("Orders/\(id)/")
         let status = orderRef.childByAppendingPath("status")

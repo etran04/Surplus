@@ -109,30 +109,24 @@ class TransactionsTVC: UITableViewController {
     
     // MARK: - Table view data source
 
+    /* Gets the number of sections in the table */ 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tableData.count
     }
     
 
+    /* Gets the number of rows in each section */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numCellsInSection = tableData[section].count
         
-        // If not empty
-        if (numCellsInSection != 0) {
-            // Sets up a "No data available" background
-            // TODO: Get x, y location of where the section starts
-//            let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: CGFloat(numCellsInSection * 81)))
-//
-//            noDataLabel.text = "No data available"
-//            noDataLabel.textColor = UIColor.blackColor()
-//            noDataLabel.textAlignment = NSTextAlignment.Center
-//            tableView.backgroundView = noDataLabel;
-//            tableView.separatorStyle = .None;
+        if (numCellsInSection == 0) {
+            return 1
         }
         
         return numCellsInSection
     }
 
+    /* Gets the title for each section in the table */
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section < headerTitles.count {
             return headerTitles[section]
@@ -141,21 +135,33 @@ class TransactionsTVC: UITableViewController {
         return nil
     }
     
-    
+    /* Depending on the section, get the correct cell class to work with */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         switch (headerTitles[indexPath.section]) {
             case kPendingHeader:
-                cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
-                populatePendingCell(indexPath, cell: (cell as! PendingCell))
+                if (self.pendingOrders.count > 0) {
+                    cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
+                    populatePendingCell(indexPath, cell: (cell as! PendingCell))
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("NoDataCell", forIndexPath: indexPath)
+                }
                 break
             case kProgressHeader:
-                cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
-                populateProgressCell(indexPath, cell: (cell as! InProgressCell))
+                if (self.progressOrders.count > 0) {
+                    cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
+                    populateProgressCell(indexPath, cell: (cell as! InProgressCell))
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("NoDataCell", forIndexPath: indexPath)
+                }
                 break
             case kCompleteHeader:
-                cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
-                populateCompleteCell(indexPath, cell: (cell as! CompletedCell))
+                if (self.completedOrders.count > 0) {
+                    cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
+                    populateCompleteCell(indexPath, cell: (cell as! CompletedCell))
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("NoDataCell", forIndexPath: indexPath)
+                }
                 break
             default:
                 break
@@ -164,7 +170,7 @@ class TransactionsTVC: UITableViewController {
         return cell
     }
     
-    /* Helper function for filling in pending cell with its information */
+    /* Helper function for filling in Pending cell with its information */
     func populatePendingCell(indexPath: NSIndexPath, cell: PendingCell) {
         cell.tableController = self
         
@@ -211,7 +217,7 @@ class TransactionsTVC: UITableViewController {
         cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
     }
     
-    /* Helper function for filling in the inProgress cell with its information */
+    /* Helper function for filling in the Complete cell with its information */
     func populateCompleteCell(indexPath: NSIndexPath, cell: CompletedCell) {
         
         let order = completedOrders[indexPath.row]
@@ -275,8 +281,11 @@ class TransactionsTVC: UITableViewController {
                 FirebaseClient.removeOrder(self.pendingOrders[row].id)
                 self.pendingOrders.removeAtIndex(row)
             } else if (status == .InProgress) {
-                // removes order from firebase and then the table
-                FirebaseClient.removeOrder(self.progressOrders[row].id)
+                // changes type of order from firebase and then the table
+                FirebaseClient.cancelProgressOrder(self.progressOrders[row].id)
+                if (self.progressOrders[row].id == FBUserInfo.id) {
+                    self.pendingOrders.append(self.progressOrders[row])
+                }
                 self.progressOrders.removeAtIndex(row)
             }
             
@@ -302,8 +311,6 @@ class TransactionsTVC: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         if (segue.identifier == "goToInputCharge") {
             let svc = segue.destinationViewController as! InputChargeVC

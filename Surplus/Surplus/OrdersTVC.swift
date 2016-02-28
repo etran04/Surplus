@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 //import SwiftLoader
 
 /* List of recent orders being requested */
-class OrdersTVC: UITableViewController {
+class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var orders = [Order]()
 
@@ -23,6 +24,9 @@ class OrdersTVC: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         // Gets the orders from Firebase to display
         self.fetchOrders()
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -158,4 +162,33 @@ class OrdersTVC: UITableViewController {
             })
         }
     }
+    
+    // MARK: DZNEmptySet Delegate methods
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "There are no orders available for pickup!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Please check back later."
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+//    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+//        return UIImage(named: "taylor-swift")
+//    }
+    
+//    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+//        let str = "Placeholder for a button"
+//        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+//    
+//    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
+//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .Alert)
+//        ac.addAction(UIAlertAction(title: "Hurray", style: .Default, handler: nil))
+//        presentViewController(ac, animated: true, completion: nil)
+//    }
 }

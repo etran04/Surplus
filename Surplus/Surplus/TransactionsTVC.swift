@@ -283,7 +283,9 @@ class TransactionsTVC: UITableViewController {
             } else if (status == .InProgress) {
                 // changes type of order from firebase and then the table
                 FirebaseClient.cancelProgressOrder(self.progressOrders[row].id)
-                self.pendingOrders.append(self.progressOrders[row])
+                if (self.progressOrders[row].id == FBUserInfo.id) {
+                    self.pendingOrders.append(self.progressOrders[row])
+                }
                 self.progressOrders.removeAtIndex(row)
             }
             

@@ -13,6 +13,9 @@ class GCMClient {
     static let subscriptionTopic = "/topics/global"
     static let apiKey = "AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM"
     
+    /**
+     * Attempts to send a message to another user with either a topic, registration token, or group.
+     */
     class func sendMessage(to: String) {
         // Create the request.
         let request = NSMutableURLRequest(URL: NSURL(string: sendUrl)!)
@@ -41,10 +44,18 @@ class GCMClient {
         }
     }
     
+    /**
+     * Sends a message to another user using a registration token.
+     */
+    class func sendMessageWithToken(token: String) {
+        sendMessage(token)
+    }
+    
+    /**
+     * Prepares the message payload.
+     */
     class func getMessage(to: String) -> NSDictionary {
-        // [START notification_format]
-        return ["to": to, "notification": ["body": "Hello from \(FBUserInfo.name)"]]
-        // [END notification_format]
+        return ["to": to, "notification": ["body": "\(FBUserInfo.name) has claimed up your order!", "title": "Surplu$"]]
     }
     
 //    class func getApiKey() -> String {

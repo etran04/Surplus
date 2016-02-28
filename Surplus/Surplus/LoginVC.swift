@@ -32,17 +32,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
         self.view.addSubview(facebookButton)
         facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
         facebookButton.delegate = self
-        
-        // Create a UIButton styled for sharing to messenger. You can leave
-        // the size at its default (365, 45) or change the size yourself
-//        let messengerButton = FBSDKMessengerShareButton.circularButtonWithStyle(.Blue)
-//        messengerButton.addTarget(self, action: "shareButtonPressed", forControlEvents: .TouchUpInside)
-//        self.view.addSubview(messengerButton)
-    }
-    
-    func shareButtonPressed() {
-        print("share button pressed")
-        FBSDKMessengerSharer.openMessenger()
     }
     
     // Facebook Delegate Methods

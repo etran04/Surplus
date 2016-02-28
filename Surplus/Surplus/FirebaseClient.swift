@@ -40,7 +40,7 @@ class FirebaseClient {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
         var results = [Order]()
         
-        ordersRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+        ordersRef.queryOrderedByChild("end_time").observeSingleEventOfType(.Value, withBlock: { snapshot in
             if !(snapshot.value is NSNull) {
                 let orders = snapshot.value as! NSDictionary
                 
@@ -66,6 +66,9 @@ class FirebaseClient {
                         results.append(currentOrder)   
                     }
                 }
+                
+                results.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
+                
                 completion(result: results)
             }
             else {
@@ -75,6 +78,16 @@ class FirebaseClient {
         })
     }
     
+//    private func sortOrders(orders: [Order]) -> [Order] {
+//        var temp = [Order]()
+//        
+//        for order in orders {
+//            
+//        }
+//        
+//        return temp
+//    }
+//    
     class func claimOrder(id: String) {
         let orderRef = ref.childByAppendingPath("Orders/\(id)/")
         let recepientId = orderRef.childByAppendingPath("recepient_id")

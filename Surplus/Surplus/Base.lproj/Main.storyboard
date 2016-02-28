@@ -392,6 +392,35 @@
                                     <outlet property="picture" destination="zoy-Xf-KfJ" id="dt2-ph-sjy"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoDataCell" rowHeight="81" id="q3V-ms-VF6">
+                                <rect key="frame" x="0.0" y="357" width="375" height="81"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3V-ms-VF6" id="JSl-yY-Xa2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebf-Aw-9X3">
+                                            <rect key="frame" x="8" y="29" width="359" height="21"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="No orders available">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.64084535256410258" green="0.64084535256410258" blue="0.64084535256410258" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="HelveticaNeue-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ebf-Aw-9X3" firstAttribute="trailing" secondItem="JSl-yY-Xa2" secondAttribute="trailingMargin" id="9i8-kx-tKt"/>
+                                        <constraint firstItem="ebf-Aw-9X3" firstAttribute="top" secondItem="JSl-yY-Xa2" secondAttribute="topMargin" constant="21" id="Ux7-eq-UF0"/>
+                                        <constraint firstItem="ebf-Aw-9X3" firstAttribute="leading" secondItem="JSl-yY-Xa2" secondAttribute="leadingMargin" id="hhv-Fr-smz"/>
+                                        <constraint firstItem="ebf-Aw-9X3" firstAttribute="centerY" secondItem="JSl-yY-Xa2" secondAttribute="centerY" id="y3B-5P-Q8W"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>

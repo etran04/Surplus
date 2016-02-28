@@ -118,6 +118,11 @@ class TransactionsTVC: UITableViewController {
     /* Gets the number of rows in each section */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numCellsInSection = tableData[section].count
+        
+        if (numCellsInSection == 0) {
+            return 1
+        }
+        
         return numCellsInSection
     }
 
@@ -135,16 +140,28 @@ class TransactionsTVC: UITableViewController {
         var cell = UITableViewCell()
         switch (headerTitles[indexPath.section]) {
             case kPendingHeader:
-                cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
-                populatePendingCell(indexPath, cell: (cell as! PendingCell))
+                if (self.pendingOrders.count > 0) {
+                    cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
+                    populatePendingCell(indexPath, cell: (cell as! PendingCell))
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("NoDataCell", forIndexPath: indexPath)
+                }
                 break
             case kProgressHeader:
-                cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
-                populateProgressCell(indexPath, cell: (cell as! InProgressCell))
+                if (self.progressOrders.count > 0) {
+                    cell = tableView.dequeueReusableCellWithIdentifier("ProgressCell", forIndexPath: indexPath)
+                    populateProgressCell(indexPath, cell: (cell as! InProgressCell))
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("NoDataCell", forIndexPath: indexPath)
+                }
                 break
             case kCompleteHeader:
-                cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
-                populateCompleteCell(indexPath, cell: (cell as! CompletedCell))
+                if (self.completedOrders.count > 0) {
+                    cell = tableView.dequeueReusableCellWithIdentifier("CompletedCell", forIndexPath: indexPath)
+                    populateCompleteCell(indexPath, cell: (cell as! CompletedCell))
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("NoDataCell", forIndexPath: indexPath)
+                }
                 break
             default:
                 break

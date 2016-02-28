@@ -32,6 +32,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         profileName.text = FBUserInfo.name
     }
 
+    @IBAction func logoutPressed(sender: UIButton) {
+        // TODO
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

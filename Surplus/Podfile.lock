@@ -18,7 +18,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - GoogleInterchangeUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0)
-  - GoogleIPhoneUtilities (1.1.1):
+  - GoogleIPhoneUtilities (1.2.0):
     - GoogleSymbolUtilities (~> 1.0)
     - GoogleUtilities (~> 1.0)
   - GoogleNetworkingUtilities (1.0.0):
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   Google: 97618e118111b998cce1d8dd1bd98b82301d72db
   GoogleCloudMessaging: f37ea14dd0f41d4d889c10b5559dd35bbfd9ac26
   GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
-  GoogleIPhoneUtilities: 3252d20d075b902e37a08036dcc9f74828cf5595
+  GoogleIPhoneUtilities: 1c2996078f079d2fc54453dbd13eaf5523666550
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10

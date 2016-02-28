@@ -16,12 +16,14 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        FBUserInfo.fetchUserInfo(true) // Remove this in the future
         if (FBUserInfo.isLoggedIn()) {
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController : UITabBarController = storyboard.instantiateViewControllerWithIdentifier("mainFeedController") as! UITabBarController
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             
-            FBUserInfo.fetchUserInfo(false)
+            // TODO: Set this to false and call it on both conditions
+            FBUserInfo.fetchUserInfo(true)
             appDelegate.window?.rootViewController = viewController
         }
     }

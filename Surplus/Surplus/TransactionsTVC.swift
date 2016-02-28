@@ -31,9 +31,6 @@ class TransactionsTVC: UITableViewController {
     /* Used to hold ALL orders fetch from database */
     var orders = [Order]()
     
-    /* Keeps track of new messages received by remote notification */
-    var newMessages = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,12 +42,6 @@ class TransactionsTVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // Listens for remote notifications
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayReceivedMessage:",
-            name: appDelegate.messageKey, object: nil)
-        newMessages = 0
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,6 +52,10 @@ class TransactionsTVC: UITableViewController {
         
         // Gets the orders from Firebase
         self.fetchAndOrganizeOrders()
+        
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
+        tabItem.badgeValue = "0"
     }
 
     override func didReceiveMemoryWarning() {
@@ -315,24 +310,6 @@ class TransactionsTVC: UITableViewController {
             svc.curOrder = self.progressOrders[(sender as! Int)]
         }
         
-    }
-    
-    func displayReceivedMessage(notification: NSNotification) {
-        if let info = notification.userInfo as? Dictionary<String,AnyObject> {
-            if let aps = info["aps"] as? Dictionary<String, AnyObject> {
-                if let alert = aps["alert"] as? Dictionary<String, String> {
-                    print("woah")
-                }
-                //print("message received \(aps["alert"] as! NSDictionary)")
-                
-                let tabArray = self.tabBarController?.tabBar.items as NSArray!
-                let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-                tabItem.badgeValue = "\(++self.newMessages)"
-            }
-        }
-        else {
-            print("Software failure. Guru meditation.")
-        }
     }
 
 }

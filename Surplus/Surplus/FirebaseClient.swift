@@ -14,9 +14,12 @@ class FirebaseClient {
     
     class func saveUser(name: String, id: String) {
         let usersRef = ref.childByAppendingPath("Users/\(id)")
-        let newUser = ["name" : "\(name)", "gcmToken" : "null"]
+        let newUser = ["name" : "\(name)", "gcm_token" : "null"]
         
         usersRef.setValue(newUser)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        setUserGCMRegistrationToken(appDelegate.registrationToken!)
     }
     
     class func addOrder(order: Order) {
@@ -78,23 +81,17 @@ class FirebaseClient {
         })
     }
     
-//    private func sortOrders(orders: [Order]) -> [Order] {
-//        var temp = [Order]()
-//        
-//        for order in orders {
-//            
-//        }
-//        
-//        return temp
-//    }
-//    
-    class func claimOrder(id: String) {
-        let orderRef = ref.childByAppendingPath("Orders/\(id)/")
+    /**
+     * Sets the status of the order as 'In Progress' and notifies the owner of the change.
+     */
+    class func claimOrder(order: Order) {
+        let orderRef = ref.childByAppendingPath("Orders/\(order.id)/")
         let recepientId = orderRef.childByAppendingPath("recepient_id")
         let status = orderRef.childByAppendingPath("status")
         
         recepientId.setValue(FBUserInfo.id)
         status.setValue(Status.InProgress.rawValue)
+        notifyOwnerOfOrder(order.ownerId!)
     }
     
     class func removeOrder(id: String) {
@@ -112,9 +109,25 @@ class FirebaseClient {
     }
     
     class func setUserGCMRegistrationToken(token: String) {
-        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id)")
-        let updatedUser = ["name" : "\(FBUserInfo.name)", "gcmToken" : "\(token)"]
+        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)")
+        let updatedUser = ["name" : "\(FBUserInfo.name!)", "gcm_token" : "\(token)"]
         
         usersRef.setValue(updatedUser)
+    }
+    
+    /**
+     * Grabs the owner's gcm registration token and sends a message to the owner
+     * using the token.
+     */
+    class func notifyOwnerOfOrder(ownerId: String) {
+        let tokenRef = ref.childByAppendingPath("Users/\(ownerId)/gcm_token")
+        
+        tokenRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
+            if snapshot.value is NSString {
+                if let token = snapshot.value as! String? {
+                    GCMClient.sendMessageWithToken(token)
+                }
+            }
+        })
     }
 }

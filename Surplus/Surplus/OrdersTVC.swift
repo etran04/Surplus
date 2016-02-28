@@ -144,7 +144,7 @@ class OrdersTVC: UITableViewController {
     /* Callback for when confirm is pressed on claiming an order */
     func confirmPressed(index: Int) {
         
-        FirebaseClient.claimOrder(self.orders[index].id)
+        FirebaseClient.claimOrder(self.orders[index])
         
         let window = UIApplication.sharedApplication().delegate?.window
         

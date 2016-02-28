@@ -323,7 +323,7 @@ class TransactionsTVC: UITableViewController {
                 if let alert = aps["alert"] as? Dictionary<String, String> {
                     print("woah")
                 }
-                print("message received \(aps["alert"] as! NSDictionary)")
+                //print("message received \(aps["alert"] as! NSDictionary)")
                 
                 let tabArray = self.tabBarController?.tabBar.items as NSArray!
                 let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem

@@ -539,34 +539,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xC0-T5-oH8">
-                                <rect key="frame" x="121" y="72" width="133" height="123"/>
+                                <rect key="frame" x="121" y="90" width="133" height="123"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="133" id="KvO-Hy-xjR"/>
                                     <constraint firstAttribute="height" constant="123" id="YQv-93-7pe"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm7-JQ-qQS">
-                                <rect key="frame" x="20" y="221" width="335" height="32"/>
+                                <rect key="frame" x="16" y="232" width="343" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="uOR-U7-Qiv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-MU-YR5">
+                                <rect key="frame" x="121" y="551" width="133" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Logout"/>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wfj-mX-dT4">
-                                <rect key="frame" x="20" y="272" width="335" height="204"/>
+                                <rect key="frame" x="16" y="302" width="343" height="204"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" id="eSm-Ww-3Il" customClass="PaymentMethodCell" customModule="Surplus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="335" height="44"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eSm-Ww-3Il" id="xG3-t4-Ntc">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMG-mb-ntg">
-                                                    <rect key="frame" x="278" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="286" y="6" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew4-GU-jC2">
                                                     <rect key="frame" x="8" y="11" width="131" height="21"/>
@@ -593,29 +598,24 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-MU-YR5">
-                                <rect key="frame" x="121" y="551" width="133" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Logout"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfj-mX-dT4" firstAttribute="centerX" secondItem="LXL-pt-gwu" secondAttribute="centerX" id="0ed-Uk-X90"/>
-                            <constraint firstItem="pm7-JQ-qQS" firstAttribute="top" secondItem="xC0-T5-oH8" secondAttribute="bottom" constant="26" id="652-4M-sFG"/>
-                            <constraint firstItem="wfj-mX-dT4" firstAttribute="top" secondItem="pm7-JQ-qQS" secondAttribute="bottom" constant="19" id="9QC-pk-gdK"/>
+                            <constraint firstItem="pm7-JQ-qQS" firstAttribute="top" secondItem="xC0-T5-oH8" secondAttribute="bottom" constant="19" id="652-4M-sFG"/>
+                            <constraint firstItem="wfj-mX-dT4" firstAttribute="top" secondItem="pm7-JQ-qQS" secondAttribute="bottom" constant="38" id="9QC-pk-gdK"/>
                             <constraint firstItem="xC0-T5-oH8" firstAttribute="trailing" secondItem="vds-MU-YR5" secondAttribute="trailing" id="EVM-Xd-C51"/>
-                            <constraint firstItem="xC0-T5-oH8" firstAttribute="top" secondItem="nIZ-1r-tIS" secondAttribute="bottom" constant="8" symbolic="YES" id="P8N-w7-88q"/>
-                            <constraint firstItem="pm7-JQ-qQS" firstAttribute="leading" secondItem="LXL-pt-gwu" secondAttribute="leadingMargin" constant="4" id="QrS-0P-4oC"/>
+                            <constraint firstItem="xC0-T5-oH8" firstAttribute="top" secondItem="nIZ-1r-tIS" secondAttribute="bottom" constant="26" id="P8N-w7-88q"/>
+                            <constraint firstItem="pm7-JQ-qQS" firstAttribute="leading" secondItem="LXL-pt-gwu" secondAttribute="leadingMargin" id="QrS-0P-4oC"/>
                             <constraint firstItem="pm7-JQ-qQS" firstAttribute="trailing" secondItem="wfj-mX-dT4" secondAttribute="trailing" id="YSW-cY-vhV"/>
                             <constraint firstItem="pm7-JQ-qQS" firstAttribute="centerX" secondItem="xC0-T5-oH8" secondAttribute="centerX" id="ezm-zl-Qe1"/>
                             <constraint firstItem="fkq-2d-pvY" firstAttribute="top" secondItem="vds-MU-YR5" secondAttribute="bottom" constant="37" id="iCF-v3-4RH"/>
-                            <constraint firstItem="vds-MU-YR5" firstAttribute="top" secondItem="wfj-mX-dT4" secondAttribute="bottom" constant="75" id="n23-rq-YFo"/>
+                            <constraint firstItem="vds-MU-YR5" firstAttribute="top" secondItem="wfj-mX-dT4" secondAttribute="bottom" constant="45" id="n23-rq-YFo"/>
                             <constraint firstItem="xC0-T5-oH8" firstAttribute="leading" secondItem="vds-MU-YR5" secondAttribute="leading" id="pQ0-tW-f2a"/>
                             <constraint firstItem="wfj-mX-dT4" firstAttribute="leading" secondItem="pm7-JQ-qQS" secondAttribute="leading" id="qWW-1X-b3d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yDL-LH-B1g"/>
+                    <navigationItem key="navigationItem" title="Profile" id="yDL-LH-B1g"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="logoutButton" destination="vds-MU-YR5" id="wwZ-d2-Tui"/>
@@ -675,11 +675,11 @@
             </objects>
             <point key="canvasLocation" x="1031.5" y="374.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="yjU-sF-BGj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zAy-L3-8xV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="btW-AO-hf6"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Name-50.png" selectedImage="Name-50.png" id="btW-AO-hf6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RV1-yf-aGh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -696,6 +696,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ProfPic.png" width="50" height="50"/>
+        <image name="Name-50.png" width="30" height="30"/>
+        <image name="ProfPic.png" width="30" height="30"/>
     </resources>
 </document>

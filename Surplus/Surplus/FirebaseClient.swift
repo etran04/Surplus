@@ -120,12 +120,17 @@ class FirebaseClient {
      * using the token.
      */
     class func notifyOwnerOfOrder(ownerId: String) {
+        print("got here bruh")
         let tokenRef = ref.childByAppendingPath("Users/\(ownerId)/gcm_token")
         
         tokenRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
             if snapshot.value is NSString {
                 if let token = snapshot.value as! String? {
-                    GCMClient.sendMessageWithToken(token)
+                    if (token != "null") {
+                        GCMClient.postOrder(token)
+                    }
+//                    GCMClient.sendMessage(token)
+//                    GCMClient.postOrder(token)
                 }
             }
         })

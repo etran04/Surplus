@@ -55,7 +55,7 @@ class TransactionsTVC: UITableViewController {
         
         let tabArray = self.tabBarController?.tabBar.items as NSArray!
         let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-        tabItem.badgeValue = "0"
+        tabItem.badgeValue = nil
     }
 
     override func didReceiveMemoryWarning() {

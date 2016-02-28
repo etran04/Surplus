@@ -13,6 +13,47 @@ class GCMClient {
     static let subscriptionTopic = "/topics/global"
     static let apiKey = "AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM"
     
+    class func postOrder(token: String) {
+        print("Got here for surplus!")
+        let postURL: String = "https://gcm-http.googleapis.com/gcm/send"
+        let reqURL = NSURL(string: postURL)
+        let request = NSMutableURLRequest(URL: reqURL!)
+        request.HTTPMethod = "POST"
+        request.setValue("key=AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let params = ["to": token, "content-available": "1", "notification":["title":"Surplu$", "body": "\(FBUserInfo.name!) has claimed your order!", "sound": "default", "badge":"1"]]
+        
+        do {
+            let jsonPost = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+            request.HTTPBody = jsonPost
+            
+            let session = NSURLSession.sharedSession()
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: {
+                (data, response, error) in
+                
+                guard let responseData = data else {
+                    print("Error: did not receive data")
+                    return
+                }
+                guard error == nil else {
+                    print("error calling POST on /event/create")
+                    print(error)
+                    return
+                }
+                print("Response: \(response)")
+                let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("Body: \(strData)")
+                print("successful post!")
+            })
+            task.resume()
+        } catch {
+            print("Error: cannot create JSON from event")
+        }
+    }
+    
     /**
      * Attempts to send a message to another user with either a topic, registration token, or group.
      */
@@ -27,6 +68,8 @@ class GCMClient {
         // prepare the payload
         let message = getMessage(to)
         let jsonBody: NSData?
+        
+        print("about to send message")
         do {
             jsonBody = try NSJSONSerialization.dataWithJSONObject(message, options: [])
             request.HTTPBody = jsonBody!
@@ -48,14 +91,14 @@ class GCMClient {
      * Sends a message to another user using a registration token.
      */
     class func sendMessageWithToken(token: String) {
-        sendMessage(token)
+        self.sendMessage(token)
     }
     
     /**
      * Prepares the message payload.
      */
     class func getMessage(to: String) -> NSDictionary {
-        return ["to": to, "notification": ["body": "\(FBUserInfo.name) has claimed up your order!", "title": "Surplu$"]]
+        return ["to": to, "notification": ["body": "\(FBUserInfo.name) has claimed your order!", "title": "Surplu$"]]
     }
     
 //    class func getApiKey() -> String {

@@ -8,7 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
-//import SwiftLoader
+import AMScrollingNavbar
 
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
@@ -22,9 +22,17 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Sets up navigation controller so it animated away when scrolling through.
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableView, delay: 50.0)
+        }
+        
         // Gets the orders from Firebase to display
         self.fetchOrders()
         
+        // Sets the tableview settings for empty data
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         
@@ -33,6 +41,13 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         // Initial set up for pull down to refresh
         self.setUpRefresh()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -191,4 +206,12 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
 //        ac.addAction(UIAlertAction(title: "Hurray", style: .Default, handler: nil))
 //        presentViewController(ac, animated: true, completion: nil)
 //    }
+    
+    // MARK: Scrolling navbar methods
+    override func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        return true
+    }
 }

@@ -12,6 +12,7 @@ pod 'SwiftLoader'
 pod 'Popover'
 pod 'Google/CloudMessaging'
 pod 'DZNEmptyDataSet'
+pod 'AMScrollingNavbar', '~> 2.0.1'
 
 
 end

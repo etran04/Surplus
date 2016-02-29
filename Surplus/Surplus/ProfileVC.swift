@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AMScrollingNavbar
 
-class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var paymentMethodTable: UITableView!
 
     @IBOutlet weak var profilePic: UIImageView!
@@ -25,15 +26,32 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        // Sets up navigation controller so it animated away when scrolling through.
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(view, delay: 50.0)
+        }
+        
         let imagePath = "http://graph.facebook.com/\(FBUserInfo.id!)/picture?type=large"
         
         downloadImage(NSURL(string: imagePath)!, picture: profilePic)
         
         profileName.text = FBUserInfo.name
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+    }
 
     @IBAction func logoutPressed(sender: UIButton) {
-        // TODO
+        FBUserInfo.logout()
+        performSegueWithIdentifier("goBackLogin", sender: self)
+//        presentViewController(LoginVC(), animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +68,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = self.paymentMethodTable.dequeueReusableCellWithIdentifier("paymentCell") as! PaymentMethodCell
+        let cell = self.paymentMethodTable.dequeueReusableCellWithIdentifier("paymentCell") as! PaymentMethodCell
         
         if(indexPath.row == 0) {
             cell.paymentMethodLabel.text = "Venmo"

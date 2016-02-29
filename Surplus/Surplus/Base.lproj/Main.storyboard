@@ -8,7 +8,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="LoginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -671,16 +671,17 @@
                         <outlet property="paymentMethodTable" destination="wfj-mX-dT4" id="XdC-Ak-1hr"/>
                         <outlet property="profileName" destination="pm7-JQ-qQS" id="bt1-pf-sZG"/>
                         <outlet property="profilePic" destination="xC0-T5-oH8" id="7sB-qg-XuS"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goBackLogin" id="MOr-s4-ayr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abg-cX-YkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="337.5" y="822.5"/>
+            <point key="canvasLocation" x="343.5" y="950.5"/>
         </scene>
         <!--OrderNav-->
         <scene sceneID="A7M-5c-Asi">
             <objects>
-                <navigationController title="OrderNav" automaticallyAdjustsScrollViewInsets="NO" id="9cq-VX-tXc" sceneMemberID="viewController">
+                <navigationController title="OrderNav" automaticallyAdjustsScrollViewInsets="NO" id="9cq-VX-tXc" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="7m6-PV-al6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oWw-di-pej">
@@ -703,7 +704,7 @@
         <!--LogNav-->
         <scene sceneID="VLQ-GE-xja">
             <objects>
-                <navigationController title="LogNav" automaticallyAdjustsScrollViewInsets="NO" id="Hkw-BW-csa" sceneMemberID="viewController">
+                <navigationController title="LogNav" automaticallyAdjustsScrollViewInsets="NO" id="Hkw-BW-csa" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="history" id="Lcn-Ij-UVG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dhp-J5-rlP">
@@ -727,13 +728,16 @@
         <!--Profile-->
         <scene sceneID="yjU-sF-BGj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zAy-L3-8xV" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zAy-L3-8xV" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="Name-50.png" selectedImage="Name-50.png" id="btW-AO-hf6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RV1-yf-aGh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -742,7 +746,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ckw-L5-BjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-249.5" y="822.5"/>
+            <point key="canvasLocation" x="-249.5" y="950.5"/>
         </scene>
     </scenes>
     <resources>

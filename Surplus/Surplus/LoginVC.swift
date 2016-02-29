@@ -29,6 +29,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         let facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)

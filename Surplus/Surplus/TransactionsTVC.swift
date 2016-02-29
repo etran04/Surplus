@@ -9,6 +9,8 @@
 import UIKit
 import SwiftLoader
 import FBSDKShareKit
+import AMScrollingNavbar
+
 
 let kPendingHeader = "Awaiting pickup"
 let kProgressHeader = "Currently in progress"
@@ -47,6 +49,11 @@ class TransactionsTVC: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Sets up navigation controller so it animated away when scrolling through.
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableView, delay: 50.0)
+        }
+        
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -56,6 +63,13 @@ class TransactionsTVC: UITableViewController {
         let tabArray = self.tabBarController?.tabBar.items as NSArray!
         let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
         tabItem.badgeValue = nil
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -317,6 +331,14 @@ class TransactionsTVC: UITableViewController {
             svc.curOrder = self.progressOrders[(sender as! Int)]
         }
         
+    }
+    
+    // MARK: - Scrolling navbar methods
+    override func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        return true
     }
 
 }

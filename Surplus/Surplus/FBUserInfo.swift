@@ -41,4 +41,9 @@ class FBUserInfo {
             }
         })
     }
+    
+    class func logout() {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+    }
 }

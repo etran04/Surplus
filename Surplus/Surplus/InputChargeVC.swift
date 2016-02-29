@@ -10,15 +10,19 @@ import UIKit
 
 let kPercentDiscount = 0.10
 
+/* This class represents the page at which students with plus dollars will use to input how much they spent, and then
+ * ask the buyer for how much is charged */
 class InputChargeVC: UIViewController, UITextFieldDelegate {
     
+    /* Reference to the UI components */
     @IBOutlet weak var finalChargeLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
+    /* A reference to the current order the page represents */
     var curOrder: Order?
+    /* A reference to the string of the charge */
     var currentCharge = ""
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +44,14 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    // Calls when cancel button is pressed
     @IBAction func cancelPressed(sender: UIBarButtonItem) {
         if let navController = self.navigationController {
             navController.popViewControllerAnimated(true)
         }
     }
 
+    // Calls when done button is pressed
     @IBAction func donePressed(sender: UIBarButtonItem) {
         if (currentCharge != "") {
             if let navController = self.navigationController {
@@ -55,7 +61,7 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //Calls this function when the tap is recognized.
+    // Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)

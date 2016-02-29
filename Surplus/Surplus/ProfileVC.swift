@@ -22,7 +22,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         self.paymentMethodTable.delegate = self
         self.paymentMethodTable.dataSource = self
         self.paymentMethodTable.backgroundColor = UIColor.whiteColor()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,12 +50,10 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBAction func logoutPressed(sender: UIButton) {
         FBUserInfo.logout()
         performSegueWithIdentifier("goBackLogin", sender: self)
-//        presentViewController(LoginVC(), animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -92,13 +89,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func downloadImage(url: NSURL, picture: UIImageView){
-        //print("Download Started")
-        //print("lastPathComponent: " + (url.lastPathComponent ?? ""))
         NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
-                //print(response?.suggestedFilename ?? "")
-                //print("Download Finished")
                 picture.image = UIImage(data: data)
                 picture.layer.cornerRadius = picture.frame.size.height / 2
                 picture.layer.masksToBounds = true

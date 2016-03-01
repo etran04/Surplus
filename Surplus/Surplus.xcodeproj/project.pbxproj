@@ -14,6 +14,7 @@
 		0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */; };
 		0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */; };
 		0767D3CF1C7C46650039B2C4 /* PendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767D3CE1C7C46650039B2C4 /* PendingCell.swift */; };
+		078739831C8420C000D09C14 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078739821C8420C000D09C14 /* FilterVC.swift */; };
 		078FD2F01C7C662600EBAB62 /* InProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */; };
 		07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */; };
 		07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919C1C7D2AA700FE586D /* CompletedCell.swift */; };
@@ -38,10 +39,10 @@
 		83EF48FE1C79E91000BE705B /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF48FD1C79E91000BE705B /* FirebaseClient.swift */; };
 		83EF49011C79EBB100BE705B /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF49001C79EBB100BE705B /* Status.swift */; };
 		83EF49031C79F72800BE705B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EF49021C79F72800BE705B /* Order.swift */; };
-		940CC1A41C827A5000A99A32 /* PaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CC1A31C827A5000A99A32 /* PaymentMethodCell.swift */; settings = {ASSET_TAGS = (); }; };
-		940CC1A61C827A9400A99A32 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CC1A51C827A9400A99A32 /* ProfileVC.swift */; settings = {ASSET_TAGS = (); }; };
-		940CC1A81C82866100A99A32 /* Gender Neutral User-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CC1A71C82866100A99A32 /* Gender Neutral User-64.png */; settings = {ASSET_TAGS = (); }; };
-		940CC1AA1C82872600A99A32 /* Name-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CC1A91C82872600A99A32 /* Name-50.png */; settings = {ASSET_TAGS = (); }; };
+		940CC1A41C827A5000A99A32 /* PaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CC1A31C827A5000A99A32 /* PaymentMethodCell.swift */; };
+		940CC1A61C827A9400A99A32 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940CC1A51C827A9400A99A32 /* ProfileVC.swift */; };
+		940CC1A81C82866100A99A32 /* Gender Neutral User-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CC1A71C82866100A99A32 /* Gender Neutral User-64.png */; };
+		940CC1AA1C82872600A99A32 /* Name-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CC1A91C82872600A99A32 /* Name-50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		0754F5891C7AA44400D0EA05 /* DurationPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerCell.swift; sourceTree = "<group>"; };
 		0767D3CC1C7C0D130039B2C4 /* TransactionsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTVC.swift; sourceTree = "<group>"; };
 		0767D3CE1C7C46650039B2C4 /* PendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingCell.swift; sourceTree = "<group>"; };
+		078739821C8420C000D09C14 /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressCell.swift; sourceTree = "<group>"; };
 		07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTimePickerCell.swift; sourceTree = "<group>"; };
 		07EF919C1C7D2AA700FE586D /* CompletedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedCell.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */,
 				832FDCBF1C8268D900836B7C /* MainTabBarController.swift */,
 				940CC1A51C827A9400A99A32 /* ProfileVC.swift */,
+				078739821C8420C000D09C14 /* FilterVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */,
 				07542E931C7FC36C0056CED6 /* ScrollPickerCell.swift in Sources */,
 				83E15D3F1C7FE6A20068423E /* GCMClient.swift in Sources */,
+				078739831C8420C000D09C14 /* FilterVC.swift in Sources */,
 				07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

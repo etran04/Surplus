@@ -27,6 +27,32 @@
             </objects>
             <point key="canvasLocation" x="-899.5" y="13.5"/>
         </scene>
+        <!--Filter -->
+        <scene sceneID="ij4-iH-4Ss">
+            <objects>
+                <viewController title="Filter " id="Ab2-r2-hWe" customClass="FilterVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FCu-rQ-Akj"/>
+                        <viewControllerLayoutGuide type="bottom" id="4da-Bk-nWE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tRK-JQ-dSR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Sort Orders" id="FSl-kM-Brc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ck4-y1-vzh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1D-7H-Doz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561.5" y="-1242.5"/>
+        </scene>
         <!--Orders-->
         <scene sceneID="0xz-mN-btd">
             <objects>
@@ -93,6 +119,9 @@
                     <navigationItem key="navigationItem" title="Orders" id="RqC-13-kV3">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="CYw-SQ-Ja8">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Ab2-r2-hWe" kind="show" id="lGm-Wz-UP5"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Duh-yo-nz1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,7 +176,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ylk-vb-BC5">
-                                <rect key="frame" x="0.0" y="209" width="375" height="409"/>
+                                <rect key="frame" x="0.0" y="228" width="375" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tjc-kW-c8b" customClass="DatePickerCell" customModule="DatePickerCell">
@@ -163,7 +192,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="38T-PY-K3o" secondAttribute="bottom" constant="8" symbolic="YES" id="6ux-Mj-vbR"/>
+                            <constraint firstItem="Ylk-vb-BC5" firstAttribute="top" secondItem="38T-PY-K3o" secondAttribute="bottom" constant="27" id="6ux-Mj-vbR"/>
                             <constraint firstItem="38T-PY-K3o" firstAttribute="top" secondItem="UWM-nB-0Bf" secondAttribute="bottom" constant="8" symbolic="YES" id="9VG-gm-M9N"/>
                             <constraint firstItem="UWM-nB-0Bf" firstAttribute="trailing" secondItem="Ylk-vb-BC5" secondAttribute="trailing" id="Bvf-NV-22z"/>
                             <constraint firstAttribute="trailing" secondItem="UWM-nB-0Bf" secondAttribute="trailing" id="FMC-69-Mrb"/>
@@ -202,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63R-SB-Z21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594.5" y="-423.5"/>
+            <point key="canvasLocation" x="1675.5" y="-423.5"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="M4i-NS-9cr">
@@ -526,26 +555,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAK-vq-FhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2181.5" y="374.5"/>
-        </scene>
-        <!--Final Charge-->
-        <scene sceneID="Ff2-jx-ZtX">
-            <objects>
-                <viewController title="Final Charge" id="GG4-79-8fQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sFq-aE-qbd"/>
-                        <viewControllerLayoutGuide type="bottom" id="2QU-gp-Uxa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Q0T-YS-tCY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Lh-vR-GCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2745.5" y="374.5"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="OwZ-4t-LWl">

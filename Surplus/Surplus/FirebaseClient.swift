@@ -19,7 +19,7 @@ class FirebaseClient {
         usersRef.setValue(newUser)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        setUserGCMRegistrationToken(appDelegate.registrationToken!)
+        //setUserGCMRegistrationToken(appDelegate.registrationToken!)
     }
     
     class func addOrder(order: Order) {
@@ -70,7 +70,7 @@ class FirebaseClient {
                     }
                 }
                 
-                results.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
+                results.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedDescending })
                 
                 completion(result: results)
             }

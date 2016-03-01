@@ -19,7 +19,10 @@ class FirebaseClient {
         usersRef.setValue(newUser)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //setUserGCMRegistrationToken(appDelegate.registrationToken!)
+        
+        if let token = appDelegate.registrationToken {
+            setUserGCMRegistrationToken(token)
+        }
     }
     
     class func addOrder(order: Order) {

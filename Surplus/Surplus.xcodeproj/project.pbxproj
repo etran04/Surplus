@@ -21,6 +21,8 @@
 		07EF919F1C7D2FA100FE586D /* InputChargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */; };
 		61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C07283E930440CA9F0D69 /* Pods_Surplus.framework */; };
 		832FDCC01C8268D900836B7C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCBF1C8268D900836B7C /* MainTabBarController.swift */; };
+		832FDCDB1C86398C00836B7C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCDA1C86398C00836B7C /* MessagesViewController.swift */; };
+		832FDCDD1C86422A00836B7C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832FDCDC1C86422A00836B7C /* QuartzCore.framework */; };
 		83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */; };
 		83B16FCE1C5ED5A0001D7815 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */; };
 		83B16FD11C5ED5A0001D7815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B16FCF1C5ED5A0001D7815 /* Main.storyboard */; };
@@ -78,6 +80,8 @@
 		07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputChargeVC.swift; sourceTree = "<group>"; };
 		766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
 		832FDCBF1C8268D900836B7C /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		832FDCDA1C86398C00836B7C /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		832FDCDC1C86422A00836B7C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83B16FC81C5ED5A0001D7815 /* Surplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832FDCDD1C86422A00836B7C /* QuartzCore.framework in Frameworks */,
 				83B16FFD1C5EDC2E001D7815 /* FBSDKCoreKit.framework in Frameworks */,
 				83B16FFE1C5EDC2E001D7815 /* FBSDKLoginKit.framework in Frameworks */,
 				83B16FFF1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework in Frameworks */,
@@ -152,6 +157,7 @@
 				832FDCBF1C8268D900836B7C /* MainTabBarController.swift */,
 				940CC1A51C827A9400A99A32 /* ProfileVC.swift */,
 				078739821C8420C000D09C14 /* FilterVC.swift */,
+				832FDCDA1C86398C00836B7C /* MessagesViewController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 		DAA52CDA128C91823CBA741E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				832FDCDC1C86422A00836B7C /* QuartzCore.framework */,
 				83B16FF91C5EDC2E001D7815 /* FBSDKCoreKit.framework */,
 				83B16FFA1C5EDC2E001D7815 /* FBSDKLoginKit.framework */,
 				83B16FFB1C5EDC2E001D7815 /* FBSDKMessengerShareKit.framework */,
@@ -504,6 +511,7 @@
 				83E15D3F1C7FE6A20068423E /* GCMClient.swift in Sources */,
 				078739831C8420C000D09C14 /* FilterVC.swift in Sources */,
 				07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */,
+				832FDCDB1C86398C00836B7C /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

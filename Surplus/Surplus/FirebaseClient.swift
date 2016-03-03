@@ -175,4 +175,35 @@ class FirebaseClient {
             }
         })
     }
+    
+    class func getMessages(completion: (result: [Chatroom]) -> Void) {
+        let chatRef = ref.childByAppendingPath("Messages/")
+        var results = [Chatroom]()
+        
+        chatRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if !(snapshot.value is NSNull) {
+                let chatrooms = snapshot.value as! NSDictionary
+                
+                for (_, value) in chatrooms {
+                    let chatroom = value as! NSDictionary
+                    let ownerId = chatroom["owner_id"] as! String
+                    let recepId = chatroom["recepient_id"] as! String
+                    var messages = [Message]()
+                    
+                    for (_, messageValue) in chatroom["messages"] as! NSDictionary {
+                        let message = messageValue as! NSDictionary
+                        let senderId = message["sender_id"] as! String
+                        let text = message["text"] as! String
+                        
+                        messages.append(Message(senderId: senderId, text: text))
+                    }
+                    results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
+                }
+                completion(result: results)
+            }
+            else {
+                print("getMessages error")
+            }
+        })
+    }
 }

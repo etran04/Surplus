@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import JSQMessagesViewController
 
-class MessagesViewController : JSQMessagesViewController {
+class MessagesVC    : JSQMessagesViewController {
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!

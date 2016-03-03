@@ -21,7 +21,7 @@
 		07EF919F1C7D2FA100FE586D /* InputChargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */; };
 		61CC16AC492F27723DE890DB /* Pods_Surplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C07283E930440CA9F0D69 /* Pods_Surplus.framework */; };
 		832FDCC01C8268D900836B7C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCBF1C8268D900836B7C /* MainTabBarController.swift */; };
-		832FDCDB1C86398C00836B7C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCDA1C86398C00836B7C /* MessagesViewController.swift */; };
+		832FDCDB1C86398C00836B7C /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCDA1C86398C00836B7C /* MessageVC.swift */; };
 		832FDCDD1C86422A00836B7C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832FDCDC1C86422A00836B7C /* QuartzCore.framework */; };
 		832FDCDF1C87DFB800836B7C /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCDE1C87DFB800836B7C /* Chatroom.swift */; };
 		832FDCE11C87E17500836B7C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCE01C87E17500836B7C /* Message.swift */; };
@@ -83,7 +83,7 @@
 		07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputChargeVC.swift; sourceTree = "<group>"; };
 		766AB07C5C5EE727C4AB06D6 /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
 		832FDCBF1C8268D900836B7C /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		832FDCDA1C86398C00836B7C /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		832FDCDA1C86398C00836B7C /* MessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
 		832FDCDC1C86422A00836B7C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		832FDCDE1C87DFB800836B7C /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		832FDCE01C87E17500836B7C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				832FDCBF1C8268D900836B7C /* MainTabBarController.swift */,
 				940CC1A51C827A9400A99A32 /* ProfileVC.swift */,
 				078739821C8420C000D09C14 /* FilterVC.swift */,
-				832FDCDA1C86398C00836B7C /* MessagesViewController.swift */,
+				832FDCDA1C86398C00836B7C /* MessageVC.swift */,
 				832FDCE21C87E3DC00836B7C /* MessagesTVC.swift */,
 			);
 			name = VCs;
@@ -523,7 +523,7 @@
 				83E15D3F1C7FE6A20068423E /* GCMClient.swift in Sources */,
 				078739831C8420C000D09C14 /* FilterVC.swift in Sources */,
 				07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */,
-				832FDCDB1C86398C00836B7C /* MessagesViewController.swift in Sources */,
+				832FDCDB1C86398C00836B7C /* MessageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

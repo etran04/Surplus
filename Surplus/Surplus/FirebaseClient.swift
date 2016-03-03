@@ -151,8 +151,6 @@ class FirebaseClient {
                     if (token != "null") {
                         GCMClient.postOrder(token)
                     }
-//                    GCMClient.sendMessage(token)
-//                    GCMClient.postOrder(token)
                 }
             }
         })

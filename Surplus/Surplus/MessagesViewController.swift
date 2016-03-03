@@ -12,23 +12,17 @@ import JSQMessagesViewController
 
 class MessagesViewController : JSQMessagesViewController {
     var messages = [JSQMessage]()
-    var avatars = Dictionary<String, UIImage>()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
-    var senderImageUrl: String!
-    var batchMessages = true
     var ref: Firebase!
-    
     
     // *** STEP 1: STORE FIREBASE REFERENCES
     var messagesRef: Firebase!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Message"
-        setupBubbles()
         senderId = "asdf"
         senderDisplayName = "Daniel Lee"
         
@@ -36,6 +30,7 @@ class MessagesViewController : JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         
+        setupBubbles()
         observeMessages()
     }
     
@@ -92,22 +87,6 @@ class MessagesViewController : JSQMessagesViewController {
             finishSendingMessage()
     }
     
-    
-//    func setupFirebase() {
-//        // *** STEP 2: SETUP FIREBASE
-//        messagesRef = FirebaseClient.ref.childByAppendingPath("Users/1139255816085563/Messages/")
-//        
-//        // *** STEP 4: RECEIVE MESSAGES FROM FIREBASE (limited to latest 25 messages)
-//        messagesRef.queryLimitedToFirst(25).observeEventType(FEventType.ChildAdded, withBlock: { (snapshot) in
-//            let text = snapshot.value["text"] as? String
-//            let sender = snapshot.value["sender"] as? String
-//            
-//            let message = JSQMessage(senderId: sender, displayName: "Daniel Lee", text: text)
-//            self.messages.append(message)
-//            self.finishReceivingMessage()
-//        })
-//    }
-    
     private func observeMessages() {
         messagesRef = FirebaseClient.ref.childByAppendingPath("Users/1139255816085563/Messages/")
         // 1
@@ -132,15 +111,6 @@ class MessagesViewController : JSQMessagesViewController {
             UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImageView = factory.incomingMessagesBubbleImageWithColor(
             UIColor.jsq_messageBubbleLightGrayColor())
-    }
-    
-    func sendMessage(text: String!, sender: String!) {
-        // *** STEP 3: ADD A MESSAGE TO FIREBASE
-        messagesRef.childByAutoId().setValue([
-            "text":text,
-            "sender":sender,
-            "imageUrl":senderImageUrl
-            ])
     }
     
     override func textViewDidChange(textView: UITextView) {

@@ -11,6 +11,7 @@ import UIKit
 class PaymentMethodCell: UITableViewCell {
 
     @IBOutlet weak var paymentMethodLabel: UILabel!
+    @IBOutlet weak var paymentMethodSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,4 +24,18 @@ class PaymentMethodCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func changedPaymentPref(sender: AnyObject) {
+        FirebaseClient.getPaymentPreferences({ (result: [String]) -> Void in
+            var currentPrefs = result
+            if(self.paymentMethodSwitch.on && !currentPrefs.contains(self.paymentMethodLabel.text!)) {
+                currentPrefs.append(self.paymentMethodLabel.text!)
+            }
+            else if(!self.paymentMethodSwitch.on && currentPrefs.contains(self.paymentMethodLabel.text!)) {
+                currentPrefs.removeAtIndex(currentPrefs.indexOf(self.paymentMethodLabel.text!)!)
+            }
+            //print(currentPrefs)
+            
+            FirebaseClient.setPaymentPreferences(currentPrefs)
+        })
+    }
 }

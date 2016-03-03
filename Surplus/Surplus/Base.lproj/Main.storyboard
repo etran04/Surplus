@@ -179,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="228" width="375" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tjc-kW-c8b" customClass="DatePickerCell" customModule="DatePickerCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePickerCell" id="Tjc-kW-c8b" customClass="DatePickerCell" customModule="DatePickerCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tjc-kW-c8b" id="oZt-NP-lcY">
@@ -692,7 +692,7 @@
             </objects>
             <point key="canvasLocation" x="343.5" y="950.5"/>
         </scene>
-        <!--MessagesTVC-->
+        <!--Messages-->
         <scene sceneID="rRM-2e-CYz">
             <objects>
                 <tableViewController id="2cz-e4-CTD" customClass="MessagesTVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
@@ -701,13 +701,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="euh-rU-f6e">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="conversationCell" rowHeight="81" id="kdk-UC-Ks3" customClass="ConversationCell" customModule="Surplus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="euh-rU-f6e" id="aGy-1z-pRj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kdk-UC-Ks3" id="lXf-Ov-4p2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfPic.png" translatesAutoresizingMaskIntoConstraints="NO" id="Odu-tC-yzY">
+                                            <rect key="frame" x="15" y="15" width="50" height="50"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqB-nZ-zXC">
+                                            <rect key="frame" x="79" y="15" width="197" height="23"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Friend name">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="19" name="HelveticaNeue-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Most recent message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6g-lm-rfS">
+                                            <rect key="frame" x="79" y="34" width="288" height="30.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pr9-zB-AnE">
+                                            <rect key="frame" x="343.5" y="17" width="23.5" height="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pr9-zB-AnE" firstAttribute="top" secondItem="lXf-Ov-4p2" secondAttribute="topMargin" constant="9" id="ahO-OR-ie5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pr9-zB-AnE" secondAttribute="trailing" constant="0.5" id="sgm-2e-lBo"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lastMsgTimeLabel" destination="pr9-zB-AnE" id="SLC-lo-OxQ"/>
+                                    <outlet property="mostRecentMessageLabel" destination="E6g-lm-rfS" id="zeT-1P-ywt"/>
+                                    <outlet property="otherPersonLabel" destination="tqB-nZ-zXC" id="EkG-gm-Ncl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -715,7 +753,11 @@
                             <outlet property="delegate" destination="2cz-e4-CTD" id="Jy7-Tf-4zf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="BCB-JX-1Oo"/>
+                    <navigationItem key="navigationItem" title="Messages" id="BCB-JX-1Oo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="wqj-Hi-MN8">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d33-uZ-28a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -802,6 +844,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.011764705882352941" green="0.33725490196078434" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

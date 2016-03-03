@@ -25,6 +25,7 @@
 		832FDCDD1C86422A00836B7C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832FDCDC1C86422A00836B7C /* QuartzCore.framework */; };
 		832FDCDF1C87DFB800836B7C /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCDE1C87DFB800836B7C /* Chatroom.swift */; };
 		832FDCE11C87E17500836B7C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCE01C87E17500836B7C /* Message.swift */; };
+		832FDCE31C87E3DC00836B7C /* MessagesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCE21C87E3DC00836B7C /* MessagesTVC.swift */; };
 		83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */; };
 		83B16FCE1C5ED5A0001D7815 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */; };
 		83B16FD11C5ED5A0001D7815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B16FCF1C5ED5A0001D7815 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		832FDCDC1C86422A00836B7C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		832FDCDE1C87DFB800836B7C /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		832FDCE01C87E17500836B7C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		832FDCE21C87E3DC00836B7C /* MessagesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTVC.swift; sourceTree = "<group>"; };
 		83B16FC81C5ED5A0001D7815 /* Surplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				940CC1A51C827A9400A99A32 /* ProfileVC.swift */,
 				078739821C8420C000D09C14 /* FilterVC.swift */,
 				832FDCDA1C86398C00836B7C /* MessagesViewController.swift */,
+				832FDCE21C87E3DC00836B7C /* MessagesTVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				07EF919F1C7D2FA100FE586D /* InputChargeVC.swift in Sources */,
 				0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */,
 				83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */,
+				832FDCE31C87E3DC00836B7C /* MessagesTVC.swift in Sources */,
 				83EF49031C79F72800BE705B /* Order.swift in Sources */,
 				83EF49011C79EBB100BE705B /* Status.swift in Sources */,
 				832FDCE11C87E17500836B7C /* Message.swift in Sources */,

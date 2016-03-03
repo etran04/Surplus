@@ -11,5 +11,6 @@
 
 #import <FBSDKMessengerShareKit/FBSDKMessengerShareKit.h>
 #import <Google/CloudMessaging.h>
+#import <JSQMessagesViewController/JSQMessages.h>
 
 #endif /* Bridging_Header_h */

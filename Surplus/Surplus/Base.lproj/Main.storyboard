@@ -768,7 +768,7 @@
         <scene sceneID="A7M-5c-Asi">
             <objects>
                 <navigationController title="OrderNav" automaticallyAdjustsScrollViewInsets="NO" id="9cq-VX-tXc" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="7m6-PV-al6"/>
+                    <tabBarItem key="tabBarItem" title="Orders" image="Activity Feed-50.png" id="7m6-PV-al6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oWw-di-pej">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -834,11 +834,11 @@
             </objects>
             <point key="canvasLocation" x="-249.5" y="950.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Messages-->
         <scene sceneID="gwQ-3l-rpF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O4Q-z8-6r4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="84P-C9-Qfj"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="Talk-50.png" id="84P-C9-Qfj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="968-gA-hBO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -859,7 +859,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Activity Feed-50.png" width="30" height="30"/>
         <image name="Name-50.png" width="30" height="30"/>
         <image name="ProfPic.png" width="30" height="30"/>
+        <image name="Talk-50.png" width="30" height="30"/>
     </resources>
 </document>

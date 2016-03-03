@@ -17,11 +17,21 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var logoutButton: UIButton!
     
+    var paymentPrefs = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.paymentMethodTable.delegate = self
         self.paymentMethodTable.dataSource = self
         self.paymentMethodTable.backgroundColor = UIColor.whiteColor()
+        FirebaseClient.getPaymentPreferences({(result: [String]) in
+            self.paymentPrefs = result
+            for var i = 0; i < 3; i++ {
+                let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! PaymentMethodCell
+                
+                cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
+            }
+        })
     }
     
     override func viewDidAppear(animated: Bool) {

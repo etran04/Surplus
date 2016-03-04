@@ -759,10 +759,32 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="XFi-S6-eEw" kind="show" identifier="goToMessage" id="LXB-M6-baD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d33-uZ-28a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="337.5" y="-969.5"/>
+        </scene>
+        <!--Single Message-->
+        <scene sceneID="CGT-XY-Mj7">
+            <objects>
+                <viewController id="XFi-S6-eEw" userLabel="Single Message" customClass="MessageVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w9E-ft-vTP"/>
+                        <viewControllerLayoutGuide type="bottom" id="F2Q-IM-fw0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wT7-lZ-Rtp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FA1-YB-3km" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822.5" y="-969.5"/>
         </scene>
         <!--OrderNav-->
         <scene sceneID="A7M-5c-Asi">

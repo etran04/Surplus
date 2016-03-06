@@ -22,6 +22,7 @@ class MessagesTVC: UITableViewController {
         
         FirebaseClient.getChatrooms({ (result) -> Void in
             self.chatrooms = result
+            self.tableView.reloadData()
         })
         
         self.tableView.tableFooterView = UIView()

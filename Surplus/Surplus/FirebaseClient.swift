@@ -177,7 +177,7 @@ class FirebaseClient {
     }
     
     class func getChatrooms(completion: (result: [Chatroom]) -> Void) {
-        let chatRef = ref.childByAppendingPath("Messages/")
+        let chatRef = ref.childByAppendingPath("Chatrooms/")
         var results = [Chatroom]()
         
         chatRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -190,17 +190,21 @@ class FirebaseClient {
                     let recepId = chatroom["recepient_id"] as! String
                     var messages = [Message]()
                     
-                    if (ownerId == FBUserInfo.id || recepId == FBUserInfo.id) {
-                        for (_, messageValue) in chatroom["messages"] as! NSDictionary {
-                            let message = messageValue as! NSDictionary
-                            let senderId = message["sender_id"] as! String
-                            let text = message["text"] as! String
+                    let msgs = chatroom["messages"] as! NSArray
+                    
+                    if (chatroom["messages"] != nil && !(chatroom["messages"] is NSNull) && (ownerId == FBUserInfo.id || recepId == FBUserInfo.id)) {
+                        for msg in msgs {
+                            let senderId = msg["sender_id"] as! String
+                            let text = msg["text"] as! String
                             
                             messages.append(Message(senderId: senderId, text: text))
                         }
-                        results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
                     }
+                    results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
+   
                 }
+                dump(results)
+                
                 completion(result: results)
             }
             else {
@@ -226,6 +230,5 @@ class FirebaseClient {
     }
     
     class func sendMessage() {
-        
     }
 }

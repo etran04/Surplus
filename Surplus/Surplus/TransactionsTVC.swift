@@ -330,7 +330,10 @@ class TransactionsTVC: UITableViewController {
         else {
             recepientId = order.ownerId!
         }
-        let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: [Message]())
+        
+        var msgs = [Message]()
+        msgs.append(Message(senderId: FBUserInfo.id!, text: "HELLO"))
+        let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: msgs)
         
         FirebaseClient.makeChatroom(chatroom)
     }

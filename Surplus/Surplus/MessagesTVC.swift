@@ -32,6 +32,18 @@ class MessagesTVC: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func downloadImage(url: NSURL, picture: UIImageView){
+        NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                picture.image = UIImage(data: data)
+                picture.layer.cornerRadius = picture.frame.size.height / 2
+                picture.layer.masksToBounds = true
+                picture.layer.borderWidth = 0
+            }
+        }).resume()
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -47,9 +59,15 @@ class MessagesTVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath)
-    
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as! ConversationCell
+        
+        let currentChat = chatrooms[indexPath.row]
+        let imagePath = "http://graph.facebook.com/\(currentChat.recepientId)/picture?type=large"
+        downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
+        print(currentChat.recepientId)
+        FirebaseClient.getUsername(currentChat.recepientId) { (result) -> Void in
+            cell.otherPersonLabel.text = result
+        }
     
         return cell
     }

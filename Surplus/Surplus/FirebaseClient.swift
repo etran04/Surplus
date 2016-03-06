@@ -12,6 +12,7 @@ import Firebase
 class FirebaseClient {
     static let ref = Firebase(url: "https://calpolysurplus.firebaseio.com")
     
+    /* Used to save a user's infomation into the Firebase */
     class func saveUser(name: String, id: String) {
         let usersRef = ref.childByAppendingPath("Users/\(id)")
         let newUser = ["name" : "\(name)", "gcm_token" : "null"]
@@ -27,6 +28,18 @@ class FirebaseClient {
         setPaymentPreferences(["Venmo", "Square Cash", "Cash"])
     }
     
+    class func getUsername(id: String, completion : (result: String) -> Void) {
+        let usersRef = ref.childByAppendingPath("Users/\(id)/name")
+        
+        usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
+            if snapshot.value is String {
+                let result = snapshot.value as! String
+                completion(result: result)
+            }
+        })
+    }
+    
+    /* Used to add a new order into the databse */
     class func addOrder(order: Order) {
         let ordersRef = ref.childByAppendingPath("Orders/")
         let uniqueRef = ordersRef.childByAutoId()
@@ -42,6 +55,8 @@ class FirebaseClient {
         uniqueRef.setValue(orderObj)
     }
     
+    /* Used to retrieve orders from Firebase. Sort flag used to choose orders of 
+     * a specific status (Pending, inProgress, Completed */
     class func getOrders(sortFlag: Status, completion: (result: [Order]) -> Void) {
         let ordersRef = ref.childByAppendingPath("Orders/")
         let dateFormatter = NSDateFormatter()
@@ -162,7 +177,6 @@ class FirebaseClient {
      * using the token.
      */
     class func notifyOwnerOfOrder(ownerId: String) {
-        print("got here bruh")
         let tokenRef = ref.childByAppendingPath("Users/\(ownerId)/gcm_token")
         
         tokenRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
@@ -203,12 +217,10 @@ class FirebaseClient {
                     results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
    
                 }
-                dump(results)
-                
                 completion(result: results)
             }
             else {
-                print("getMessages error")
+                print("getChatrooms error")
             }
         })
     }

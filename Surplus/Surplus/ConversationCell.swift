@@ -10,6 +10,9 @@ import UIKit
 
 class ConversationCell: UITableViewCell {
 
+    // Reference to the image of the person user is talking to
+    @IBOutlet weak var picture: UIImageView!
+    
     // Reference to the label for other person user is talking to
     @IBOutlet weak var otherPersonLabel: UILabel!
     

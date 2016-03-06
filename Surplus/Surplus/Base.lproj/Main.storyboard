@@ -745,6 +745,7 @@
                                     <outlet property="lastMsgTimeLabel" destination="pr9-zB-AnE" id="SLC-lo-OxQ"/>
                                     <outlet property="mostRecentMessageLabel" destination="E6g-lm-rfS" id="zeT-1P-ywt"/>
                                     <outlet property="otherPersonLabel" destination="tqB-nZ-zXC" id="EkG-gm-Ncl"/>
+                                    <outlet property="picture" destination="Odu-tC-yzY" id="P4V-CQ-LpQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -753,11 +754,7 @@
                             <outlet property="delegate" destination="2cz-e4-CTD" id="Jy7-Tf-4zf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Messages" id="BCB-JX-1Oo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="wqj-Hi-MN8">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Messages" id="BCB-JX-1Oo"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="XFi-S6-eEw" kind="show" identifier="goToMessage" id="LXB-M6-baD"/>

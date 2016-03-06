@@ -16,6 +16,7 @@
 		0767D3CF1C7C46650039B2C4 /* PendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767D3CE1C7C46650039B2C4 /* PendingCell.swift */; };
 		078739831C8420C000D09C14 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078739821C8420C000D09C14 /* FilterVC.swift */; };
 		078FD2F01C7C662600EBAB62 /* InProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */; };
+		07AD0F981C8C0CAD0028F0BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AD0F971C8C0CAD0028F0BC /* User.swift */; };
 		07CBC9D01C7DAD7F00409369 /* StartTimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */; };
 		07DE35181C8901710063F6D6 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DE35171C8901710063F6D6 /* ConversationCell.swift */; };
 		07DE351A1C8904BF0063F6D6 /* Talk-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE35191C8904BF0063F6D6 /* Talk-50.png */; };
@@ -84,6 +85,7 @@
 		0767D3CE1C7C46650039B2C4 /* PendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingCell.swift; sourceTree = "<group>"; };
 		078739821C8420C000D09C14 /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		078FD2EF1C7C662600EBAB62 /* InProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressCell.swift; sourceTree = "<group>"; };
+		07AD0F971C8C0CAD0028F0BC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		07CBC9CF1C7DAD7F00409369 /* StartTimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTimePickerCell.swift; sourceTree = "<group>"; };
 		07DE35171C8901710063F6D6 /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		07DE35191C8904BF0063F6D6 /* Talk-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Talk-50.png"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				83E15D3E1C7FE6A20068423E /* GCMClient.swift */,
 				832FDCDE1C87DFB800836B7C /* Chatroom.swift */,
 				832FDCE01C87E17500836B7C /* Message.swift */,
+				07AD0F971C8C0CAD0028F0BC /* User.swift */,
 			);
 			name = "API Wrappers";
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				07DE35181C8901710063F6D6 /* ConversationCell.swift in Sources */,
 				0767D3CD1C7C0D130039B2C4 /* TransactionsTVC.swift in Sources */,
 				832FDCC01C8268D900836B7C /* MainTabBarController.swift in Sources */,
+				07AD0F981C8C0CAD0028F0BC /* User.swift in Sources */,
 				0754F58A1C7AA44400D0EA05 /* DurationPickerCell.swift in Sources */,
 				07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */,
 				07542E931C7FC36C0056CED6 /* ScrollPickerCell.swift in Sources */,

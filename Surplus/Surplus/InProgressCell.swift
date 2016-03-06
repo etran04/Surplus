@@ -54,7 +54,13 @@ class InProgressCell: UITableViewCell {
     }
     
     @IBAction func messagePressed(sender: UIButton) {
-        FBSDKMessengerSharer.openMessenger()
+        let tableView = self.superview!.superview as! UITableView
+        
+        let buttonPosition = sender.convertPoint(CGPointZero, toView: tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(buttonPosition)
+        
+        let myTransactions = tableController as! TransactionsTVC
+        myTransactions.openMessage(indexPath!.row)
     }
     
     @IBAction func completedPressed(sender: UIButton) {

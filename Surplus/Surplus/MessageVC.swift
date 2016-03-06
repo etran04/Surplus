@@ -123,17 +123,17 @@ class MessageVC : JSQMessagesViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
         avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-            return nil
+        return nil
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
         messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-            let message = messages[indexPath.item] // 1
-            if message.senderId == senderId { // 2
-                return outgoingBubbleImageView
-            } else { // 3
-                return incomingBubbleImageView
-            }
+        let message = messages[indexPath.item] // 1
+        if message.senderId == senderId { // 2
+            return outgoingBubbleImageView
+        } else { // 3
+            return incomingBubbleImageView
+        }
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
@@ -148,17 +148,17 @@ class MessageVC : JSQMessagesViewController {
     
     override func collectionView(collectionView: UICollectionView,
         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
-                as! JSQMessagesCollectionViewCell
-            
-            let message = messages[indexPath.item]
-            
-            if message.senderId == senderId {
-                cell.textView!.textColor = UIColor.whiteColor()
-            } else {
-                cell.textView!.textColor = UIColor.blackColor()
-            }
-            
-            return cell
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+            as! JSQMessagesCollectionViewCell
+        
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            cell.textView!.textColor = UIColor.whiteColor()
+        } else {
+            cell.textView!.textColor = UIColor.blackColor()
+        }
+        
+        return cell
     }
 }

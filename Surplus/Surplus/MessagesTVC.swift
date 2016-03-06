@@ -20,9 +20,9 @@ class MessagesTVC: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        FirebaseClient.getMessages { (result) -> Void in
+        FirebaseClient.getChatrooms({ (result) -> Void in
             self.chatrooms = result
-        }
+        })
         
         self.tableView.tableFooterView = UIView()
     }

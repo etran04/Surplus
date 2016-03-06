@@ -320,6 +320,21 @@ class TransactionsTVC: UITableViewController {
         self.performSegueWithIdentifier("goToInputCharge", sender: row)
     }
     
+    func openMessage(row: Int) {
+        let order = self.progressOrders[row]
+        var recepientId = ""
+        
+        if (order.ownerId == FBUserInfo.id) {
+            recepientId = order.recepientId!
+        }
+        else {
+            recepientId = order.ownerId!
+        }
+        let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: [Message]())
+        
+        FirebaseClient.makeChatroom(chatroom)
+    }
+    
     
     // MARK: - Navigation
     

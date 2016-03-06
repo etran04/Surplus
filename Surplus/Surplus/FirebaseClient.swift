@@ -210,7 +210,7 @@ class FirebaseClient {
     }
     
     class func makeChatroom(chatroom: Chatroom) {
-        let chatRef = ref.childByAppendingPath("Messages/")
+        let chatRef = ref.childByAppendingPath("Chatrooms/")
         let uniqueRef = chatRef.childByAutoId()
         var messages = [NSDictionary]()
         
@@ -223,5 +223,9 @@ class FirebaseClient {
             "messages": messages]
         
         uniqueRef.setValue(chat)
+    }
+    
+    class func sendMessage() {
+        
     }
 }

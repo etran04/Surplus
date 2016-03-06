@@ -9,6 +9,7 @@
 import Foundation
 
 struct Chatroom {
+    var id: String
     var ownerId: String
     var recepientId: String
     var messages: [Message]
@@ -17,5 +18,6 @@ struct Chatroom {
         self.ownerId = ownerId
         self.recepientId = recepientId
         self.messages = messages
+        self.id = ""
     }
 }

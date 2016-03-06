@@ -9,10 +9,21 @@
 import UIKit
 
 class MessagesTVC: UITableViewController {
-
+    
+    // Holds all conversations of the current user
+    var chatrooms = [Chatroom]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        FirebaseClient.getMessages { (result) -> Void in
+            self.chatrooms = result
+        }
+        
         self.tableView.tableFooterView = UIView()
     }
     
@@ -27,11 +38,11 @@ class MessagesTVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return chatrooms.count
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 81
+        return  81
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

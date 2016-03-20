@@ -8,7 +8,6 @@
 
 import UIKit
 import DatePickerCell
-import DownPicker
 
 class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -26,7 +25,6 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var cells : NSArray = []
     var curOrder : Order = Order()
     
-    var locationsDownPicker: DownPicker!
     var locationChoices = [String]()
     
     /* Called when view is loaded */

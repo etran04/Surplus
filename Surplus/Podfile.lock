@@ -1,7 +1,6 @@
 PODS:
-  - AMScrollingNavbar (2.0.13)
+  - AMScrollingNavbar (2.0.14)
   - DatePickerCell (1.0.4)
-  - DownPicker (0.1.34)
   - DZNEmptyDataSet (1.7.3)
   - Firebase (2.5.1)
   - GGLInstanceID (1.1.6)
@@ -31,24 +30,24 @@ PODS:
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - PickerCells (1.0.0)
   - Popover (0.9.0)
   - SwiftLoader (0.2.5)
 
 DEPENDENCIES:
   - AMScrollingNavbar (~> 2.0.1)
   - DatePickerCell
-  - DownPicker
   - DZNEmptyDataSet
   - Firebase (>= 2.5.0)
   - Google/CloudMessaging
   - JSQMessagesViewController
+  - PickerCells
   - Popover
   - SwiftLoader
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: 4445a6ce4b40c09ad56b28f2dd8d3516b350e089
+  AMScrollingNavbar: be1de69f46cea4667026400db6cb22e783f9533d
   DatePickerCell: 20d2ba8b5cd5bb8a5a79e2b43bc7758e3b65daf2
-  DownPicker: c00ea63f08ae82116cc93d0eba74e86bf3d4c68e
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   GGLInstanceID: f92465924a9b8a48f712829d22e223653ab8dc72
@@ -61,6 +60,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  PickerCells: 12dc260dc990c1646f4d63ed14dada876e1b49f8
   Popover: e5a2cbfa29bb982c95cff0d7eb94f47173dbfbcc
   SwiftLoader: 12d7a6f661f5e9a2c9a72003e7dd6162f4ff0cc4
 

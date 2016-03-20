@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import JSQMessagesViewController
 
-class MessageVC : JSQMessagesViewController {
+class SingleMsgVC : JSQMessagesViewController {
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
@@ -21,10 +21,6 @@ class MessageVC : JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Message"
-        senderId = "asdf"
-        senderDisplayName = "Daniel Lee"
         
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
@@ -39,7 +35,7 @@ class MessageVC : JSQMessagesViewController {
         // messages from someone else
         addMessage("foo", text: "Hey person!")
         // messages sent from local sender
-        addMessage(senderId, text: "Yo!")
+        addMessage(senderId, text: "Yo! My name is \(senderDisplayName)")
         addMessage(senderId, text: "I like turtles!")
         // animates the receiving of a new message on the view
         finishReceivingMessage()

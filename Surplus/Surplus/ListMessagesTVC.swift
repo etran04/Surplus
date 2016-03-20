@@ -8,10 +8,13 @@
 
 import UIKit
 
-class MessagesTVC: UITableViewController {
+class ListMessagesTVC: UITableViewController {
     
     // Holds all conversations of the current user
     var chatrooms = [Chatroom]()
+    
+    // Placeholder for chatroom when clicked
+    var selectedChatroom : Chatroom?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +77,7 @@ class MessagesTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // TODO: check which message cell is selected, and bring up a messages VC accordingly
+        selectedChatroom = chatrooms[indexPath.row]
         self.performSegueWithIdentifier("goToMessage", sender: self)
     }
     
@@ -85,7 +89,11 @@ class MessagesTVC: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let newMessageVC = segue.destinationViewController as! MessageVC
+        let newMessageVC = segue.destinationViewController as! SingleMsgVC
+        newMessageVC.senderDisplayName = FBUserInfo.name
+        // TODO: get to send's username
+        newMessageVC.title = selectedChatroom?.recepientId
+        newMessageVC.senderId = selectedChatroom?.ownerId
         
     }
 

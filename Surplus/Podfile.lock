@@ -1,5 +1,5 @@
 PODS:
-  - AMScrollingNavbar (2.0.11)
+  - AMScrollingNavbar (2.0.13)
   - DatePickerCell (1.0.4)
   - DownPicker (0.1.34)
   - DZNEmptyDataSet (1.7.3)
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - SwiftLoader
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: a278fbd74870e9983bb6318ca3b64011f9571269
+  AMScrollingNavbar: 4445a6ce4b40c09ad56b28f2dd8d3516b350e089
   DatePickerCell: 20d2ba8b5cd5bb8a5a79e2b43bc7758e3b65daf2
   DownPicker: c00ea63f08ae82116cc93d0eba74e86bf3d4c68e
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef

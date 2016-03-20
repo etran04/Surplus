@@ -152,6 +152,7 @@ class TransactionsTVC: UITableViewController {
     /* Depending on the section, get the correct cell class to work with */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        
         switch (headerTitles[indexPath.section]) {
             case kPendingHeader:
                 if (self.pendingOrders.count > 0) {

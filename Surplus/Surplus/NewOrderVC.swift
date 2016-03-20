@@ -164,6 +164,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
         
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        
         self.saveButton.enabled = true;
     }
     
@@ -179,7 +181,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     /* Configures each cell in tableView */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return cells[indexPath.row] as! UITableViewCell
+        let cell = cells[indexPath.row] as! UITableViewCell
+        return cell
     }
 
 }

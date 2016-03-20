@@ -36,6 +36,9 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         
+        // Extends sepeartor lines for tableview
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -117,6 +120,12 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
         cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+        
+        // Allows for extension of insets
+        cell.preservesSuperviewLayoutMargins = false;
+        cell.layoutMargins = UIEdgeInsetsZero
+        cell.separatorInset = UIEdgeInsetsZero
+        
     
         return cell
     }

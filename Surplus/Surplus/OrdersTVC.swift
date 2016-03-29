@@ -82,7 +82,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     /* Resets the refresh UI control */
     func setUpRefresh() {
         /* Set the callback for when pulled down */
-        self.refresh.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refresh.addTarget(self, action: #selector(OrdersTVC.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     /* Callback method for when user pulls down to refresh */

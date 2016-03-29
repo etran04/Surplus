@@ -17,7 +17,7 @@ class MainTabBarController: UITabBarController {
         
         // Listens for remote notifications
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayReceivedMessage:",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTabBarController.displayReceivedMessage(_:)),
             name: appDelegate.messageKey, object: nil)
     }
     
@@ -35,7 +35,7 @@ class MainTabBarController: UITabBarController {
                 
                 let tabArray = self.tabBar.items as NSArray!
                 let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-                tabItem.badgeValue = "\(++self.newMessages)"
+                tabItem.badgeValue = "\(self.newMessages += 1)"
             }
         }
         else {

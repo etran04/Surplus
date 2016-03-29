@@ -19,7 +19,7 @@ class DurationPickerCell: DatePickerCell {
         super.rightLabel.text = "Choose how long you are free"
         super.datePicker.datePickerMode = .CountDownTimer
         super.datePicker.minuteInterval = 15
-        super.datePicker.addTarget(self, action: "saveCountdown", forControlEvents: UIControlEvents.AllEvents)
+        super.datePicker.addTarget(self, action: #selector(DurationPickerCell.saveCountdown), forControlEvents: UIControlEvents.AllEvents)
     }
 
     required init?(coder aDecoder: NSCoder) {

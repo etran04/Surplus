@@ -30,7 +30,7 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         textField.textAlignment = .Center
         
         // Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InputChargeVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         // Disables done button until valid charge is entered

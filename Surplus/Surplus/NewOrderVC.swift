@@ -143,7 +143,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
             // Collapses all other cells
-            for (var i = 0; i < cells.count; i += 1) {
+            for i in 0..<cells.count {
                 if (i != indexPath.row && cells[i].expanded == true) {
                     cells[i].selectedInTableView(tableView)
                 }
@@ -155,7 +155,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
             // Collapses all other cells
-            for (var i = 0; i < cells.count; i += 1) {
+            for i in 0..<cells.count {
                 if (i != indexPath.row && cells[i].expanded == true) {
                     cells[i].selectedInTableView(tableView)
                 }

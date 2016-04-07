@@ -30,7 +30,6 @@ PODS:
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - PickerCells (1.0.0)
   - Popover (0.9.0)
   - SwiftLoader (0.2.5)
 
@@ -41,7 +40,6 @@ DEPENDENCIES:
   - Firebase (>= 2.5.0)
   - Google/CloudMessaging
   - JSQMessagesViewController
-  - PickerCells
   - Popover
   - SwiftLoader
 
@@ -60,7 +58,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  PickerCells: 12dc260dc990c1646f4d63ed14dada876e1b49f8
   Popover: e5a2cbfa29bb982c95cff0d7eb94f47173dbfbcc
   SwiftLoader: 12d7a6f661f5e9a2c9a72003e7dd6162f4ff0cc4
 

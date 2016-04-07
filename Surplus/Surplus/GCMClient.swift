@@ -34,7 +34,7 @@ class GCMClient {
             let task = session.dataTaskWithRequest(request, completionHandler: {
                 (data, response, error) in
                 
-                guard let responseData = data else {
+                guard data != nil else {
                     print("Error: did not receive data")
                     return
                 }

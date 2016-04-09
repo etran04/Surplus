@@ -9,9 +9,10 @@
 import UIKit
 import DZNEmptyDataSet
 import AMScrollingNavbar
+import EAIntroView
 
 /* List of recent orders being requested */
-class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, EAIntroDelegate {
     
     var orders = [Order]()
 
@@ -44,6 +45,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         // Initial set up for pull down to refresh
         self.setUpRefresh()
+
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074AF19C1CB8B12100A41D3F /* IntroTutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074AF19B1CB8B12100A41D3F /* IntroTutorialVC.swift */; };
+		074AF19F1CB8B1BE00A41D3F /* bg-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 074AF19D1CB8B1BE00A41D3F /* bg-1.jpg */; };
+		074AF1A01CB8B1BE00A41D3F /* bg-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 074AF19E1CB8B1BE00A41D3F /* bg-2.jpg */; };
 		07542E931C7FC36C0056CED6 /* ScrollPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */; };
 		0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */; };
 		0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F5501C79B97900D0EA05 /* OrderCell.swift */; };
@@ -76,6 +79,9 @@
 
 /* Begin PBXFileReference section */
 		07093DD01C5EE33A0020FE79 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		074AF19B1CB8B12100A41D3F /* IntroTutorialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroTutorialVC.swift; sourceTree = "<group>"; };
+		074AF19D1CB8B1BE00A41D3F /* bg-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg-1.jpg"; sourceTree = "<group>"; };
+		074AF19E1CB8B1BE00A41D3F /* bg-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg-2.jpg"; sourceTree = "<group>"; };
 		07542E921C7FC36C0056CED6 /* ScrollPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPickerCell.swift; sourceTree = "<group>"; };
 		0754F54E1C79B89E00D0EA05 /* OrdersTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersTVC.swift; sourceTree = "<group>"; };
 		0754F5501C79B97900D0EA05 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				078739821C8420C000D09C14 /* FilterVC.swift */,
 				832FDCDA1C86398C00836B7C /* SingleMsgVC.swift */,
 				832FDCE21C87E3DC00836B7C /* ListMessagesTVC.swift */,
+				074AF19B1CB8B12100A41D3F /* IntroTutorialVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -204,6 +211,8 @@
 		0754F5521C79D4D000D0EA05 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				074AF19D1CB8B1BE00A41D3F /* bg-1.jpg */,
+				074AF19E1CB8B1BE00A41D3F /* bg-2.jpg */,
 				07DE35211C89080E0063F6D6 /* Circled User Male Filled-50.png */,
 				07DE351F1C8907620063F6D6 /* Chat Filled-50.png */,
 				07DE351D1C8907010063F6D6 /* Activity Feed Filled-50.png */,
@@ -441,7 +450,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				07DE35221C89080E0063F6D6 /* Circled User Male Filled-50.png in Resources */,
+				074AF19F1CB8B1BE00A41D3F /* bg-1.jpg in Resources */,
 				83B16FD61C5ED5A0001D7815 /* LaunchScreen.storyboard in Resources */,
+				074AF1A01CB8B1BE00A41D3F /* bg-2.jpg in Resources */,
 				940CC1A81C82866100A99A32 /* Gender Neutral User-64.png in Resources */,
 				83E15D021C7FC9B20068423E /* GoogleService-Info.plist in Resources */,
 				0754F5541C79D4E800D0EA05 /* ProfPic.png in Resources */,
@@ -538,6 +549,7 @@
 				940CC1A61C827A9400A99A32 /* ProfileVC.swift in Sources */,
 				078FD2F01C7C662600EBAB62 /* InProgressCell.swift in Sources */,
 				83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */,
+				074AF19C1CB8B12100A41D3F /* IntroTutorialVC.swift in Sources */,
 				0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */,
 				0767D3CF1C7C46650039B2C4 /* PendingCell.swift in Sources */,
 				832FDCDF1C87DFB800836B7C /* Chatroom.swift in Sources */,

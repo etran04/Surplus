@@ -53,8 +53,24 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                FBUserInfo.fetchUserInfo(true)
-                self.performSegueWithIdentifier("goToMainFeed", sender: self)
+                /*
+                 * Tokens is a inner class, used to make sure intro tutorial only occurs once when the app is installed
+                 */
+                
+                struct Tokens {
+                    static var token: dispatch_once_t = 0
+                }
+                
+                if (Tokens.token != 0) {
+                    FBUserInfo.fetchUserInfo(true)
+                    self.performSegueWithIdentifier("goToMainFeed", sender: self)
+                }
+                
+                dispatch_once(&Tokens.token) {
+                    FBUserInfo.fetchUserInfo(true)
+                    self.performSegueWithIdentifier("goToIntro", sender: self)
+                }
+            
             }
         }
     }
@@ -62,12 +78,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

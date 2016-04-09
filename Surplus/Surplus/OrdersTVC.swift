@@ -62,8 +62,31 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         //SwiftLoader.show(animated: true)
         FirebaseClient.getOrders(Status.Pending, completion: {(result: [Order]) in
             self.orders = result
+            var tempOrders = [Order]()
             //SwiftLoader.hide()
-            self.tableView.reloadData()
+            FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
+                let myPaymentPrefs = result
+                
+                for item in self.orders {
+                    FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
+                        let otherPaymentPrefs = result2
+                        var notTrash = false
+                        
+                        for payment : String in myPaymentPrefs {
+                            if otherPaymentPrefs.contains(payment) {
+                                notTrash = true
+                            }
+                        }
+                        
+                        if notTrash {
+                            tempOrders.append(item)
+                        }
+                        
+                        self.orders = tempOrders
+                        self.tableView.reloadData()
+                    })
+                }
+            })
         })
     }
     

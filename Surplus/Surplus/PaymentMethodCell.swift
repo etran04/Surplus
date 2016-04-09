@@ -25,8 +25,9 @@ class PaymentMethodCell: UITableViewCell {
     }
 
     @IBAction func changedPaymentPref(sender: AnyObject) {
-        FirebaseClient.getPaymentPreferences({ (result: [String]) -> Void in
+        FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
             var currentPrefs = result
+            
             if(self.paymentMethodSwitch.on && !currentPrefs.contains(self.paymentMethodLabel.text!)) {
                 currentPrefs.append(self.paymentMethodLabel.text!)
             }

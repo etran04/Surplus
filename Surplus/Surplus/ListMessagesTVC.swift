@@ -77,17 +77,13 @@ class ListMessagesTVC: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // TODO: check which message cell is selected, and bring up a messages VC accordingly
         selectedChatroom = chatrooms[indexPath.row]
-        self.performSegueWithIdentifier("goToMessage", sender: self)
+        self.showSingleMessageScreen()
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        let newMessageVC = segue.destinationViewController as! SingleMsgVC
+    func showSingleMessageScreen() {
+        let newMessageVC = self.storyboard!.instantiateViewControllerWithIdentifier("singleMsgVC") as! SingleMsgVC
         
         FirebaseClient.getUsername((selectedChatroom?.recepientId)!) { (result) -> Void in
             newMessageVC.title = result
@@ -96,6 +92,10 @@ class ListMessagesTVC: UITableViewController {
         newMessageVC.senderId = selectedChatroom?.ownerId
         newMessageVC.chatroom = selectedChatroom!
         newMessageVC.ref = FirebaseClient.ref
+        
+        let navController = UINavigationController(rootViewController: newMessageVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        navController.navigationBar.barTintColor = UIColor(red:0.01, green:0.34, blue:0.26, alpha:1.0)
+        self.presentViewController(navController, animated:true, completion: nil)
     }
 }
 

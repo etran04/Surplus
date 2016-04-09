@@ -198,31 +198,34 @@ class FirebaseClient {
             if !(snapshot.value is NSNull) {
                 let chatrooms = snapshot.value as! NSDictionary
                 
-                for (_, value) in chatrooms {
+                for (key, value) in chatrooms {
                     let chatroom = value as! NSDictionary
                     let ownerId = chatroom["owner_id"] as! String
                     let recepId = chatroom["recepient_id"] as! String
+                    let id = key as! String
                     var messages = [Message]()
                     
-                    let msgs = chatroom["messages"] as! NSArray
-                    
                     if (chatroom["messages"] != nil && !(chatroom["messages"] is NSNull) && (ownerId == FBUserInfo.id || recepId == FBUserInfo.id)) {
-                        for msg in msgs {
-                            let senderId = msg["sender_id"] as! String
-                            let text = msg["text"] as! String
+                        for (_, val) in chatroom["messages"] as! NSDictionary {
+                            let message = val as! NSDictionary
+                            let senderId = message["sender_id"] as! String
+                            let text = message["text"] as! String
                             
                             messages.append(Message(senderId: senderId, text: text))
                         }
                     }
                     
+                    var tempChatroom: Chatroom
                     if (ownerId == FBUserInfo.id)
                     {
-                        results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
+                        tempChatroom = Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages)
                     }
                     else
                     {
-                        results.append(Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages))
+                        tempChatroom = Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages)
                     }
+                    tempChatroom.id = id
+                    results.append(tempChatroom)
                 }
                 completion(result: results)
             }

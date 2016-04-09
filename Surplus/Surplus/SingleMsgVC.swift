@@ -69,24 +69,25 @@ class SingleMsgVC : JSQMessagesViewController {
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!,
         senderDisplayName: String!, date: NSDate!) {
-            
-            let itemRef = messagesRef.childByAutoId() // 1
-            let messageItem = [ // 2
-                "text": text,
-                "senderId": senderId
-            ]
-            itemRef.setValue(messageItem) // 3
-            
-            // 4
-            JSQSystemSoundPlayer.jsq_playMessageSentSound()
-            
-            // 5
-            finishSendingMessage()
+        
+        let itemRef = messagesRef.childByAutoId() // 1
+        let messageItem = [ // 2
+            "text": text,
+            "senderId": senderId
+        ]
+        itemRef.setValue(messageItem) // 3
+        
+        // 4
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        
+        // 5
+        finishSendingMessage()
     }
     
     private func observeMessages() {
-        messagesRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/Messages/")
+        messagesRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/messages/")
         let messagesQuery = messagesRef.queryLimitedToLast(25)
+        print(chatroom.id)
         
         messagesQuery.observeEventType(.ChildAdded) { (snapshot: FDataSnapshot!) in
             let id = snapshot.value["senderId"] as! String

@@ -11,6 +11,7 @@ import Firebase
 import JSQMessagesViewController
 
 class SingleMsgVC : JSQMessagesViewController {
+    var chatroom: Chatroom!
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
@@ -84,19 +85,14 @@ class SingleMsgVC : JSQMessagesViewController {
     }
     
     private func observeMessages() {
-        messagesRef = FirebaseClient.ref.childByAppendingPath("Users/1139255816085563/Messages/")
-        // 1
+        messagesRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/Messages/")
         let messagesQuery = messagesRef.queryLimitedToLast(25)
-        // 2
+        
         messagesQuery.observeEventType(.ChildAdded) { (snapshot: FDataSnapshot!) in
-            // 3
             let id = snapshot.value["senderId"] as! String
             let text = snapshot.value["text"] as! String
             
-            // 4
             self.addMessage(id, text: text)
-            
-            // 5
             self.finishReceivingMessage()
         }
     }

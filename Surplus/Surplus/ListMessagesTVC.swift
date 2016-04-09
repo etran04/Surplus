@@ -63,11 +63,10 @@ class ListMessagesTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as! ConversationCell
-        
         let currentChat = chatrooms[indexPath.row]
         let imagePath = "http://graph.facebook.com/\(currentChat.recepientId)/picture?type=large"
+        
         downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
-        print(currentChat.recepientId)
         FirebaseClient.getUsername(currentChat.recepientId) { (result) -> Void in
             cell.otherPersonLabel.text = result
         }
@@ -81,7 +80,6 @@ class ListMessagesTVC: UITableViewController {
         self.performSegueWithIdentifier("goToMessage", sender: self)
     }
     
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,13 +88,14 @@ class ListMessagesTVC: UITableViewController {
         // Pass the selected object to the new view controller.
         
         let newMessageVC = segue.destinationViewController as! SingleMsgVC
-        newMessageVC.senderDisplayName = FBUserInfo.name
-        // TODO: get to send's username
-        newMessageVC.title = selectedChatroom?.recepientId
-        newMessageVC.senderId = selectedChatroom?.ownerId
         
+        FirebaseClient.getUsername((selectedChatroom?.recepientId)!) { (result) -> Void in
+            newMessageVC.title = result
+        }
+        newMessageVC.senderDisplayName = FBUserInfo.name
+        newMessageVC.senderId = selectedChatroom?.ownerId
+        newMessageVC.chatroom = selectedChatroom!
+        newMessageVC.ref = FirebaseClient.ref
     }
-
-    
 }
 

@@ -214,7 +214,15 @@ class FirebaseClient {
                             messages.append(Message(senderId: senderId, text: text))
                         }
                     }
-                    results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
+                    
+                    if (ownerId == FBUserInfo.id)
+                    {
+                        results.append(Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages))
+                    }
+                    else
+                    {
+                        results.append(Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages))
+                    }
    
                 }
                 completion(result: results)
@@ -229,14 +237,39 @@ class FirebaseClient {
         let chatRef = ref.childByAppendingPath("Chatrooms/")
         let uniqueRef = chatRef.childByAutoId()
         var messages = [NSDictionary]()
+        var resultOwnerId = chatroom.ownerId
+        var resultRecepId = chatroom.recepientId
         
         for message in chatroom.messages {
             messages.append(["sender_id": message.senderId, "text": message.text])
         }
         
-        let chat = ["owner_id": chatroom.ownerId,
-            "recepient_id": chatroom.recepientId,
-            "messages": messages]
+        chatRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if !(snapshot.value is NSNull) {
+                let chatrooms = snapshot.value as! NSDictionary
+                
+                for (_, value) in chatrooms {
+                    let currentChatroom = value as! NSDictionary
+                    let ownerId = currentChatroom["owner_id"] as! String
+                    let recepId = currentChatroom["recepient_id"] as! String
+                    
+                    if ((chatroom.ownerId == ownerId || chatroom.ownerId == recepId) &&
+                        (chatroom.recepientId == ownerId || chatroom.recepientId == recepId))
+                    {
+                        resultOwnerId = ownerId
+                        resultRecepId = recepId
+                        break;
+                    }
+                }
+            }
+            else {
+                print("getChatrooms error")
+            }
+        })
+        
+        let chat = ["owner_id": resultOwnerId,
+                    "recepient_id": resultRecepId,
+                    "messages": messages]
         
         uniqueRef.setValue(chat)
     }

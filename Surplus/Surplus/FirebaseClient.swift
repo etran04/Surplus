@@ -159,16 +159,15 @@ class FirebaseClient {
         usersRef.setValue(paymentPrefs)
     }
     
-    class func getPaymentPreferences(completion : (result: [String]) -> Void) {
-        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/payment_prefs")
+    class func getPaymentPreferences(id : String, completion : (result: [String]) -> Void) {
+        let usersRef = ref.childByAppendingPath("Users/\(id)/payment_prefs")
         var results = [String]()
         
         usersRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
             if snapshot.value is NSArray {
-                results = snapshot.value as! [String]
-                
-                completion(result: results)
+                results = snapshot.value as! [String]                
             }
+            completion(result : results)
         })
     }
     

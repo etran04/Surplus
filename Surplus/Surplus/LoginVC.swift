@@ -25,8 +25,11 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             
             // TODO: Set this to false and call it on both conditions
-            FBUserInfo.fetchUserInfo(true)
-            appDelegate.window?.rootViewController = viewController
+            FBUserInfo.fetchUserInfo(true, completion: { (success) in
+                if (success) {
+                    appDelegate.window?.rootViewController = viewController
+                }
+            })
         }
     }
     
@@ -55,14 +58,15 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                FBUserInfo.fetchUserInfo(true)
-
-                if ((NSUserDefaults.standardUserDefaults().boolForKey("hasSeenTutorial"))) {
-                    self.performSegueWithIdentifier("goToMainFeed", sender: self)
-                } else {
-                    self.performSegueWithIdentifier("goToIntro", sender: self)
-                }
-            
+                FBUserInfo.fetchUserInfo(true, completion: { (success) in
+                    if (success) {
+                        if ((NSUserDefaults.standardUserDefaults().boolForKey("hasSeenTutorial"))) {
+                            self.performSegueWithIdentifier("goToMainFeed", sender: self)
+                        } else {
+                            self.performSegueWithIdentifier("goToIntro", sender: self)
+                        }
+                    }
+                })
             }
         }
     }

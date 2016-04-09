@@ -27,18 +27,15 @@ class SingleMsgVC : JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIWebView.goBack))
+        self.navigationItem.leftBarButtonItem = backButton
+        
         setupBubbles()
         observeMessages()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        // messages from someone else
-        addMessage("foo", text: "Hey person!")
-        // messages sent from local sender
-        addMessage(senderId, text: "Yo! My name is \(senderDisplayName)")
-        addMessage(senderId, text: "I like turtles!")
-        // animates the receiving of a new message on the view
         finishReceivingMessage()
     }
     
@@ -73,7 +70,7 @@ class SingleMsgVC : JSQMessagesViewController {
         let itemRef = messagesRef.childByAutoId() // 1
         let messageItem = [ // 2
             "text": text,
-            "senderId": senderId
+            "sender_id": senderId
         ]
         itemRef.setValue(messageItem) // 3
         
@@ -90,7 +87,7 @@ class SingleMsgVC : JSQMessagesViewController {
         print(chatroom.id)
         
         messagesQuery.observeEventType(.ChildAdded) { (snapshot: FDataSnapshot!) in
-            let id = snapshot.value["senderId"] as! String
+            let id = snapshot.value["sender_id"] as! String
             let text = snapshot.value["text"] as! String
             
             self.addMessage(id, text: text)
@@ -154,4 +151,9 @@ class SingleMsgVC : JSQMessagesViewController {
         
         return cell
     }
+    
+    func goBack() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

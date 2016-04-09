@@ -5,6 +5,28 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Intro TutorialVC-->
+        <scene sceneID="uL8-aU-zcR">
+            <objects>
+                <viewController id="wbH-O4-kOi" customClass="IntroTutorialVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="COH-GL-9hq"/>
+                        <viewControllerLayoutGuide type="bottom" id="bHt-1d-tND"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l6h-jF-bmj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="ZH0-oA-yIY" kind="presentation" identifier="introToMain" id="Sca-uq-tBt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogR-g5-PdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-399.5" y="-779.5"/>
+        </scene>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -21,6 +43,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="ZH0-oA-yIY" kind="presentation" identifier="goToMainFeed" id="fDn-2i-mVf"/>
+                        <segue destination="wbH-O4-kOi" kind="presentation" identifier="goToIntro" id="oB0-1U-2m6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -883,4 +906,7 @@
         <image name="Circled User Male Filled-50.png" width="30" height="30"/>
         <image name="ProfPic.png" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fDn-2i-mVf"/>
+    </inferredMetricsTieBreakers>
 </document>

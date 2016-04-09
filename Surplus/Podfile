@@ -13,6 +13,7 @@ pod 'Google/CloudMessaging'
 pod 'DZNEmptyDataSet'
 pod 'AMScrollingNavbar', '~> 2.0.1'
 pod 'JSQMessagesViewController'
+pod 'EAIntroView', '~> 2.8.0'
 
 end
 

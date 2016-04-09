@@ -54,7 +54,7 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 FBUserInfo.fetchUserInfo(true)
-                self.performSegueWithIdentifier("goToMainFeed", sender: self)
+                self.performSegueWithIdentifier("goToIntro", sender: self)
             }
         }
     }
@@ -62,12 +62,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

@@ -89,6 +89,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                     })
                 }
             })
+            self.tableView.reloadData()
         })
     }
     

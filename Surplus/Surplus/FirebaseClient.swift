@@ -215,16 +215,17 @@ class FirebaseClient {
                     }
                     
                     var tempChatroom: Chatroom
-                    if (ownerId == FBUserInfo.id)
-                    {
+                    if (ownerId == FBUserInfo.id) {
                         tempChatroom = Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages)
                     }
-                    else
-                    {
+                    else {
                         tempChatroom = Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages)
                     }
                     tempChatroom.id = id
-                    results.append(tempChatroom)
+                    
+                    if (ownerId == FBUserInfo.id || recepId == FBUserInfo.id) {
+                        results.append(tempChatroom)
+                    }
                 }
                 completion(result: results)
             }

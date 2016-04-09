@@ -13,6 +13,9 @@ import FBSDKShareKit
 
 class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
 
+    var facebookButton = FBSDKLoginButton()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +32,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
-        let facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)
         facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
@@ -53,21 +55,11 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                /*
-                 * Tokens is a inner class, used to make sure intro tutorial only occurs once when the app is installed
-                 */
-                
-                struct Tokens {
-                    static var token: dispatch_once_t = 0
-                }
-                
-                if (Tokens.token != 0) {
-                    FBUserInfo.fetchUserInfo(true)
+                FBUserInfo.fetchUserInfo(true)
+
+                if ((NSUserDefaults.standardUserDefaults().boolForKey("hasSeenTutorial"))) {
                     self.performSegueWithIdentifier("goToMainFeed", sender: self)
-                }
-                
-                dispatch_once(&Tokens.token) {
-                    FBUserInfo.fetchUserInfo(true)
+                } else {
                     self.performSegueWithIdentifier("goToIntro", sender: self)
                 }
             

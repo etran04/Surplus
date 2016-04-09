@@ -13,6 +13,9 @@ import FBSDKShareKit
 
 class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
 
+    var facebookButton = FBSDKLoginButton()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +32,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
-        let facebookButton = FBSDKLoginButton()
         facebookButton.center = self.view.center
         self.view.addSubview(facebookButton)
         facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
@@ -54,7 +56,13 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 FBUserInfo.fetchUserInfo(true)
-                self.performSegueWithIdentifier("goToIntro", sender: self)
+
+                if ((NSUserDefaults.standardUserDefaults().boolForKey("hasSeenTutorial"))) {
+                    self.performSegueWithIdentifier("goToMainFeed", sender: self)
+                } else {
+                    self.performSegueWithIdentifier("goToIntro", sender: self)
+                }
+            
             }
         }
     }

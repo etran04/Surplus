@@ -45,9 +45,10 @@ class IntroTutorialVC: UIViewController, EAIntroDelegate {
     }
     
 
-    // MARK: - Navigation
+    // MARK: - EAIntroDelegate
 
     func introDidFinish(introView: EAIntroView!) {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
         self.performSegueWithIdentifier("introToMain", sender: self)
     }
 

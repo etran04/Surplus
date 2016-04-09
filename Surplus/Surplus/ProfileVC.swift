@@ -24,7 +24,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         self.paymentMethodTable.delegate = self
         self.paymentMethodTable.dataSource = self
         self.paymentMethodTable.backgroundColor = UIColor.whiteColor()
-        FirebaseClient.getPaymentPreferences({(result: [String]) in
+        FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: {(result: [String]) in
             self.paymentPrefs = result
             for i in 0..<3 {
                 let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! PaymentMethodCell

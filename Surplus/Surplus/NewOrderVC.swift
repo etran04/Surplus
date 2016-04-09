@@ -37,7 +37,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /* Called when view appears */
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.curOrder.estimate = "$"
+        self.curOrder.estimate = "$0 - $5"
     }
     
     /* Helper function for initializing tableview to allow for collapsible datepickercell */

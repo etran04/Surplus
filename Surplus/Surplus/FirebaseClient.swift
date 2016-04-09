@@ -223,7 +223,6 @@ class FirebaseClient {
                     {
                         results.append(Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages))
                     }
-   
                 }
                 completion(result: results)
             }
@@ -274,6 +273,10 @@ class FirebaseClient {
         uniqueRef.setValue(chat)
     }
     
-    class func sendMessage() {
+    class func sendMessage(chatroom: Chatroom, message: Message) {
+        let chatRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/messages")
+        let messageObj: NSDictionary = ["sender_id": message.senderId, "text": message.text]
+        
+        chatRef.childByAutoId().setValue(messageObj)
     }
 }

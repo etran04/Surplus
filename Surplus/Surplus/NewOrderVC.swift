@@ -71,19 +71,19 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         switch (estimatesControl.selectedSegmentIndex) {
         case 0:
             estimateLabel.text = "$0 – $5"
-            curOrder.estimate = "$"
+            curOrder.estimate = "$0 – $5"
             break
         case 1:
             estimateLabel.text = "$5 – $10"
-            curOrder.estimate = "$$"
+            curOrder.estimate = "$5 – $10"
             break
         case 2:
             estimateLabel.text = "$10 – $20"
-            curOrder.estimate = "$$$"
+            curOrder.estimate = "$10 – $20"
             break
         case 3:
             estimateLabel.text = "$20 – $50"
-            curOrder.estimate = "$$$$"
+            curOrder.estimate = "$20 – $50"
             break
         default:
             print("estimateChanged - error")

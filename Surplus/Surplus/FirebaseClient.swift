@@ -96,6 +96,7 @@ class FirebaseClient {
             }
             else {
                 print("getOrders error")
+                completion(result: [Order]())
             }
             
         })

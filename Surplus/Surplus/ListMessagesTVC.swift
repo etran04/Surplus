@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class ListMessagesTVC: UITableViewController {
+class ListMessagesTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
     // Holds all conversations of the current user
     var chatrooms = [Chatroom]()
@@ -18,6 +19,10 @@ class ListMessagesTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Sets the tableview settings for empty data
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -97,6 +102,19 @@ class ListMessagesTVC: UITableViewController {
         let navController = UINavigationController(rootViewController: newMessageVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
         navController.navigationBar.barTintColor = UIColor(red:0.01, green:0.34, blue:0.26, alpha:1.0)
         self.presentViewController(navController, animated:true, completion: nil)
+    }
+    
+    // MARK: DZNEmptySet Delegate methods
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "You have no active conversations."
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Go pick up orders!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
 }
 

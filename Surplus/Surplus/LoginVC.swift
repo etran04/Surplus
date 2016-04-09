@@ -30,15 +30,16 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
                     appDelegate.window?.rootViewController = viewController
                 }
             })
+        } else {
+            facebookButton.center = self.view.center
+            self.view.addSubview(facebookButton)
+            facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
+            facebookButton.delegate = self
         }
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        facebookButton.center = self.view.center
-        self.view.addSubview(facebookButton)
-        facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
-        facebookButton.delegate = self
+
     }
     
     // Facebook Delegate Methods

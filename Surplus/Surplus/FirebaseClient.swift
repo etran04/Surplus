@@ -231,6 +231,7 @@ class FirebaseClient {
             }
             else {
                 print("getChatrooms error")
+                completion(result: [Chatroom]())
             }
         })
     }
@@ -239,8 +240,7 @@ class FirebaseClient {
         let chatRef = ref.childByAppendingPath("Chatrooms/")
         let uniqueRef = chatRef.childByAutoId()
         var messages = [NSDictionary]()
-        var resultOwnerId = chatroom.ownerId
-        var resultRecepId = chatroom.recepientId
+        var alreadyExists = false
         
         for message in chatroom.messages {
             messages.append(["sender_id": message.senderId, "text": message.text])
@@ -258,8 +258,7 @@ class FirebaseClient {
                     if ((chatroom.ownerId == ownerId || chatroom.ownerId == recepId) &&
                         (chatroom.recepientId == ownerId || chatroom.recepientId == recepId))
                     {
-                        resultOwnerId = ownerId
-                        resultRecepId = recepId
+                        alreadyExists = true
                         break;
                     }
                 }
@@ -267,13 +266,15 @@ class FirebaseClient {
             else {
                 print("getChatrooms error")
             }
+            
+            let chat = ["owner_id": chatroom.ownerId,
+                "recepient_id": chatroom.recepientId,
+                "messages": messages]
+            
+            if (!alreadyExists) {
+                uniqueRef.setValue(chat)
+            }
         })
-        
-        let chat = ["owner_id": resultOwnerId,
-                    "recepient_id": resultRecepId,
-                    "messages": messages]
-        
-        uniqueRef.setValue(chat)
     }
     
     class func sendMessage(chatroom: Chatroom, message: Message) {

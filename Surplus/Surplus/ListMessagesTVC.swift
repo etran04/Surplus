@@ -70,6 +70,7 @@ class ListMessagesTVC: UITableViewController {
         FirebaseClient.getUsername(currentChat.recepientId) { (result) -> Void in
             cell.otherPersonLabel.text = result
         }
+        cell.mostRecentMessageLabel.text = currentChat.messages.last?.text
     
         return cell
     }

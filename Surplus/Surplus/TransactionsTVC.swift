@@ -321,6 +321,8 @@ class TransactionsTVC: UITableViewController {
         self.performSegueWithIdentifier("goToInputCharge", sender: row)
     }
     
+    /* Callback function for when the message button is pressed on the cell.
+     * Creates a new chatroom between the individuals */
     func openMessage(row: Int) {
         let order = self.progressOrders[row]
         var recepientId = ""
@@ -335,7 +337,18 @@ class TransactionsTVC: UITableViewController {
         let msgs = [Message]()
         let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: msgs)
         
-        FirebaseClient.makeChatroom(chatroom)
+        self.tabBarController?.selectedIndex = 2
+
+        FirebaseClient.makeChatroom(chatroom) { (madeNewChatroom) in
+            let titleMsg = "New Message"
+            let msg = "A new conversation between you and () has been created."
+            let confirmDialog = UIAlertController(title: titleMsg, message: msg, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Confirm", style: .Default, handler: nil)
+            confirmDialog.addAction(okAction)
+            if (madeNewChatroom) {
+                self.presentViewController(confirmDialog, animated: true, completion: nil)
+            }
+        }
     }
     
     

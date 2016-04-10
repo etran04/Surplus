@@ -169,8 +169,11 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             
             let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
                 self.confirmPressed(indexPath.row)
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (UIAlertAction) in
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            })
             
             confirmDialog.addAction(okAction)
             confirmDialog.addAction(cancelAction)

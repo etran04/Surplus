@@ -30,8 +30,13 @@ class IntroTutorialVC: UIViewController, EAIntroDelegate {
         page2.desc = "This is page 2 description"
         page2.bgImage = UIImage(named: "bg-2.jpg")
         
+        let page3 = EAIntroPage()
+        page3.title = "Page 3 Title";
+        page3.desc = "This is page 3 description"
+        page3.bgImage = UIImage(named: "bg-3.jpg")
+        
         // Create introduction view
-        let intro = EAIntroView(frame: self.view.bounds, andPages: [page1, page2])
+        let intro = EAIntroView(frame: self.view.bounds, andPages: [page1, page2, page3])
         intro.delegate = self
         
         // Show intro

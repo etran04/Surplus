@@ -95,7 +95,7 @@ class FirebaseClient {
                 completion(result: results)
             }
             else {
-                print("getOrders error")
+                print("getOrders returned empty")
                 completion(result: [Order]())
             }
             
@@ -155,11 +155,13 @@ class FirebaseClient {
         usersRef.setValue(updatedUser)
     }
     
+    /* Sets the payment preference options in the database for the current user */
     class func setPaymentPreferences(paymentPrefs : [String]) {
         let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/payment_prefs")
         usersRef.setValue(paymentPrefs)
     }
     
+    /* Gets the payment preferences for an individual from the database */
     class func getPaymentPreferences(id : String, completion : (result: [String]) -> Void) {
         let usersRef = ref.childByAppendingPath("Users/\(id)/payment_prefs")
         var results = [String]()
@@ -190,6 +192,7 @@ class FirebaseClient {
         })
     }
     
+    /* Returns the list of chatrooms */
     class func getChatrooms(completion: (result: [Chatroom]) -> Void) {
         let chatRef = ref.childByAppendingPath("Chatrooms/")
         var results = [Chatroom]()
@@ -231,13 +234,14 @@ class FirebaseClient {
                 completion(result: results)
             }
             else {
-                print("getChatrooms error")
+                print("getChatrooms returned empty")
                 completion(result: [Chatroom]())
             }
         })
     }
     
-    class func makeChatroom(chatroom: Chatroom) {
+    /* Creates a new chatroom in the database */
+    class func makeChatroom(chatroom: Chatroom, completion: (madeNewChatroom: Bool) -> Void) {
         let chatRef = ref.childByAppendingPath("Chatrooms/")
         let uniqueRef = chatRef.childByAutoId()
         var messages = [NSDictionary]()
@@ -276,8 +280,11 @@ class FirebaseClient {
                 uniqueRef.setValue(chat)
             }
         })
+        
+        completion(madeNewChatroom: alreadyExists)
     }
     
+    /* Adds a new message to a chatroom in the database */
     class func sendMessage(chatroom: Chatroom, message: Message) {
         let chatRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/messages")
         let messageObj: NSDictionary = ["sender_id": message.senderId, "text": message.text]

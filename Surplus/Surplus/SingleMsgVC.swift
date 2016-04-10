@@ -24,8 +24,8 @@ class SingleMsgVC : JSQMessagesViewController {
         super.viewDidLoad()
         
         // No avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        //collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
+        //collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIWebView.goBack))
         self.navigationItem.leftBarButtonItem = backButton
@@ -113,15 +113,33 @@ class SingleMsgVC : JSQMessagesViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
         avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
+        let current = messages[indexPath.item]
+        let placeholder = UIImage(named: "ProfPic.png")
+        var avatar = UIImage(named: "ProfPic.png")
+        
+        let imagePath = "http://graph.facebook.com/\(current.senderId!)/picture?type=large"
+        var JSQAvatar = JSQMessagesAvatarImage(avatarImage: avatar, highlightedImage: avatar, placeholderImage: placeholder)
+        
+        // TODO: Try to load facebook picture as profile
+
+        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: imagePath)!, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                avatar = UIImage(data: data)!
+                JSQAvatar = JSQMessagesAvatarImage(avatarImage: avatar, highlightedImage: avatar, placeholderImage: placeholder)
+            }
+        })
+        
+        return JSQAvatar
+        
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
         messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages[indexPath.item] // 1
-        if message.senderId == senderId { // 2
+        let message = messages[indexPath.item]
+        if message.senderId == senderId {
             return outgoingBubbleImageView
-        } else { // 3
+        } else {
             return incomingBubbleImageView
         }
     }

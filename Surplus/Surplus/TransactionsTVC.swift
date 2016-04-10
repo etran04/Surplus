@@ -337,9 +337,14 @@ class TransactionsTVC: UITableViewController {
         let msgs = [Message]()
         let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: msgs)
         
+        // Switches tab to the Messages tab
         self.tabBarController?.selectedIndex = 2
 
         FirebaseClient.makeChatroom(chatroom) { (madeNewChatroom) in
+            
+            // TODO: Alert user of a new conversation on Messages tab
+            // TODO: Alert user that new conversation cannot be made, because once already exists 
+            
             let titleMsg = "New Message"
             let msg = "A new conversation between you and () has been created."
             let confirmDialog = UIAlertController(title: titleMsg, message: msg, preferredStyle: .Alert)

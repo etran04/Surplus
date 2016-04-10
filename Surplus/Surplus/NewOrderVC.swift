@@ -52,6 +52,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
         locationPickerCell.setChoices(self.locationChoices)
         
+        
+        // TODO: Limit datePicker and durationPicker times to a set
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         

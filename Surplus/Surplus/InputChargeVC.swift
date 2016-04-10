@@ -69,7 +69,14 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
     
     // MARK : Textfield delegate
     
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        print("test")
+        return true
+    }
+    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        // TODO: Figure out why back button doesn't work on the numpad 
         
         switch string {
         case "0","1","2","3","4","5","6","7","8","9":

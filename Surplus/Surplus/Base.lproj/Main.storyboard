@@ -501,10 +501,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-9I-s2t">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input how much you bought the entire order for" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-9I-s2t">
                                 <rect key="frame" x="20" y="165" width="335" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Xua-Bh-CO9"/>
+                                    <constraint firstAttribute="height" constant="30" id="Gre-Lj-pup"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -512,7 +512,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB4-9y-ZPo">
                                 <rect key="frame" x="20" y="309" width="335" height="101"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="101" id="0QZ-r4-qhC"/>
+                                    <constraint firstAttribute="height" constant="101" id="h1c-M7-8VM"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="$0.00">
@@ -541,15 +541,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CBo-ak-rhS" firstAttribute="top" secondItem="UfJ-9I-s2t" secondAttribute="bottom" constant="62" id="0N7-uN-P1d"/>
-                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="trailing" secondItem="bB4-9y-ZPo" secondAttribute="trailing" id="Gme-aZ-Vlz"/>
-                            <constraint firstItem="bB4-9y-ZPo" firstAttribute="centerX" secondItem="7Zm-Mi-pfB" secondAttribute="centerX" id="MfM-68-s1b"/>
-                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="leading" secondItem="7Zm-Mi-pfB" secondAttribute="leadingMargin" constant="4" id="We5-Ne-Hod"/>
-                            <constraint firstItem="RrU-O5-TQ0" firstAttribute="top" secondItem="bB4-9y-ZPo" secondAttribute="bottom" constant="213" id="XL3-CN-xkd"/>
-                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="leading" secondItem="CBo-ak-rhS" secondAttribute="leading" id="ZbE-q6-AGx"/>
-                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="top" secondItem="bqV-3L-sZG" secondAttribute="bottom" constant="101" id="aAl-ot-Kem"/>
-                            <constraint firstItem="bB4-9y-ZPo" firstAttribute="leading" secondItem="CBo-ak-rhS" secondAttribute="leading" id="b87-IS-FwF"/>
-                            <constraint firstItem="RrU-O5-TQ0" firstAttribute="top" secondItem="CBo-ak-rhS" secondAttribute="bottom" constant="298" id="jby-wN-zU4"/>
+                            <constraint firstItem="RrU-O5-TQ0" firstAttribute="top" secondItem="bB4-9y-ZPo" secondAttribute="bottom" constant="213" id="0jG-bu-5TN"/>
+                            <constraint firstItem="CBo-ak-rhS" firstAttribute="leading" secondItem="bB4-9y-ZPo" secondAttribute="leading" id="4Uu-zZ-nvg"/>
+                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="centerX" secondItem="7Zm-Mi-pfB" secondAttribute="centerX" id="Aw0-av-xzF"/>
+                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="trailing" secondItem="bB4-9y-ZPo" secondAttribute="trailing" id="GLi-4d-6ll"/>
+                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="leading" secondItem="7Zm-Mi-pfB" secondAttribute="leadingMargin" constant="4" id="Py4-pw-Zoc"/>
+                            <constraint firstItem="RrU-O5-TQ0" firstAttribute="top" secondItem="CBo-ak-rhS" secondAttribute="bottom" constant="298" id="gw6-Nv-ZQT"/>
+                            <constraint firstItem="CBo-ak-rhS" firstAttribute="top" secondItem="UfJ-9I-s2t" secondAttribute="bottom" constant="62" id="p1Y-Ts-pju"/>
+                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="top" secondItem="bqV-3L-sZG" secondAttribute="bottom" constant="101" id="qCj-46-GWo"/>
+                            <constraint firstItem="UfJ-9I-s2t" firstAttribute="leading" secondItem="CBo-ak-rhS" secondAttribute="leading" id="vFm-ds-wOh"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

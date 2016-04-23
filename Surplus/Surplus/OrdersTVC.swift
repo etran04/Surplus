@@ -88,12 +88,14 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                             tempOrders.append(item)
                         }
                         
-                        self.orders = tempOrders
-                        self.tableView.reloadData()
+                        if(self.orders.last!.id == item.id) {
+                            self.orders = tempOrders
+                            self.tableView.reloadData()
+                        }
                     })
                 }
+                
             })
-            self.tableView.reloadData()
         })
     }
     
@@ -173,10 +175,9 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             
             let okAction = UIAlertAction(title: "Confirm", style: .Default) { (UIAlertAction) -> Void in
                 self.confirmPressed(indexPath.row)
-                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (UIAlertAction) in
-                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             })
             
             confirmDialog.addAction(okAction)
@@ -196,6 +197,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             
             self.presentViewController(confirmDialog, animated: true, completion: nil)
         }
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     /* Callback for when confirm is pressed on claiming an order */

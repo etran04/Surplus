@@ -17,7 +17,8 @@ class StartTimePickerCell: DatePickerCell {
         super.leftLabel.text = "Start Time"
         super.rightLabel.text = "Choose an available time"
         super.datePicker.datePickerMode = .Time
-        super.datePicker.minuteInterval = 15
+        super.datePicker.minuteInterval = 1
+        super.datePicker.minimumDate = NSDate()
         super.datePicker.addTarget(self, action: #selector(StartTimePickerCell.datePickerChanged), forControlEvents: .ValueChanged)
     }
     

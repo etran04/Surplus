@@ -14,7 +14,6 @@ import FBSDKShareKit
 class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
 
     var facebookButton = FBSDKLoginButton()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

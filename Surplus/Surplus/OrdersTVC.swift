@@ -20,6 +20,8 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserProfile.setType(true)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -45,6 +47,8 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         // Initial set up for pull down to refresh
         self.setUpRefresh()
+        
+        print(UserProfile.getType())
 
     }
     

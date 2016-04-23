@@ -84,12 +84,14 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                             tempOrders.append(item)
                         }
                         
-                        self.orders = tempOrders
-                        self.tableView.reloadData()
+                        if(self.orders.last!.id == item.id) {
+                            self.orders = tempOrders
+                            self.tableView.reloadData()
+                        }
                     })
                 }
+                
             })
-            self.tableView.reloadData()
         })
     }
     

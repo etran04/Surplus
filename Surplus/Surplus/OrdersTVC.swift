@@ -22,7 +22,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UserProfile.setType(true)
+        UserProfile.setType(false)
         if (UserProfile.getType()) {
             navigationItem.rightBarButtonItems = []
         }

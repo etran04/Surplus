@@ -296,7 +296,7 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
     }
     
     /**
-     Used to notify the ScrollPickerCell that it was selected. The DatePickerCell will then run its selection animation and expand or collapse.
+     Used to notify the ScrollPickerCell that it was selected. The ScrollPickerCell will then run its selection animation and expand or collapse.
      
      - parameter tableView: The tableview the DatePickerCell was selected in.
      */
@@ -306,6 +306,10 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
         UIView.transitionWithView(rightLabel, duration: 0.25, options:UIViewAnimationOptions.TransitionCrossDissolve, animations: { () -> Void in
             self.rightLabel.textColor = self.expanded ? self.tintColor : self.rightLabelTextColor
             }, completion: nil)
+        
+        if (leftLabel.text == "Choose a location") {
+            leftLabel.text = pickerData[0]
+        }
         
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -324,6 +328,7 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
     public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }

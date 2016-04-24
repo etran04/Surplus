@@ -27,23 +27,13 @@ class StartTimePickerCell: DatePickerCell {
     }
     
     func datePickerChanged() {
-        let components = NSCalendar.currentCalendar().components(
-            [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.WeekOfYear, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second, NSCalendarUnit.Weekday, NSCalendarUnit.WeekdayOrdinal, NSCalendarUnit.WeekOfYear],
-            fromDate: super.datePicker.date)
-        
-        if components.hour < 7 {
-            components.hour = 7
-            components.minute = 0
-            super.datePicker.setDate(NSCalendar.currentCalendar().dateFromComponents(components)!, animated: true)
-        }
-        else if components.hour > 21 {
-            components.hour = 21
-            components.minute = 59
-            super.datePicker.setDate(NSCalendar.currentCalendar().dateFromComponents(components)!, animated: true)
-        }
-        else {
-            print("Everything is good.")
-        }
+//        var oneSecondAfterPickersDate = datePicker.date.dateByAddingTimeInterval(1)
+//        if (datePicker.date.compare(datePicker.minimumDate == NSOrderedSame ) {
+//            datePicker.date = oneSecondAfterPickersDate ;
+//        }
+//        else if ( [datePicker.date compare:datePicker.maximumDate] == NSOrderedSame ) {
+//            datePicker.date = oneSecondAfterPickersDate ;
+//        }
     }
     
 }

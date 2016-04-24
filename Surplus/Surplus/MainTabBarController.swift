@@ -35,7 +35,8 @@ class MainTabBarController: UITabBarController {
                 
                 let tabArray = self.tabBar.items as NSArray!
                 let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-                tabItem.badgeValue = "\(self.newMessages += 1)"
+                self.newMessages += 1
+                tabItem.badgeValue = "\(self.newMessages)"
             }
         }
         else {

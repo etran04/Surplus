@@ -307,8 +307,9 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
             self.rightLabel.textColor = self.expanded ? self.tintColor : self.rightLabelTextColor
             }, completion: nil)
         
-        if (leftLabel.text == "Choose a location") {
-            leftLabel.text = pickerData[0]
+        // initialized choice to first option when cell is opened for the first time
+        if (rightLabel.text == "Choose a location") {
+            rightLabel.text = pickerData[0]
         }
         
         tableView.beginUpdates()

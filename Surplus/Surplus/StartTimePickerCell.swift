@@ -26,6 +26,18 @@ class StartTimePickerCell: DatePickerCell {
         super.init(coder: aDecoder)
     }
     
+    override func selectedInTableView(tableView: UITableView) {
+        super.selectedInTableView(tableView)
+        // initialized choice to first option when cell is opened for the first time
+        if (rightLabel.text == "Choose an available time") {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .MediumStyle
+            dateFormatter.timeStyle = .ShortStyle
+            rightLabel.text = dateFormatter.stringFromDate(super.datePicker.date)
+        }
+        
+    }
+    
     func datePickerChanged() {
 //        var oneSecondAfterPickersDate = datePicker.date.dateByAddingTimeInterval(1)
 //        if (datePicker.date.compare(datePicker.minimumDate == NSOrderedSame ) {

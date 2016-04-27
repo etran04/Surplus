@@ -53,8 +53,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         // set all navigation bar text to be white
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Helvetica", size: 18)!,
             NSForegroundColorAttributeName : UIColor.whiteColor()
         ]
+        
+        // set the navigation bar color app wide
+        UINavigationBar.appearance().barTintColor = UIColor(red: 3/255, green: 86/255, blue: 66/255, alpha: 1.0)
+        
+        // set all labels to specified font 
+        //UILabel.appearance().font = UIFont(name: "Helvetica", size: 14)
+        
+        // set all font for buttons to specified font
+//        UIButton.appearance().font = UIFont(name: "Helvetica-Light", size: 12)!
+
+//        for family in UIFont.familyNames() {
+//            print("\(family)")
+//            
+//            for name in UIFont.fontNamesForFamilyName(family) {
+//                print("   \(name)")
+//            }
+//        }
+        
         
         return FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)

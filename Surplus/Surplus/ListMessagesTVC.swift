@@ -94,6 +94,24 @@ class ListMessagesTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDat
         FirebaseClient.getUsername((selectedChatroom?.recepientId)!) { (result) -> Void in
             newMessageVC.title = result
         }
+        
+        let ownerURL = "http://graph.facebook.com/\((selectedChatroom?.ownerId)!)/picture?type=large"
+        let recepURL = "http://graph.facebook.com/\((selectedChatroom?.recepientId)!)/picture?type=large"
+        
+        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: ownerURL)!, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                newMessageVC.ownerAvatarImage = UIImage(data: data)
+            }
+        }).resume()
+        
+        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: recepURL)!, completionHandler: {(data, response, error) in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                newMessageVC.recepAvatarImage = UIImage(data: data)
+            }
+        }).resume()
+        
         newMessageVC.senderDisplayName = FBUserInfo.name
         newMessageVC.senderId = selectedChatroom?.ownerId
         newMessageVC.chatroom = selectedChatroom!

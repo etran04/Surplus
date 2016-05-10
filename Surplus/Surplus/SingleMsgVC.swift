@@ -15,6 +15,8 @@ class SingleMsgVC : JSQMessagesViewController {
     var messages = [JSQMessage]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
+    var ownerAvatarImage: UIImage?
+    var recepAvatarImage: UIImage?
     var ref: Firebase!
     
     // *** STEP 1: STORE FIREBASE REFERENCES
@@ -70,7 +72,8 @@ class SingleMsgVC : JSQMessagesViewController {
         let itemRef = messagesRef.childByAutoId() // 1
         let messageItem = [ // 2
             "text": text,
-            "sender_id": senderId
+            "sender_id": senderId,
+            "date": String(NSDate())
         ]
         itemRef.setValue(messageItem) // 3
         
@@ -84,7 +87,6 @@ class SingleMsgVC : JSQMessagesViewController {
     private func observeMessages() {
         messagesRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/messages/")
         let messagesQuery = messagesRef.queryLimitedToLast(25)
-        print(chatroom.id)
         
         messagesQuery.observeEventType(.ChildAdded) { (snapshot: FDataSnapshot!) in
             let id = snapshot.value["sender_id"] as! String
@@ -114,24 +116,13 @@ class SingleMsgVC : JSQMessagesViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!,
         avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let current = messages[indexPath.item]
-        let placeholder = UIImage(named: "ProfPic.png")
-        var avatar = UIImage(named: "ProfPic.png")
         
-        let imagePath = "http://graph.facebook.com/\(current.senderId!)/picture?type=large"
-        var JSQAvatar = JSQMessagesAvatarImage(avatarImage: avatar, highlightedImage: avatar, placeholderImage: placeholder)
-        
-        // TODO: Try to load facebook picture as profile
-
-        NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: imagePath)!, completionHandler: {(data, response, error) in
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                guard let data = data where error == nil else { return }
-                avatar = UIImage(data: data)!
-                JSQAvatar = JSQMessagesAvatarImage(avatarImage: avatar, highlightedImage: avatar, placeholderImage: placeholder)
-            }
-        })
-        
-        return JSQAvatar
-        
+        if current.senderId == senderId {
+            return JSQMessagesAvatarImageFactory.avatarImageWithImage(ownerAvatarImage, diameter: 50)
+        }
+        else {
+            return JSQMessagesAvatarImageFactory.avatarImageWithImage(recepAvatarImage, diameter: 50)
+        }
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,

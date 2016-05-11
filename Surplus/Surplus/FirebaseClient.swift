@@ -196,6 +196,8 @@ class FirebaseClient {
     class func getChatrooms(completion: (result: [Chatroom]) -> Void) {
         let chatRef = ref.childByAppendingPath("Chatrooms/")
         var results = [Chatroom]()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
         
         chatRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             if !(snapshot.value is NSNull) {
@@ -213,9 +215,16 @@ class FirebaseClient {
                             let message = val as! NSDictionary
                             let senderId = message["sender_id"] as! String
                             let text = message["text"] as! String
-                            
-                            messages.append(Message(senderId: senderId, text: text))
+                            if let strDate = message["date"] {
+                                let date = dateFormatter.dateFromString(strDate as! String)
+                                
+                                messages.append(Message(senderId: senderId, text: text, date: date!))
+                            }
+                            else {
+                                messages.append(Message(senderId: senderId, text: text))
+                            }
                         }
+                        messages.sortInPlace({ $0.date!.compare($1.date!) == NSComparisonResult.OrderedAscending })
                     }
                     
                     var tempChatroom: Chatroom

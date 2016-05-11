@@ -190,7 +190,7 @@ class TransactionsTVC: UITableViewController {
         cell.tableController = self
         
         let order = pendingOrders[indexPath.row]
-        let imagePath = "http://graph.facebook.com/\(order.ownerId!)/picture?type=large"
+        let imagePath = "http://graph.facebook.com/\(order.ownerId!)/picture?width=100&height=100"
         self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         
         cell.locationLabel.text = order.location
@@ -218,7 +218,7 @@ class TransactionsTVC: UITableViewController {
             pictureId = order.ownerId!
         }
         
-        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?width=100&height=100"
         self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         
         cell.locationLabel.text = order.location
@@ -245,7 +245,7 @@ class TransactionsTVC: UITableViewController {
             pictureId = order.ownerId!
         }
         
-        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?type=large"
+        let imagePath = "http://graph.facebook.com/\(pictureId!)/picture?width=100&height=100"
         self.downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         
         cell.locationLabel.text = order.location

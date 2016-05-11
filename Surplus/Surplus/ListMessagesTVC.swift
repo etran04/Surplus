@@ -69,15 +69,39 @@ class ListMessagesTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as! ConversationCell
         let currentChat = chatrooms[indexPath.row]
-        let imagePath = "http://graph.facebook.com/\(currentChat.recepientId)/picture?type=large"
+        let imagePath = "http://graph.facebook.com/\(currentChat.recepientId)/picture?width=100&height=100"
         
         downloadImage(NSURL(string: imagePath)!, picture: cell.picture)
         FirebaseClient.getUsername(currentChat.recepientId) { (result) -> Void in
             cell.otherPersonLabel.text = result
         }
         cell.mostRecentMessageLabel.text = currentChat.messages.last?.text
+        cell.lastMsgTimeLabel.text = self.stringFromTimeInterval(NSDate().timeIntervalSinceDate((currentChat.messages.last?.date)!))
+        
+        cell.lastMsgTimeLabel.textColor = UIColor.lightGrayColor()
     
         return cell
+    }
+    
+    //temp
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        let days = hours / 24
+        
+        if (days > 0) {
+            return String(format: "%dd", days)
+        }
+        else if (hours > 0) {
+            return String(format: "%dh", hours)
+        }
+        else if (minutes > 0) {
+            return String(format: "%dm", minutes)
+        }
+        
+        return String(format: "%ds", seconds)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -95,8 +119,8 @@ class ListMessagesTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDat
             newMessageVC.title = result
         }
         
-        let ownerURL = "http://graph.facebook.com/\((selectedChatroom?.ownerId)!)/picture?type=large"
-        let recepURL = "http://graph.facebook.com/\((selectedChatroom?.recepientId)!)/picture?type=large"
+        let ownerURL = "http://graph.facebook.com/\((selectedChatroom?.ownerId)!)/picture?width=100&height=100"
+        let recepURL = "http://graph.facebook.com/\((selectedChatroom?.recepientId)!)/picture?width=100&height=100"
         
         NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: ownerURL)!, completionHandler: {(data, response, error) in
             dispatch_async(dispatch_get_main_queue()) { () -> Void in

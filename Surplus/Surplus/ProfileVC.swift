@@ -43,7 +43,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             navigationController.followScrollView(view, delay: 50.0)
         }
         
-        let imagePath = "http://graph.facebook.com/\(FBUserInfo.id!)/picture?type=large"
+        let imagePath = "http://graph.facebook.com/\(FBUserInfo.id!)/picture?width=150&height=150"
         
         downloadImage(NSURL(string: imagePath)!, picture: profilePic)
         

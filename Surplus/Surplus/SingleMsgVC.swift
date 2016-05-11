@@ -26,8 +26,8 @@ class SingleMsgVC : JSQMessagesViewController {
         super.viewDidLoad()
         
         // No avatars
-        //collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-        //collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+//        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
+//        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIWebView.goBack))
         self.navigationItem.leftBarButtonItem = backButton
@@ -116,6 +116,10 @@ class SingleMsgVC : JSQMessagesViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!,
         avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let current = messages[indexPath.item]
+        
+        if (ownerAvatarImage == nil || recepAvatarImage == nil) {
+            return nil
+        }
         
         if current.senderId == senderId {
             return JSQMessagesAvatarImageFactory.avatarImageWithImage(ownerAvatarImage, diameter: 50)

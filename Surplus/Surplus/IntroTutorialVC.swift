@@ -21,12 +21,29 @@ class IntroTutorialVC: UIViewController, EAIntroDelegate {
         
         // Build introduction pages
         let page1 = EAIntroPage()
-        page1.title = "Page 1 Title";
+        page1.title = "Do you even lift bro?";
         page1.desc = "This is page 1 description"
         page1.bgImage = UIImage(named: "bg-1.jpg")
         
+        let testFrame : CGRect = CGRectMake(25,200,325,200)
+        let testView : UIView = UIView(frame: testFrame)
+        testView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        testView.alpha=0.5
+        testView.tag = 100
+        
+        let button   = UIButton(type: UIButtonType.System) as UIButton
+        button.frame = CGRectMake(100, 100, 100, 50)
+        button.backgroundColor = UIColor.greenColor()
+        button.setTitle("Test Button", forState: UIControlState.Normal)
+        //button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        testView.addSubview(button)
+
+        page1.subviews = [UIView]()
+        page1.subviews.append(testView)
+        
         let page2 = EAIntroPage()
-        page2.title = "Page 2 Title";
+        page2.title = "Select Payment Preferences";
         page2.desc = "This is page 2 description"
         page2.bgImage = UIImage(named: "bg-2.jpg")
         
@@ -38,6 +55,7 @@ class IntroTutorialVC: UIViewController, EAIntroDelegate {
         // Create introduction view
         let intro = EAIntroView(frame: self.view.bounds, andPages: [page1, page2, page3])
         intro.delegate = self
+        intro.skipButton.hidden = true
         
         // Show intro
         intro.showInView(self.view, animateDuration: 0.0)

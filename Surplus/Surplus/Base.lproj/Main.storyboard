@@ -140,12 +140,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Orders" id="RqC-13-kV3">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="CYw-SQ-Ja8">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Ab2-r2-hWe" kind="show" id="lGm-Wz-UP5"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Duh-yo-nz1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -157,6 +151,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
+                        <outlet property="newOrderButton" destination="Duh-yo-nz1" id="dLv-Mf-kRA"/>
                         <outlet property="refresh" destination="WfH-UX-Uxl" id="tnn-Pm-g9D"/>
                     </connections>
                 </tableViewController>

@@ -26,6 +26,14 @@ class DurationPickerCell: DatePickerCell {
         super.init(coder: aDecoder)
     }
     
+    override func selectedInTableView(tableView: UITableView) {
+        super.selectedInTableView(tableView)
+        // initialized choice to first option when cell is opened for the first time
+        if (super.rightLabel.text == "Choose how long you are free") {
+            saveCountdown()
+        }
+    }
+    
     func saveCountdown() {
         let countdown = datePicker.countDownDuration
         let hours = Int(countdown) / 3600

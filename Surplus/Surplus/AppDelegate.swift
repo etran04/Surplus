@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GCMReceiverDelegate {
@@ -27,8 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     
     let subscriptionTopic = "/topics/global"
     let apiKey = "AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM"
+    
+    var managedObjectContext: NSManagedObjectContext!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        initializeCoreData()
+        
         let settings: UIUserNotificationSettings =
         UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
@@ -48,8 +53,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         // set all navigation bar text to be white
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Helvetica", size: 18)!,
             NSForegroundColorAttributeName : UIColor.whiteColor()
         ]
+        
+        // set the navigation bar color app wide
+        UINavigationBar.appearance().barTintColor = UIColor(red: 3/255, green: 86/255, blue: 66/255, alpha: 1.0)
+        
+        // set all labels to specified font 
+        //UILabel.appearance().font = UIFont(name: "Helvetica", size: 14)
+        
+        // set all font for buttons to specified font
+//        UIButton.appearance().font = UIFont(name: "Helvetica-Light", size: 12)!
+
+//        for family in UIFont.familyNames() {
+//            print("\(family)")
+//            
+//            for name in UIFont.fontNamesForFamilyName(family) {
+//                print("   \(name)")
+//            }
+//        }
+        
         
         return FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -86,6 +110,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
                     self.subscribeToTopic()
                 }
             })
+        }
+    }
+    
+    func initializeCoreData() {
+        // This resource is the same name as your xcdatamodeld contained in your project.
+        guard let modelURL = NSBundle.mainBundle().URLForResource("SurplusModel", withExtension:"momd") else {
+            fatalError("Error loading model from bundle")
+        }
+        // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
+        guard let mom = NSManagedObjectModel(contentsOfURL: modelURL) else {
+            fatalError("Error initializing mom from: \(modelURL)")
+        }
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
+        self.managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        self.managedObjectContext.persistentStoreCoordinator = psc
+        
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let docURL = urls[urls.endIndex-1]
+        /* The directory the application uses to store the Core Data store file.
+         This code uses a file named "DataModel.sqlite" in the application's documents directory.
+         */
+        let storeURL = docURL.URLByAppendingPathComponent("SurplusModel")
+        do {
+            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        } catch {
+            fatalError("Error migrating store: \(error)")
         }
     }
     

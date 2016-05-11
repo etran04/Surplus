@@ -37,6 +37,10 @@
 		832FDCDF1C87DFB800836B7C /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCDE1C87DFB800836B7C /* Chatroom.swift */; };
 		832FDCE11C87E17500836B7C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCE01C87E17500836B7C /* Message.swift */; };
 		832FDCE31C87E3DC00836B7C /* ListMessagesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FDCE21C87E3DC00836B7C /* ListMessagesTVC.swift */; };
+		839C9B0A1CCC346A00165FEF /* SurplusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 839C9B081CCC346A00165FEF /* SurplusModel.xcdatamodeld */; };
+		839C9B0E1CCC377C00165FEF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839C9B0D1CCC377C00165FEF /* UserProfile.swift */; };
+		839C9B1C1CCC3A3C00165FEF /* PaymentPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839C9B1B1CCC3A3C00165FEF /* PaymentPref.swift */; };
+		839C9B1E1CCC3A6300165FEF /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839C9B1D1CCC3A6300165FEF /* Type.swift */; };
 		83B16FCC1C5ED5A0001D7815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */; };
 		83B16FCE1C5ED5A0001D7815 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */; };
 		83B16FD11C5ED5A0001D7815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B16FCF1C5ED5A0001D7815 /* Main.storyboard */; };
@@ -110,6 +114,10 @@
 		832FDCDE1C87DFB800836B7C /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		832FDCE01C87E17500836B7C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		832FDCE21C87E3DC00836B7C /* ListMessagesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMessagesTVC.swift; sourceTree = "<group>"; };
+		839C9B091CCC346A00165FEF /* SurplusModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SurplusModel.xcdatamodel; sourceTree = "<group>"; };
+		839C9B0D1CCC377C00165FEF /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		839C9B1B1CCC3A3C00165FEF /* PaymentPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentPref.swift; sourceTree = "<group>"; };
+		839C9B1D1CCC3A6300165FEF /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		83B16FC81C5ED5A0001D7815 /* Surplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B16FCD1C5ED5A0001D7815 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -244,10 +252,21 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		839C9B0C1CCC375300165FEF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				839C9B0D1CCC377C00165FEF /* UserProfile.swift */,
+				839C9B1B1CCC3A3C00165FEF /* PaymentPref.swift */,
+				839C9B1D1CCC3A6300165FEF /* Type.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		83B16FBF1C5ED5A0001D7815 = {
 			isa = PBXGroup;
 			children = (
 				83E15D011C7FC9B20068423E /* GoogleService-Info.plist */,
+				839C9B081CCC346A00165FEF /* SurplusModel.xcdatamodeld */,
 				83B16FCA1C5ED5A0001D7815 /* Surplus */,
 				83B16FDF1C5ED5A0001D7815 /* SurplusTests */,
 				83B16FEA1C5ED5A0001D7815 /* SurplusUITests */,
@@ -270,6 +289,7 @@
 		83B16FCA1C5ED5A0001D7815 /* Surplus */ = {
 			isa = PBXGroup;
 			children = (
+				839C9B0C1CCC375300165FEF /* CoreData */,
 				83EF48FF1C79E92300BE705B /* API Wrappers */,
 				83B16FD21C5ED5A0001D7815 /* Assets.xcassets */,
 				83B16FCB1C5ED5A0001D7815 /* AppDelegate.swift */,
@@ -542,6 +562,7 @@
 				83B16FCE1C5ED5A0001D7815 /* LoginVC.swift in Sources */,
 				940CC1A41C827A5000A99A32 /* PaymentMethodCell.swift in Sources */,
 				07EF919F1C7D2FA100FE586D /* InputChargeVC.swift in Sources */,
+				839C9B1E1CCC3A6300165FEF /* Type.swift in Sources */,
 				0754F54F1C79B89E00D0EA05 /* OrdersTVC.swift in Sources */,
 				83EF48FC1C79CBFC00BE705B /* NewOrderVC.swift in Sources */,
 				832FDCE31C87E3DC00836B7C /* ListMessagesTVC.swift in Sources */,
@@ -554,7 +575,10 @@
 				078FD2F01C7C662600EBAB62 /* InProgressCell.swift in Sources */,
 				83B7BADA1C79B10A00DF36DD /* FBUserInfo.swift in Sources */,
 				074AF19C1CB8B12100A41D3F /* IntroTutorialVC.swift in Sources */,
+				839C9B1C1CCC3A3C00165FEF /* PaymentPref.swift in Sources */,
+				839C9B0E1CCC377C00165FEF /* UserProfile.swift in Sources */,
 				0754F5511C79B97900D0EA05 /* OrderCell.swift in Sources */,
+				839C9B0A1CCC346A00165FEF /* SurplusModel.xcdatamodeld in Sources */,
 				0767D3CF1C7C46650039B2C4 /* PendingCell.swift in Sources */,
 				832FDCDF1C87DFB800836B7C /* Chatroom.swift in Sources */,
 				07DE35181C8901710063F6D6 /* ConversationCell.swift in Sources */,
@@ -841,6 +865,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		839C9B081CCC346A00165FEF /* SurplusModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				839C9B091CCC346A00165FEF /* SurplusModel.xcdatamodel */,
+			);
+			currentVersion = 839C9B091CCC346A00165FEF /* SurplusModel.xcdatamodel */;
+			name = SurplusModel.xcdatamodeld;
+			path = Surplus/SurplusModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 83B16FC01C5ED5A0001D7815 /* Project object */;
 }

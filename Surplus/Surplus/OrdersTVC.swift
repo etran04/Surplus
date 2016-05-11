@@ -14,12 +14,18 @@ import EAIntroView
 /* List of recent orders being requested */
 class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, EAIntroDelegate {
     
+    @IBOutlet weak var newOrderButton: UIBarButtonItem!
     var orders = [Order]()
 
     @IBOutlet weak var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserProfile.setType(false)
+        if (UserProfile.getType()) {
+            navigationItem.rightBarButtonItems = []
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -45,6 +51,8 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         // Initial set up for pull down to refresh
         self.setUpRefresh()
+        
+        print(UserProfile.getType())
 
     }
     

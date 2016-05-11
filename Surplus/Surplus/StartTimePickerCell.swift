@@ -17,7 +17,8 @@ class StartTimePickerCell: DatePickerCell {
         super.leftLabel.text = "Start Time"
         super.rightLabel.text = "Choose an available time"
         super.datePicker.datePickerMode = .Time
-        super.datePicker.minuteInterval = 15
+        super.datePicker.minuteInterval = 1
+        super.datePicker.minimumDate = NSDate()
         super.datePicker.addTarget(self, action: #selector(StartTimePickerCell.datePickerChanged), forControlEvents: .ValueChanged)
     }
     
@@ -25,24 +26,26 @@ class StartTimePickerCell: DatePickerCell {
         super.init(coder: aDecoder)
     }
     
-    func datePickerChanged() {
-        let components = NSCalendar.currentCalendar().components(
-            [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.WeekOfYear, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second, NSCalendarUnit.Weekday, NSCalendarUnit.WeekdayOrdinal, NSCalendarUnit.WeekOfYear],
-            fromDate: super.datePicker.date)
+    override func selectedInTableView(tableView: UITableView) {
+        super.selectedInTableView(tableView)
+        // initialized choice to first option when cell is opened for the first time
+        if (rightLabel.text == "Choose an available time") {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .MediumStyle
+            dateFormatter.timeStyle = .ShortStyle
+            rightLabel.text = dateFormatter.stringFromDate(super.datePicker.date)
+        }
         
-        if components.hour < 7 {
-            components.hour = 7
-            components.minute = 0
-            super.datePicker.setDate(NSCalendar.currentCalendar().dateFromComponents(components)!, animated: true)
-        }
-        else if components.hour > 21 {
-            components.hour = 21
-            components.minute = 59
-            super.datePicker.setDate(NSCalendar.currentCalendar().dateFromComponents(components)!, animated: true)
-        }
-        else {
-            print("Everything is good.")
-        }
+    }
+    
+    func datePickerChanged() {
+//        var oneSecondAfterPickersDate = datePicker.date.dateByAddingTimeInterval(1)
+//        if (datePicker.date.compare(datePicker.minimumDate == NSOrderedSame ) {
+//            datePicker.date = oneSecondAfterPickersDate ;
+//        }
+//        else if ( [datePicker.date compare:datePicker.maximumDate] == NSOrderedSame ) {
+//            datePicker.date = oneSecondAfterPickersDate ;
+//        }
     }
     
 }

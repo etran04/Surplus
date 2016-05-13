@@ -78,25 +78,33 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                 let myPaymentPrefs = result
                 
                 for item in self.orders {
-                    FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
-                        let otherPaymentPrefs = result2
-                        var notTrash = false
+                    let date = NSDate()
+                    print(date)
+                    print(item.endTime!)
+                    if(date.compare(item.endTime!) == NSComparisonResult.OrderedDescending) {
+                        FirebaseClient.removeOrder(item.id)
+                    }
+                    else {
+                        FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
+                            let otherPaymentPrefs = result2
+                            var notTrash = false
                         
-                        for payment : String in myPaymentPrefs {
-                            if otherPaymentPrefs.contains(payment) {
-                                notTrash = true
+                            for payment : String in myPaymentPrefs {
+                                if otherPaymentPrefs.contains(payment) {
+                                    notTrash = true
+                                }
                             }
-                        }
                         
-                        if notTrash {
-                            tempOrders.append(item)
-                        }
-                        
-                        if(self.orders.last!.id == item.id) {
-                            self.orders = tempOrders
-                            self.tableView.reloadData()
-                        }
-                    })
+                            if notTrash {
+                                tempOrders.append(item)
+                            }
+                        })
+                    }
+                    
+                    if(self.orders.last!.id == item.id) {
+                        self.orders = tempOrders
+                        self.tableView.reloadData()
+                    }
                 }
                 
             })

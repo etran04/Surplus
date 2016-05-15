@@ -78,35 +78,37 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                 let myPaymentPrefs = result
                 
                 for item in self.orders {
-                    let date = NSDate()
-                    print(date)
-                    print(item.endTime!)
-                    if(date.compare(item.endTime!) == NSComparisonResult.OrderedDescending) {
-                        FirebaseClient.removeOrder(item.id)
-                    }
-                    else {
-                        FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
+                    FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
+                        
+                        let date = NSDate()
+                        if(date.compare(item.endTime!) == NSComparisonResult.OrderedDescending) {
+                            FirebaseClient.removeOrder(item.id)
+                        }
+                        else {
                             let otherPaymentPrefs = result2
                             var notTrash = false
-                        
+                    
                             for payment : String in myPaymentPrefs {
                                 if otherPaymentPrefs.contains(payment) {
                                     notTrash = true
                                 }
                             }
-                        
+                    
                             if notTrash {
                                 tempOrders.append(item)
                             }
-                        })
-                    }
-                    
-                    if(self.orders.last!.id == item.id) {
-                        self.orders = tempOrders
-                        self.tableView.reloadData()
-                    }
+                        }
+                        
+                        if(self.orders.last!.id == item.id) {
+                            self.orders = tempOrders
+                            self.tableView.reloadData()
+                        }
+                    })
                 }
                 
+                if(self.orders.count == 0) {
+                    self.tableView.reloadData()
+                }
             })
         })
     }
@@ -144,6 +146,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
 
     /* Details the number of orders in the tableview */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(orders.count)
         return orders.count
     }
     

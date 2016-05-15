@@ -63,7 +63,22 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
                         if ((NSUserDefaults.standardUserDefaults().boolForKey("hasSeenTutorial"))) {
                             self.performSegueWithIdentifier("goToMainFeed", sender: self)
                         } else {
-                            self.performSegueWithIdentifier("goToIntro", sender: self)
+                            //self.performSegueWithIdentifier("goToIntro", sender: self)
+                            let window = UIApplication.sharedApplication().delegate?.window
+                            let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("mainFeedController") as! UITabBarController
+                            window!!.rootViewController = tabBarController
+                            tabBarController.selectedIndex = 3
+                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
+                            
+//                            if window!!.rootViewController as? UITabBarController != nil {
+//                                let tabbarController = window!!.rootViewController as! UITabBarController
+//                                let fromView = self.view
+//                                let toView = tabbarController.viewControllers![1].view
+//                                
+//                                UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
+//                                    tabbarController.selectedIndex = 3
+//                                })
+//                            }
                         }
                     }
                 })

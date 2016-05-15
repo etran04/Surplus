@@ -629,17 +629,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-MU-YR5">
-                                <rect key="frame" x="121" y="551" width="133" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutPressed:" destination="BvC-zX-at2" eventType="touchUpInside" id="IE8-y0-yWS"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wfj-mX-dT4">
-                                <rect key="frame" x="0.0" y="281" width="375" height="204"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="wfj-mX-dT4">
+                                <rect key="frame" x="0.0" y="269" width="375" height="274"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" id="eSm-Ww-3Il" customClass="PaymentMethodCell" customModule="Surplus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
@@ -649,9 +642,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew4-GU-jC2">
-                                                    <rect key="frame" x="30" y="10" width="131" height="21"/>
+                                                    <rect key="frame" x="30" y="10" width="263" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="131" id="Ubf-sw-LNZ"/>
+                                                        <constraint firstAttribute="width" constant="263" id="Ubf-sw-LNZ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -680,19 +673,27 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-MU-YR5">
+                                <rect key="frame" x="121" y="564" width="133" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="BvC-zX-at2" eventType="touchUpInside" id="IE8-y0-yWS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfj-mX-dT4" firstAttribute="centerX" secondItem="LXL-pt-gwu" secondAttribute="centerX" id="0ed-Uk-X90"/>
                             <constraint firstItem="pm7-JQ-qQS" firstAttribute="top" secondItem="xC0-T5-oH8" secondAttribute="bottom" constant="14" id="652-4M-sFG"/>
-                            <constraint firstItem="wfj-mX-dT4" firstAttribute="top" secondItem="pm7-JQ-qQS" secondAttribute="bottom" constant="17" id="9QC-pk-gdK"/>
+                            <constraint firstItem="wfj-mX-dT4" firstAttribute="top" secondItem="pm7-JQ-qQS" secondAttribute="bottom" constant="5" id="9QC-pk-gdK"/>
                             <constraint firstItem="xC0-T5-oH8" firstAttribute="trailing" secondItem="vds-MU-YR5" secondAttribute="trailing" constant="-5" id="EVM-Xd-C51"/>
                             <constraint firstItem="xC0-T5-oH8" firstAttribute="top" secondItem="nIZ-1r-tIS" secondAttribute="bottom" constant="26" id="P8N-w7-88q"/>
                             <constraint firstItem="pm7-JQ-qQS" firstAttribute="leading" secondItem="LXL-pt-gwu" secondAttribute="leadingMargin" id="QrS-0P-4oC"/>
                             <constraint firstItem="pm7-JQ-qQS" firstAttribute="trailing" secondItem="wfj-mX-dT4" secondAttribute="trailing" constant="-16" id="YSW-cY-vhV"/>
                             <constraint firstItem="pm7-JQ-qQS" firstAttribute="centerX" secondItem="xC0-T5-oH8" secondAttribute="centerX" constant="2.5" id="ezm-zl-Qe1"/>
-                            <constraint firstItem="fkq-2d-pvY" firstAttribute="top" secondItem="vds-MU-YR5" secondAttribute="bottom" constant="37" id="iCF-v3-4RH"/>
-                            <constraint firstItem="vds-MU-YR5" firstAttribute="top" secondItem="wfj-mX-dT4" secondAttribute="bottom" constant="66" id="n23-rq-YFo"/>
+                            <constraint firstItem="fkq-2d-pvY" firstAttribute="top" secondItem="vds-MU-YR5" secondAttribute="bottom" constant="24" id="iCF-v3-4RH"/>
+                            <constraint firstItem="vds-MU-YR5" firstAttribute="top" secondItem="wfj-mX-dT4" secondAttribute="bottom" constant="21" id="n23-rq-YFo"/>
                             <constraint firstItem="xC0-T5-oH8" firstAttribute="leading" secondItem="vds-MU-YR5" secondAttribute="leading" id="pQ0-tW-f2a"/>
                             <constraint firstItem="wfj-mX-dT4" firstAttribute="leading" secondItem="pm7-JQ-qQS" secondAttribute="leading" constant="-16" id="qWW-1X-b3d"/>
                         </constraints>

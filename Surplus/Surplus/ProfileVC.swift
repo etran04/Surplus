@@ -24,18 +24,13 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         self.paymentMethodTable.delegate = self
         self.paymentMethodTable.dataSource = self
         self.paymentMethodTable.backgroundColor = UIColor.whiteColor()
-        FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: {(result: [String]) in
-            self.paymentPrefs = result
-            for i in 0..<3 {
-                let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! PaymentMethodCell
-                
-                cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
-            }
-        })
+        self.profileName.text = FBUserInfo.name
+        
+        let imagePath = "http://graph.facebook.com/\(FBUserInfo.id!)/picture?width=150&height=150"
+        downloadImage(NSURL(string: imagePath)!, picture: profilePic)
     }
     
     override func viewDidAppear(animated: Bool) {
-        
         super.viewDidAppear(animated)
         
         // Sets up navigation controller so it animated away when scrolling through.
@@ -43,15 +38,22 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             navigationController.followScrollView(view, delay: 50.0)
         }
         
-        let imagePath = "http://graph.facebook.com/\(FBUserInfo.id!)/picture?width=150&height=150"
+        let accountTypeCell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PaymentMethodCell
+        accountTypeCell.paymentMethodSwitch.setOn(UserProfile.getType(), animated: false)
         
-        downloadImage(NSURL(string: imagePath)!, picture: profilePic)
-        
-        profileName.text = FBUserInfo.name
+        FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: {(result: [String]) in
+            self.paymentPrefs = result
+            for i in 0..<3 {
+                let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as! PaymentMethodCell
+                
+                cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
+            }
+        })
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.showNavbar(animated: true)
         }
@@ -67,35 +69,50 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        print("sections")
+        return section == 0 ? 1 : 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.paymentMethodTable.dequeueReusableCellWithIdentifier("paymentCell") as! PaymentMethodCell
-        
-        if(indexPath.row == 0) {
-            cell.paymentMethodLabel.text = "Venmo"
-        }
-        else if(indexPath.row == 1) {
-            cell.paymentMethodLabel.text = "Square Cash"
+        print("getting here")
+        if (indexPath.section == 0) {
+            cell.paymentMethodLabel.text = "Do you have plus dollars?"
         }
         else {
-            cell.paymentMethodLabel.text = "Cash"
+            if (indexPath.row == 0) {
+                cell.paymentMethodLabel.text = "Venmo"
+            }
+            else if (indexPath.row == 1) {
+                cell.paymentMethodLabel.text = "Square Cash"
+            }
+            else {
+                cell.paymentMethodLabel.text = "Cash"
+            }
         }
         
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 0) {
+        if (section == 0) {
+            return "Account Type"
+        }
+        else {
             return "Payment Preferences"
         }
-        
-        return "Payment Preferences Failed"
     }
     
     func downloadImage(url: NSURL, picture: UIImageView){

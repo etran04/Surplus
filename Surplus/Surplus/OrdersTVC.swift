@@ -16,25 +16,19 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     
     @IBOutlet weak var newOrderButton: UIBarButtonItem!
     var orders = [Order]()
+    var copyOfOrderButton: UIBarButtonItem?
 
     @IBOutlet weak var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UserProfile.setType(false)
-        if (UserProfile.getType()) {
-            navigationItem.rightBarButtonItems = []
-        }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
         // Sets up navigation controller so it animated away when scrolling through.
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.followScrollView(tableView, delay: 50.0)
         }
+        
+        self.copyOfOrderButton = newOrderButton
         
         // Gets the orders from Firebase to display
         self.fetchOrders()
@@ -45,12 +39,23 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         // Extends sepeartor lines for tableview
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // Initial set up for pull down to refresh
         self.setUpRefresh()
+        
+        if (UserProfile.getType()) {
+            navigationItem.rightBarButtonItems = []
+        }
+        else {
+            navigationItem.rightBarButtonItems = [self.copyOfOrderButton!]
+        }
         
         print(UserProfile.getType())
 

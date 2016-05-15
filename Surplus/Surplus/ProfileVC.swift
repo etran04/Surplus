@@ -40,6 +40,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         let accountTypeCell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PaymentMethodCell
         accountTypeCell.paymentMethodSwitch.setOn(UserProfile.getType(), animated: false)
+        accountTypeCell.paymentMethodSwitch.tag = 1
         
         FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: {(result: [String]) in
             self.paymentPrefs = result
@@ -73,13 +74,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("sections")
         return section == 0 ? 1 : 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.paymentMethodTable.dequeueReusableCellWithIdentifier("paymentCell") as! PaymentMethodCell
-        print("getting here")
+        
         if (indexPath.section == 0) {
             cell.paymentMethodLabel.text = "Do you have plus dollars?"
         }

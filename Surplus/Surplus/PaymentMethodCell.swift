@@ -25,18 +25,26 @@ class PaymentMethodCell: UITableViewCell {
     }
 
     @IBAction func changedPaymentPref(sender: AnyObject) {
-        FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
-            var currentPrefs = result
-            
-            if(self.paymentMethodSwitch.on && !currentPrefs.contains(self.paymentMethodLabel.text!)) {
-                currentPrefs.append(self.paymentMethodLabel.text!)
-            }
-            else if(!self.paymentMethodSwitch.on && currentPrefs.contains(self.paymentMethodLabel.text!)) {
-                currentPrefs.removeAtIndex(currentPrefs.indexOf(self.paymentMethodLabel.text!)!)
-            }
-            //print(currentPrefs)
-            
-            FirebaseClient.setPaymentPreferences(currentPrefs)
-        })
+        let obj = sender as! UISwitch
+        
+        // IF switch is from account type
+        if (obj.tag == 1) {
+            UserProfile.setType(obj.on)
+        }
+        else {
+            FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
+                var currentPrefs = result
+                
+                if(self.paymentMethodSwitch.on && !currentPrefs.contains(self.paymentMethodLabel.text!)) {
+                    currentPrefs.append(self.paymentMethodLabel.text!)
+                }
+                else if(!self.paymentMethodSwitch.on && currentPrefs.contains(self.paymentMethodLabel.text!)) {
+                    currentPrefs.removeAtIndex(currentPrefs.indexOf(self.paymentMethodLabel.text!)!)
+                }
+                //print(currentPrefs)
+                
+                FirebaseClient.setPaymentPreferences(currentPrefs)
+            })
+        }
     }
 }

@@ -105,6 +105,10 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                         }
                     })
                 }
+                
+                if(self.orders.count == 0) {
+                    self.tableView.reloadData()
+                }
             })
         })
     }
@@ -142,6 +146,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
 
     /* Details the number of orders in the tableview */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(orders.count)
         return orders.count
     }
     

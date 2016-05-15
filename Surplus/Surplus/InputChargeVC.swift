@@ -8,8 +8,6 @@
 
 import UIKit
 
-let kPercentDiscount = 0.10
-
 /* This class represents the page at which students with plus dollars will use to input how much they spent, and then
  * ask the buyer for how much is charged */
 class InputChargeVC: UIViewController, UITextFieldDelegate {
@@ -101,10 +99,11 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
     
     func formatCurrency(string: String) {
         let formatter = NSNumberFormatter()
+        let discount = Double(Int((curOrder?.discount)!)!) / 100.0
         formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         formatter.locale = NSLocale(localeIdentifier: "en_US")
-        let numberFromField = (NSString(string: currentCharge).doubleValue)/100
+        let numberFromField = (NSString(string: currentCharge).doubleValue) / 100
         textField.text = formatter.stringFromNumber(numberFromField)
-        finalChargeLabel.text = formatter.stringFromNumber(numberFromField - (numberFromField * kPercentDiscount))
+        finalChargeLabel.text = formatter.stringFromNumber(numberFromField - (numberFromField * discount))
     }
 }

@@ -52,8 +52,14 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
         locationPickerCell.setChoices(self.locationChoices)
         
+        let discountPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
+        var discountPrices = [String]()
+        for (var i = 5; i <= 95; i += 5) {
+            discountPrices.append(String(i) + "%")
+        }
+        discountPickerCell.setChoices(discountPrices)
+        discountPickerCell.leftLabel.text = "Discount"
         
-        // TODO: Limit datePicker and durationPicker times to a set
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         
@@ -61,7 +67,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let durationPickerCell = DurationPickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         
         // Cells is a cells to be used
-        cells = [locationPickerCell, startPickerCell, durationPickerCell]
+        cells = [locationPickerCell, startPickerCell, durationPickerCell, discountPickerCell]
         
         // Replaces the extra cells at the end with a clear view 
         tableView.tableFooterView = UIView(frame: CGRect.zero)

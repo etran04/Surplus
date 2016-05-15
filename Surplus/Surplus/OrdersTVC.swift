@@ -160,6 +160,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
+        cell.discountLabel.text = order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle

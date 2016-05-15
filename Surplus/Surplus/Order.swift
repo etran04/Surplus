@@ -17,6 +17,7 @@ struct Order {
     var ownerId: String?
     var recepientId: String?
     var id: String
+    var discount: String?
     
     init() {
         self.startTime = nil
@@ -27,9 +28,10 @@ struct Order {
         self.ownerId = nil
         self.recepientId = "null"
         self.id = ""
+        self.discount = nil
     }
     
-    init(startTime: NSDate, endTime: NSDate, location: String, estimate: String, status: Status, ownerId: String) {
+    init(startTime: NSDate, endTime: NSDate, location: String, estimate: String, status: Status, ownerId: String, discount: String) {
         self.startTime = startTime
         self.endTime = endTime
         self.location = location
@@ -38,5 +40,6 @@ struct Order {
         self.ownerId = ownerId
         self.recepientId = "null"
         self.id = ""
+        self.discount = discount
     }
 }

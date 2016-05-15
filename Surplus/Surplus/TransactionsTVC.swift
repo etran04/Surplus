@@ -195,13 +195,14 @@ class TransactionsTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
+        cell.discountLabel.text = order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
         
         let startTime = formatter.stringFromDate(order.startTime!)
         let endTime = formatter.stringFromDate(order.endTime!)
-        cell.availableTimeFrameLabel.text = "Available time: " + startTime + " – " + endTime
+        cell.availableTimeFrameLabel.text = "Available: " + startTime + " – " + endTime
     }
     
     /* Helper function for filling in the inProgress cell with its information */
@@ -223,6 +224,7 @@ class TransactionsTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
+        cell.discountLabel.text = order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
@@ -250,6 +252,7 @@ class TransactionsTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
+        cell.discountLabel.text = order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle

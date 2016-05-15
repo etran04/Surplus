@@ -15,6 +15,7 @@ class PendingCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableTimeFrameLabel: UILabel!
     @IBOutlet weak var estimateCostLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
     
     /* Reference to the parent table view controller */
     var tableController : UITableViewController

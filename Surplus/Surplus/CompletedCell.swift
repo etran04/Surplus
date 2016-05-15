@@ -15,6 +15,7 @@ class CompletedCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableTimeFrameLabel: UILabel!
     @IBOutlet weak var estimateCostLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

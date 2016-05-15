@@ -54,8 +54,10 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let discountPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
         var discountPrices = [String]()
-        for (var i = 5; i <= 95; i += 5) {
-            discountPrices.append(String(i) + "%")
+        var index = 5
+        while index <= 95 {
+            discountPrices.append(String(index) + "%")
+            index += 5
         }
         discountPickerCell.setChoices(discountPrices)
         discountPickerCell.leftLabel.text = "Discount"
@@ -106,9 +108,16 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func verifyAllFields() {
+        let startTime = (cells[1] as! DatePickerCell).date
+        let endTime = NSDate(timeInterval: (cells[2] as! DatePickerCell).datePicker.countDownDuration , sinceDate: (cells[1] as! DatePickerCell).date)
+    }
+    
     /* Callback for when the save button is pressed */
     @IBAction func savePressed(sender: AnyObject) {
         if let navController = self.navigationController {
+            var discount = (cells[3] as! ScrollPickerCell).getChoice()
+            discount.removeAtIndex(discount.endIndex.advancedBy(-1)) // Removes % from discount
             
             // TODO: Check and make sure all fields are filled in
             
@@ -118,7 +127,8 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 location: (cells[0] as! ScrollPickerCell).getChoice(),
                 estimate: curOrder.estimate!,
                 status: Status.Pending,
-                ownerId: FBUserInfo.id!)
+                ownerId: FBUserInfo.id!,
+                discount: discount)
             FirebaseClient.addOrder(order)
             
             navController.popViewControllerAnimated(true)

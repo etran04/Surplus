@@ -50,7 +50,8 @@ class FirebaseClient {
             "estimate": order.estimate!,
             "status": order.status!.rawValue as String,
             "owner_id": order.ownerId!,
-            "recepient_id": order.recepientId!]
+            "recepient_id": order.recepientId!,
+            "discount": order.discount!]
         
         uniqueRef.setValue(orderObj)
     }
@@ -75,8 +76,9 @@ class FirebaseClient {
                     let estimate = order["estimate"] as! String
                     let status = Status(rawValue: order["status"] as! String)
                     let ownerId = order["owner_id"] as! String
+                    let discount = order["discount"] as! String
                     
-                    var currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId)
+                    var currentOrder = Order(startTime: startDate!, endTime: endDate!, location: location, estimate: estimate, status: status!, ownerId: ownerId, discount: discount)
                     currentOrder.id = key as! String
                     currentOrder.recepientId = order["recepient_id"] as? String
                     

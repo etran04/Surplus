@@ -16,6 +16,7 @@ class InProgressCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableTimeFrameLabel: UILabel!
     @IBOutlet weak var estimateCostLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
     
     @IBOutlet weak var completeBtn: UIButton!
     

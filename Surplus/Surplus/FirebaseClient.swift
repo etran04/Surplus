@@ -92,7 +92,7 @@ class FirebaseClient {
                     }
                 }
                 
-                results.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedDescending })
+                //results.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
                 
                 completion(result: results)
             }

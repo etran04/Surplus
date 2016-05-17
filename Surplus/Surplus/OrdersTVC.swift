@@ -92,6 +92,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
                 let myPaymentPrefs = result
                 
+                var count = 0
                 for item in self.orders {
                     FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
                         
@@ -114,8 +115,10 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                             }
                         }
                         
-                        if(self.orders.last!.id == item.id) {
+                        count += 1
+                        if(count == self.orders.count) {
                             self.orders = tempOrders
+                            self.orders.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
                             self.tableView.reloadData()
                         }
                     })
@@ -124,8 +127,6 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                 if(self.orders.count == 0) {
                     self.tableView.reloadData()
                 }
-                
-                print(self.orders.count)
             })
         })
     }
@@ -163,7 +164,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
 
     /* Details the number of orders in the tableview */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(orders.count)
+        //print(orders.count)
         return orders.count
     }
     
@@ -177,7 +178,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
-        cell.discountLabel.text = order.discount! + "%"
+        cell.discountLabel.text = "-" + order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle

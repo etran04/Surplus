@@ -21,6 +21,7 @@ class TransactionsTVC: UITableViewController {
     
     /* Header titles, can be changed if needed */
     let headerTitles = [kPendingHeader, kProgressHeader, kCompleteHeader]
+    var offset = 0
     
     /* Arrays used to hold each section of orders */
     var pendingOrders = [Order]()
@@ -48,6 +49,8 @@ class TransactionsTVC: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        offset = UserProfile.getType() ? 1 : 0
         
         // Sets up navigation controller so it animated away when scrolling through.
         if let navigationController = self.navigationController as? ScrollingNavigationController {
@@ -113,6 +116,10 @@ class TransactionsTVC: UITableViewController {
             // array to hold all orders by section
             self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
             
+            if (UserProfile.getType()) {
+                self.tableData = [self.progressOrders, self.completedOrders]
+            }
+            
             // finished loading, so hide spinner
             SwiftLoader.hide()
             
@@ -144,7 +151,7 @@ class TransactionsTVC: UITableViewController {
     /* Gets the title for each section in the table */
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section < headerTitles.count {
-            return headerTitles[section]
+            return headerTitles[section + offset]
         }
         
         return nil
@@ -154,7 +161,7 @@ class TransactionsTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-        switch (headerTitles[indexPath.section]) {
+        switch (headerTitles[indexPath.section + offset]) {
             case kPendingHeader:
                 if (self.pendingOrders.count > 0) {
                     cell = tableView.dequeueReusableCellWithIdentifier("PendingCell", forIndexPath: indexPath)
@@ -226,6 +233,8 @@ class TransactionsTVC: UITableViewController {
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
         cell.discountLabel.text = "–" + order.discount! + "%"
+        
+        cell.completeBtn.hidden = !UserProfile.getType()
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle

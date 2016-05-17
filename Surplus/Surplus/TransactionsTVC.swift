@@ -88,8 +88,9 @@ class TransactionsTVC: UITableViewController {
         
         FirebaseClient.getOrders(Status.All, completion: {(result: [Order]) in
             self.orders = result
+            self.orders.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
             
-            for curOrder in result {
+            for curOrder in self.orders {
                 switch (curOrder.status!) {
                     case .Pending:
                         if (FBUserInfo.id == curOrder.ownerId) {

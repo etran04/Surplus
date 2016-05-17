@@ -308,8 +308,9 @@ public class ScrollPickerCell: UITableViewCell, UIPickerViewDataSource, UIPicker
             }, completion: nil)
         
         // initialized choice to first option when cell is opened for the first time
-        if (rightLabel.text == "Choose a location") {
+        if (rightLabel.text == "Choose a location" || rightLabel.text == "Choose your discount rate") {
             rightLabel.text = pickerData[0]
+            self.scrollPicker.selectRow(0, inComponent: 0, animated: true)
         }
         
         tableView.beginUpdates()

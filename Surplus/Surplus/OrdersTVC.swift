@@ -124,6 +124,8 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                 if(self.orders.count == 0) {
                     self.tableView.reloadData()
                 }
+                
+                print(self.orders.count)
             })
         })
     }
@@ -231,10 +233,37 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    /* Helper used to schedule a reminder that a order is in progress */
+    func scheduleLocal(index: Int) {
+        let settings = UIApplication.sharedApplication().currentUserNotificationSettings()
+        
+        if settings!.types == .None {
+            let ac = UIAlertController(title: "Can't schedule", message: "Either we don't have permission to schedule notifications, or we haven't asked yet.", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
+        
+        let notification = UILocalNotification()
+        
+        var orderTime = orders[index].endTime
+        var newTime = NSDate().dateByAddingTimeInterval(-60)
+        
+        notification.fireDate = newTime
+        notification.alertBody = "Hey you! Yeah you! Swipe to unlock!"
+        notification.alertAction = "be awesome!"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["CustomField1": "w00t"]
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
     /* Callback for when confirm is pressed on claiming an order */
     func confirmPressed(index: Int) {
         
         FirebaseClient.claimOrder(self.orders[index])
+        
+        // Sets up local reminder for set to 10 minutes prior to the end of the order for current user
+        self.scheduleLocal(index)
         
         let window = UIApplication.sharedApplication().delegate?.window
         

@@ -37,7 +37,11 @@ class DurationPickerCell: DatePickerCell {
     func saveCountdown() {
         let countdown = datePicker.countDownDuration
         let hours = Int(countdown) / 3600
-        let minutes = Int(countdown) / 60 % 60
+        var minutes = Int(countdown) / 60 % 60
+        
+        if (minutes == 1) {
+            minutes = 15
+        }
         
         if (hours > 1 && minutes > 1) {
             super.rightLabel.text = String(hours) + " hours, " + String(minutes) + " minutes"

@@ -92,6 +92,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
                 let myPaymentPrefs = result
                 
+                var count = 0
                 for item in self.orders {
                     FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in
                         
@@ -114,8 +115,10 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                             }
                         }
                         
-                        if(self.orders.last!.id == item.id) {
+                        count += 1
+                        if(count == self.orders.count) {
                             self.orders = tempOrders
+                            self.orders.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
                             self.tableView.reloadData()
                         }
                     })
@@ -124,8 +127,6 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
                 if(self.orders.count == 0) {
                     self.tableView.reloadData()
                 }
-                
-                print(self.orders.count)
             })
         })
     }
@@ -163,7 +164,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
 
     /* Details the number of orders in the tableview */
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(orders.count)
+        //print(orders.count)
         return orders.count
     }
     
@@ -246,14 +247,14 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         let notification = UILocalNotification()
         
-        var orderTime = orders[index].endTime
-        var newTime = NSDate().dateByAddingTimeInterval(-60)
+        let orderTime = orders[index].endTime
+        let newTime = orderTime!.dateByAddingTimeInterval(-300)
         
         notification.fireDate = newTime
-        notification.alertBody = "Hey you! Yeah you! Swipe to unlock!"
-        notification.alertAction = "be awesome!"
+        notification.alertBody = "An order needs to be completed within 5 minutes!"
+        notification.alertAction = "Be awesome!"
         notification.soundName = UILocalNotificationDefaultSoundName
-        notification.userInfo = ["CustomField1": "w00t"]
+        notification.userInfo = ["UniqueKey": orders[index].id]
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     

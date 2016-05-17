@@ -92,8 +92,9 @@ class TransactionsTVC: UITableViewController {
         
         FirebaseClient.getOrders(Status.All, completion: {(result: [Order]) in
             self.orders = result
+            self.orders.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedAscending })
             
-            for curOrder in result {
+            for curOrder in self.orders {
                 switch (curOrder.status!) {
                     case .Pending:
                         if (FBUserInfo.id == curOrder.ownerId) {
@@ -285,7 +286,24 @@ class TransactionsTVC: UITableViewController {
         }).resume()
     }
     
-    /* Helper function that updates the tvc when a cancel button is pressed in the pending cell 
+    /* Helper function that clears up local notifications that is being canceled */
+    func cancelLocalNotif(keyValToDelete: String) {
+        
+        // Loops through all the local notifications on phone, and finds the notification based on the key in the user info 
+        let notifArray = UIApplication.sharedApplication().scheduledLocalNotifications
+        for (var i = 0; i < notifArray!.count; i++) {
+            let notif = notifArray![i]
+            let userInfoDict = notif.userInfo
+            let uniqueKeyVal = userInfoDict!["UniqueKey"]! as! String
+            if (uniqueKeyVal == keyValToDelete) {
+                UIApplication.sharedApplication().cancelLocalNotification(notif)
+                break;
+            }
+        }
+    }
+    
+    
+    /* Helper function that updates the tvc when a cancel button is pressed in the pending cell
      * Takes in the row of the cell we'd like to remove from pending
      * Will need to eventually fix this to act upon a delegate rather than passing an instance directly */
     func cancelTransaction(status: Status, row: Int) {
@@ -314,6 +332,10 @@ class TransactionsTVC: UITableViewController {
                 if (self.progressOrders[row].id == FBUserInfo.id) {
                     self.pendingOrders.append(self.progressOrders[row])
                 }
+                
+                // cancels the local notification
+                self.cancelLocalNotif(self.progressOrders[row].id)
+                
                 self.progressOrders.removeAtIndex(row)
             }
             

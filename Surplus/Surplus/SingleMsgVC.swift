@@ -105,7 +105,7 @@ class SingleMsgVC : JSQMessagesViewController {
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
         // If the text is not empty, the user is typing
-        print(textView.text != "")
+//        print(textView.text != "")
     }
     
     // Protocol Methods

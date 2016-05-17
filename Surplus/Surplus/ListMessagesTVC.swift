@@ -75,9 +75,15 @@ class ListMessagesTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDat
         FirebaseClient.getUsername(currentChat.recepientId) { (result) -> Void in
             cell.otherPersonLabel.text = result
         }
-        cell.mostRecentMessageLabel.text = currentChat.messages.last?.text
-        cell.lastMsgTimeLabel.text = self.stringFromTimeInterval(NSDate().timeIntervalSinceDate((currentChat.messages.last?.date)!))
         
+        if (!currentChat.messages.isEmpty) {
+            cell.mostRecentMessageLabel.text = currentChat.messages.last?.text
+            cell.lastMsgTimeLabel.text = self.stringFromTimeInterval(NSDate().timeIntervalSinceDate((currentChat.messages.last?.date)!))
+        }
+        else {
+            cell.lastMsgTimeLabel.text = ""
+            cell.mostRecentMessageLabel.text = ""
+        }
         cell.lastMsgTimeLabel.textColor = UIColor.lightGrayColor()
     
         return cell

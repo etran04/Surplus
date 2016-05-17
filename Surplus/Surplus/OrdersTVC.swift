@@ -246,14 +246,14 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         let notification = UILocalNotification()
         
-        var orderTime = orders[index].endTime
-        var newTime = NSDate().dateByAddingTimeInterval(-60)
+        let orderTime = orders[index].endTime
+        let newTime = orderTime!.dateByAddingTimeInterval(-300)
         
         notification.fireDate = newTime
-        notification.alertBody = "Hey you! Yeah you! Swipe to unlock!"
-        notification.alertAction = "be awesome!"
+        notification.alertBody = "An order needs to be completed within 5 minutes!"
+        notification.alertAction = "Be awesome!"
         notification.soundName = UILocalNotificationDefaultSoundName
-        notification.userInfo = ["CustomField1": "w00t"]
+        notification.userInfo = ["UniqueKey": orders[index].id]
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     

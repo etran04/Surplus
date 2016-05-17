@@ -69,18 +69,15 @@ class SingleMsgVC : JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!,
         senderDisplayName: String!, date: NSDate!) {
         
-        let itemRef = messagesRef.childByAutoId() // 1
-        let messageItem = [ // 2
+        let itemRef = messagesRef.childByAutoId()
+        let messageItem = [
             "text": text,
             "sender_id": senderId,
             "date": String(NSDate())
         ]
-        itemRef.setValue(messageItem) // 3
-        
-        // 4
+        itemRef.setValue(messageItem)
+        FirebaseClient.notifyUserOfMessage(chatroom.recepientId, message: text)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        
-        // 5
         finishSendingMessage()
     }
     

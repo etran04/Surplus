@@ -17,6 +17,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     @IBOutlet weak var newOrderButton: UIBarButtonItem!
     var orders = [Order]()
     var copyOfOrderButton: UIBarButtonItem?
+    var initialAppear: Bool?
 
     @IBOutlet weak var refresh: UIRefreshControl!
     
@@ -28,10 +29,15 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             navigationController.followScrollView(tableView, delay: 50.0)
         }
         
+        self.initialAppear = true
+        
         self.copyOfOrderButton = newOrderButton
         
         // Gets the orders from Firebase to display
         self.fetchOrders()
+        
+        // Initial set up for pull down to refresh
+        self.setUpRefresh()
         
         // Sets the tableview settings for empty data
         tableView.emptyDataSetSource = self
@@ -47,8 +53,12 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         // Replaces the extra cells at the end with a clear view
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        // Initial set up for pull down to refresh
-        self.setUpRefresh()
+        if (!self.initialAppear!) {
+            self.fetchOrders()
+        }
+        else {
+            self.initialAppear = false
+        }
         
         if (UserProfile.getType()) {
             navigationItem.rightBarButtonItems = []

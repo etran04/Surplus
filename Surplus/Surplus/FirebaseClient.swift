@@ -187,7 +187,26 @@ class FirebaseClient {
             if snapshot.value is NSString {
                 if let token = snapshot.value as! String? {
                     if (token != "null") {
-                        GCMClient.postOrder(token)
+                        GCMClient.sendNotification(token, body: "\(FBUserInfo.name!) has claimed your order!")
+                    }
+                }
+            }
+        })
+    }
+    
+    /**
+     * Grabs the owner's gcm registration token and sends a message to the owner
+     * using the token.
+     */
+    class func notifyUserOfMessage(userId: String, message: String) {
+        let tokenRef = ref.childByAppendingPath("Users/\(userId)/gcm_token")
+        
+        tokenRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
+            if snapshot.value is NSString {
+                if let token = snapshot.value as! String? {
+                    if (token != "null") {
+                        
+                        GCMClient.sendNotification(token, body: "\(FBUserInfo.name!): \(message)")
                     }
                 }
             }

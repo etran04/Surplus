@@ -13,7 +13,7 @@ class GCMClient {
     static let subscriptionTopic = "/topics/global"
     static let apiKey = "AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM"
     
-    class func postOrder(token: String) {
+    class func sendNotification(token: String, body: String) {
         print("Got here for surplus!")
         let postURL: String = "https://gcm-http.googleapis.com/gcm/send"
         let reqURL = NSURL(string: postURL)
@@ -23,7 +23,7 @@ class GCMClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let params = ["to": token, "content-available": "1", "notification":["title":"Surplu$", "body": "\(FBUserInfo.name!) has claimed your order!", "sound": "default", "badge":"1"]]
+        let params = ["to": token, "content-available": "1", "notification":["title":"Surplu$", "body": body, "sound": "default", "badge":"1"]]
         
         do {
             let jsonPost = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)

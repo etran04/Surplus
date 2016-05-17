@@ -56,11 +56,12 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var discountPrices = [String]()
         var index = 5
         while index <= 95 {
-            discountPrices.append(String(index) + "%")
+            discountPrices.append("-" + String(index) + "%")
             index += 5
         }
         discountPickerCell.setChoices(discountPrices)
         discountPickerCell.leftLabel.text = "Discount"
+        discountPickerCell.rightLabel.text = "Choose your discount rate"
         
         // Sets up Start Time DatePickerCell
         let startPickerCell = StartTimePickerCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
@@ -118,7 +119,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if let navController = self.navigationController {
             var discount = (cells[3] as! ScrollPickerCell).getChoice()
             discount.removeAtIndex(discount.endIndex.advancedBy(-1)) // Removes % from discount
-            
+            discount.removeAtIndex(discount.startIndex)
             // TODO: Check and make sure all fields are filled in
             
             let order = Order(

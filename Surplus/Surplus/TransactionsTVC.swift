@@ -60,6 +60,7 @@ class TransactionsTVC: UITableViewController {
         // Gets the orders from Firebase
         self.fetchAndOrganizeOrders()
         
+        // Gets rid of notifications when navigated to this controller
         let tabArray = self.tabBarController?.tabBar.items as NSArray!
         let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
         tabItem.badgeValue = nil
@@ -196,7 +197,7 @@ class TransactionsTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
-        cell.discountLabel.text = order.discount! + "%"
+        cell.discountLabel.text = "-" + order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
@@ -225,7 +226,7 @@ class TransactionsTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
-        cell.discountLabel.text = order.discount! + "%"
+        cell.discountLabel.text = "–" + order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
@@ -253,7 +254,7 @@ class TransactionsTVC: UITableViewController {
         
         cell.locationLabel.text = order.location
         cell.estimateCostLabel.text = order.estimate
-        cell.discountLabel.text = order.discount! + "%"
+        cell.discountLabel.text = "-" + order.discount! + "%"
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
@@ -341,9 +342,6 @@ class TransactionsTVC: UITableViewController {
         let msgs = [Message]()
         let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: msgs)
         
-        // Switches tab to the Messages tab
-        self.tabBarController?.selectedIndex = 2
-
         FirebaseClient.makeChatroom(chatroom) { (madeNewChatroom) in
             
             // TODO: Alert user of a new conversation on Messages tab
@@ -358,6 +356,9 @@ class TransactionsTVC: UITableViewController {
                 self.presentViewController(confirmDialog, animated: true, completion: nil)
             }
         }
+        
+        // Switches tab to the Messages tab
+        self.tabBarController?.selectedIndex = 2
     }
     
     

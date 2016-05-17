@@ -198,6 +198,10 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
     
     /* Callback for when a cell is selected */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if (!UserProfile.getType()) {
+            return;
+        }
         
         // Makes sure order you selected is not yourself, otherwise, signal it
         if (self.orders[indexPath.row].ownerId != FBUserInfo.id) {
@@ -231,7 +235,6 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             
             self.presentViewController(confirmDialog, animated: true, completion: nil)
         }
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     /* Helper used to schedule a reminder that a order is in progress */

@@ -41,6 +41,7 @@ class DurationPickerCell: DatePickerCell {
         
         if (minutes == 1) {
             minutes = 15
+            super.datePicker.countDownDuration = 15
         }
         
         if (hours > 1 && minutes > 1) {

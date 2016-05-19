@@ -83,13 +83,14 @@
                                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nax-Xt-oi5" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nax-Xt-oi5" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="45" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="nax-Xt-oi5" firstAttribute="top" secondItem="hEe-fL-xa0" secondAttribute="bottom" constant="12" id="CNm-E6-0EK"/>
                                         <constraint firstItem="hEe-fL-xa0" firstAttribute="top" secondItem="mQu-fB-Swd" secondAttribute="topMargin" constant="11" id="Fos-FX-w7D"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hEe-fL-xa0" secondAttribute="trailing" id="iPz-P8-YgQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="nax-Xt-oi5" secondAttribute="trailing" id="nmN-c3-58g"/>
@@ -271,7 +272,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IQ-eo-ZJ6" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IQ-eo-ZJ6" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="58" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
@@ -279,6 +280,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="4IQ-eo-ZJ6" secondAttribute="trailing" id="HJQ-0x-wZD"/>
+                                        <constraint firstItem="4IQ-eo-ZJ6" firstAttribute="top" secondItem="CH0-Lm-ybL" secondAttribute="bottom" constant="24" id="JDV-b1-0G1"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="CH0-Lm-ybL" secondAttribute="trailing" constant="0.5" id="fEa-p9-3Uv"/>
                                         <constraint firstItem="CH0-Lm-ybL" firstAttribute="top" secondItem="4Z5-DG-vQ2" secondAttribute="topMargin" constant="12" id="vRU-eI-A6r"/>
                                     </constraints>
@@ -340,7 +342,7 @@
                                                 <action selector="cancelPressed:" destination="Dyo-id-905" eventType="touchUpInside" id="tV8-5f-m8o"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYl-gA-sq3" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYl-gA-sq3" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="58" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
@@ -357,6 +359,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="lYl-gA-sq3" secondAttribute="trailing" id="T5h-Nz-LOO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ioq-19-0lH" secondAttribute="trailing" constant="0.5" id="dOm-AY-q3a"/>
+                                        <constraint firstItem="lYl-gA-sq3" firstAttribute="top" secondItem="ioq-19-0lH" secondAttribute="bottom" constant="25" id="fHO-fj-S4j"/>
                                         <constraint firstItem="ioq-19-0lH" firstAttribute="top" secondItem="amX-3j-F5G" secondAttribute="topMargin" constant="11" id="rsu-I8-JxO"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -402,7 +405,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsY-3c-HzQ" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsY-3c-HzQ" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="53" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
@@ -410,6 +413,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="FW9-xc-yOk" firstAttribute="top" secondItem="9bK-K5-Fuy" secondAttribute="topMargin" constant="11" id="95A-nF-i2q"/>
+                                        <constraint firstItem="BsY-3c-HzQ" firstAttribute="top" secondItem="FW9-xc-yOk" secondAttribute="bottom" constant="20" id="Deo-bi-FLY"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="BsY-3c-HzQ" secondAttribute="trailing" id="kvg-vP-oWj"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FW9-xc-yOk" secondAttribute="trailing" constant="0.5" id="vtp-ax-WPQ"/>
                                     </constraints>

@@ -30,7 +30,9 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
                 }
             })
         } else {
-            facebookButton.center = self.view.center
+            let point = self.view.center
+            
+            facebookButton.center = CGPoint(x: point.x, y: point.y + 100)
             self.view.addSubview(facebookButton)
             facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
             facebookButton.delegate = self

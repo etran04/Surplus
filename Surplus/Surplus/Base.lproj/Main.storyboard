@@ -16,7 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surplu$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QC-pz-RbE">
+                                <rect key="frame" x="85" y="195" width="205" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5QC-pz-RbE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="72t-q4-iAa"/>
+                            <constraint firstItem="5QC-pz-RbE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="175" id="NO2-lA-aeB"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -26,32 +38,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-899.5" y="13.5"/>
-        </scene>
-        <!--Filter -->
-        <scene sceneID="ij4-iH-4Ss">
-            <objects>
-                <viewController title="Filter " id="Ab2-r2-hWe" customClass="FilterVC" customModule="Surplus" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FCu-rQ-Akj"/>
-                        <viewControllerLayoutGuide type="bottom" id="4da-Bk-nWE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tRK-JQ-dSR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Sort Orders" id="FSl-kM-Brc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ck4-y1-vzh">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D1D-7H-Doz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2148.5" y="-1242.5"/>
         </scene>
         <!--Orders-->
         <scene sceneID="0xz-mN-btd">
@@ -97,13 +83,14 @@
                                             <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nax-Xt-oi5" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nax-Xt-oi5" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="45" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="nax-Xt-oi5" firstAttribute="top" secondItem="hEe-fL-xa0" secondAttribute="bottom" constant="12" id="CNm-E6-0EK"/>
                                         <constraint firstItem="hEe-fL-xa0" firstAttribute="top" secondItem="mQu-fB-Swd" secondAttribute="topMargin" constant="11" id="Fos-FX-w7D"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hEe-fL-xa0" secondAttribute="trailing" id="iPz-P8-YgQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="nax-Xt-oi5" secondAttribute="trailing" id="nmN-c3-58g"/>
@@ -285,7 +272,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IQ-eo-ZJ6" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IQ-eo-ZJ6" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="58" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
@@ -293,6 +280,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="4IQ-eo-ZJ6" secondAttribute="trailing" id="HJQ-0x-wZD"/>
+                                        <constraint firstItem="4IQ-eo-ZJ6" firstAttribute="top" secondItem="CH0-Lm-ybL" secondAttribute="bottom" constant="24" id="JDV-b1-0G1"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="CH0-Lm-ybL" secondAttribute="trailing" constant="0.5" id="fEa-p9-3Uv"/>
                                         <constraint firstItem="CH0-Lm-ybL" firstAttribute="top" secondItem="4Z5-DG-vQ2" secondAttribute="topMargin" constant="12" id="vRU-eI-A6r"/>
                                     </constraints>
@@ -354,7 +342,7 @@
                                                 <action selector="cancelPressed:" destination="Dyo-id-905" eventType="touchUpInside" id="tV8-5f-m8o"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYl-gA-sq3" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYl-gA-sq3" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="58" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
@@ -371,6 +359,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="lYl-gA-sq3" secondAttribute="trailing" id="T5h-Nz-LOO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ioq-19-0lH" secondAttribute="trailing" constant="0.5" id="dOm-AY-q3a"/>
+                                        <constraint firstItem="lYl-gA-sq3" firstAttribute="top" secondItem="ioq-19-0lH" secondAttribute="bottom" constant="25" id="fHO-fj-S4j"/>
                                         <constraint firstItem="ioq-19-0lH" firstAttribute="top" secondItem="amX-3j-F5G" secondAttribute="topMargin" constant="11" id="rsu-I8-JxO"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -416,7 +405,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsY-3c-HzQ" userLabel="Discount Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsY-3c-HzQ" userLabel="Discount Label">
                                             <rect key="frame" x="341" y="53" width="26" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
@@ -424,6 +413,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="FW9-xc-yOk" firstAttribute="top" secondItem="9bK-K5-Fuy" secondAttribute="topMargin" constant="11" id="95A-nF-i2q"/>
+                                        <constraint firstItem="BsY-3c-HzQ" firstAttribute="top" secondItem="FW9-xc-yOk" secondAttribute="bottom" constant="20" id="Deo-bi-FLY"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="BsY-3c-HzQ" secondAttribute="trailing" id="kvg-vP-oWj"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FW9-xc-yOk" secondAttribute="trailing" constant="0.5" id="vtp-ax-WPQ"/>
                                     </constraints>
@@ -493,8 +483,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input how much you bought the entire order for" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-9I-s2t">
-                                <rect key="frame" x="20" y="165" width="335" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How much was the entire order?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfJ-9I-s2t">
+                                <rect key="frame" x="16" y="165" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gre-Lj-pup"/>
                                 </constraints>
@@ -502,7 +492,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB4-9y-ZPo">
-                                <rect key="frame" x="20" y="309" width="335" height="101"/>
+                                <rect key="frame" x="107" y="309" width="161" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="h1c-M7-8VM"/>
                                 </constraints>
@@ -518,12 +508,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBo-ak-rhS">
-                                <rect key="frame" x="20" y="257" width="344" height="68"/>
+                                <rect key="frame" x="66" y="257" width="243" height="68"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Please charge your new friend...">
+                                    <fragment content="After 15% discount">
                                         <attributes>
                                             <color key="NSColor" red="0.011764705882352941" green="0.33725490196078434" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="HelveticaNeue"/>
+                                            <font key="NSFont" size="28" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -535,14 +525,25 @@
                         <constraints>
                             <constraint firstItem="RrU-O5-TQ0" firstAttribute="top" secondItem="bB4-9y-ZPo" secondAttribute="bottom" constant="213" id="0jG-bu-5TN"/>
                             <constraint firstItem="CBo-ak-rhS" firstAttribute="leading" secondItem="bB4-9y-ZPo" secondAttribute="leading" id="4Uu-zZ-nvg"/>
+                            <constraint firstItem="CBo-ak-rhS" firstAttribute="centerX" secondItem="7Zm-Mi-pfB" secondAttribute="centerX" id="9rD-L7-PaN"/>
                             <constraint firstItem="UfJ-9I-s2t" firstAttribute="centerX" secondItem="7Zm-Mi-pfB" secondAttribute="centerX" id="Aw0-av-xzF"/>
+                            <constraint firstItem="bB4-9y-ZPo" firstAttribute="centerX" secondItem="7Zm-Mi-pfB" secondAttribute="centerX" id="BSz-zy-EEc"/>
                             <constraint firstItem="UfJ-9I-s2t" firstAttribute="trailing" secondItem="bB4-9y-ZPo" secondAttribute="trailing" id="GLi-4d-6ll"/>
                             <constraint firstItem="UfJ-9I-s2t" firstAttribute="leading" secondItem="7Zm-Mi-pfB" secondAttribute="leadingMargin" constant="4" id="Py4-pw-Zoc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UfJ-9I-s2t" secondAttribute="trailing" id="YwG-wW-Oqr"/>
                             <constraint firstItem="RrU-O5-TQ0" firstAttribute="top" secondItem="CBo-ak-rhS" secondAttribute="bottom" constant="298" id="gw6-Nv-ZQT"/>
                             <constraint firstItem="CBo-ak-rhS" firstAttribute="top" secondItem="UfJ-9I-s2t" secondAttribute="bottom" constant="62" id="p1Y-Ts-pju"/>
                             <constraint firstItem="UfJ-9I-s2t" firstAttribute="top" secondItem="bqV-3L-sZG" secondAttribute="bottom" constant="101" id="qCj-46-GWo"/>
                             <constraint firstItem="UfJ-9I-s2t" firstAttribute="leading" secondItem="CBo-ak-rhS" secondAttribute="leading" id="vFm-ds-wOh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GLi-4d-6ll"/>
+                                <exclude reference="Py4-pw-Zoc"/>
+                                <exclude reference="vFm-ds-wOh"/>
+                                <exclude reference="4Uu-zZ-nvg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Input Charge" id="9fp-nW-hS2">
@@ -562,6 +563,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="discountLabel" destination="CBo-ak-rhS" id="UrG-3i-ryx"/>
                         <outlet property="doneButton" destination="QfV-nS-BFy" id="qkV-yn-FyR"/>
                         <outlet property="finalChargeLabel" destination="bB4-9y-ZPo" id="0gN-cC-oEI"/>
                         <outlet property="textField" destination="UfJ-9I-s2t" id="whc-7y-pdd"/>

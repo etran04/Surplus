@@ -16,6 +16,7 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var finalChargeLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var discountLabel: UILabel!
     
     /* A reference to the current order the page represents */
     var curOrder: Order?
@@ -36,6 +37,9 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
         
         //self.finalChargeLabel.hidden = true
         self.textField.delegate = self
+        
+        let discount = curOrder?.discount
+        self.discountLabel.text = "After \(discount!)% discount"
     }
 
     override func didReceiveMemoryWarning() {

@@ -26,7 +26,6 @@
 		07DE351A1C8904BF0063F6D6 /* Talk-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE35191C8904BF0063F6D6 /* Talk-50.png */; };
 		07DE351C1C89055F0063F6D6 /* Activity Feed-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE351B1C89055F0063F6D6 /* Activity Feed-50.png */; };
 		07DE351E1C8907010063F6D6 /* Activity Feed Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE351D1C8907010063F6D6 /* Activity Feed Filled-50.png */; };
-		07DE35201C8907620063F6D6 /* Chat Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE351F1C8907620063F6D6 /* Chat Filled-50.png */; };
 		07DE35221C89080E0063F6D6 /* Circled User Male Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 07DE35211C89080E0063F6D6 /* Circled User Male Filled-50.png */; };
 		07EF919D1C7D2AA700FE586D /* CompletedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919C1C7D2AA700FE586D /* CompletedCell.swift */; };
 		07EF919F1C7D2FA100FE586D /* InputChargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */; };
@@ -103,7 +102,6 @@
 		07DE35191C8904BF0063F6D6 /* Talk-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Talk-50.png"; sourceTree = "<group>"; };
 		07DE351B1C89055F0063F6D6 /* Activity Feed-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activity Feed-50.png"; sourceTree = "<group>"; };
 		07DE351D1C8907010063F6D6 /* Activity Feed Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activity Feed Filled-50.png"; sourceTree = "<group>"; };
-		07DE351F1C8907620063F6D6 /* Chat Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chat Filled-50.png"; sourceTree = "<group>"; };
 		07DE35211C89080E0063F6D6 /* Circled User Male Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Circled User Male Filled-50.png"; sourceTree = "<group>"; };
 		07EF919C1C7D2AA700FE586D /* CompletedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedCell.swift; sourceTree = "<group>"; };
 		07EF919E1C7D2FA100FE586D /* InputChargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputChargeVC.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				074AF19D1CB8B1BE00A41D3F /* bg-1.jpg */,
 				074AF19E1CB8B1BE00A41D3F /* bg-2.jpg */,
 				07DE35211C89080E0063F6D6 /* Circled User Male Filled-50.png */,
-				07DE351F1C8907620063F6D6 /* Chat Filled-50.png */,
 				07DE351D1C8907010063F6D6 /* Activity Feed Filled-50.png */,
 				07DE351B1C89055F0063F6D6 /* Activity Feed-50.png */,
 				07DE35191C8904BF0063F6D6 /* Talk-50.png */,
@@ -484,7 +481,6 @@
 				07DE351C1C89055F0063F6D6 /* Activity Feed-50.png in Resources */,
 				83B16FD31C5ED5A0001D7815 /* Assets.xcassets in Resources */,
 				83B16FD11C5ED5A0001D7815 /* Main.storyboard in Resources */,
-				07DE35201C8907620063F6D6 /* Chat Filled-50.png in Resources */,
 				940CC1AA1C82872600A99A32 /* Name-50.png in Resources */,
 				07DE351E1C8907010063F6D6 /* Activity Feed Filled-50.png in Resources */,
 			);

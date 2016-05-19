@@ -14,12 +14,28 @@ class InitialVC: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    func transitionToProfile() {
+        let window = UIApplication.sharedApplication().delegate?.window
+        let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("mainFeedController") as! UITabBarController
+        let fromView = self.view
+        let toView = tabBarController.viewControllers![3].view
         
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
+        
+        UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
+            window!!.rootViewController = tabBarController
+            tabBarController.selectedIndex = 3
+        })
     }
+    
     @IBAction func yesPressed(sender: AnyObject) {
+        UserProfile.setType(true)
+        transitionToProfile()
     }
+    
     @IBAction func noPressed(sender: AnyObject) {
+        UserProfile.setType(false)
+        transitionToProfile()
     }
 }
 

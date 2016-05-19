@@ -24,8 +24,6 @@ class FirebaseClient {
         if let token = appDelegate.registrationToken {
             setUserGCMRegistrationToken(token)
         }
-        
-        setPaymentPreferences(["Venmo", "Square Cash", "Cash"])
     }
     
     class func getUsername(id: String, completion : (result: String) -> Void) {

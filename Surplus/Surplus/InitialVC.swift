@@ -22,6 +22,8 @@ class InitialVC: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
         
+        FirebaseClient.setPaymentPreferences(["Venmo", "Square Cash", "Cash"])
+        
         UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
             window!!.rootViewController = tabBarController
             tabBarController.selectedIndex = 3

@@ -805,7 +805,7 @@
         <scene sceneID="A7M-5c-Asi">
             <objects>
                 <navigationController title="OrderNav" automaticallyAdjustsScrollViewInsets="NO" id="9cq-VX-tXc" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Orders" image="Activity Feed Filled-50.png" id="7m6-PV-al6"/>
+                    <tabBarItem key="tabBarItem" title="Orders" image="Orders" id="7m6-PV-al6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oWw-di-pej">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -852,7 +852,7 @@
         <scene sceneID="yjU-sF-BGj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zAy-L3-8xV" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="Circled User Male Filled-50.png" selectedImage="Circled User Male Filled-50.png" id="btW-AO-hf6"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Circled User Male Filled-50.png" id="btW-AO-hf6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RV1-yf-aGh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -875,7 +875,7 @@
         <scene sceneID="gwQ-3l-rpF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O4Q-z8-6r4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" image="Chat Filled-50.png" id="84P-C9-Qfj"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="Chat" id="84P-C9-Qfj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="968-gA-hBO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -896,9 +896,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Activity Feed Filled-50.png" width="30" height="30"/>
-        <image name="Chat Filled-50.png" width="30" height="30"/>
+        <image name="Chat" width="25" height="25"/>
         <image name="Circled User Male Filled-50.png" width="30" height="30"/>
+        <image name="Orders" width="25" height="25"/>
         <image name="ProfPic.png" width="30" height="30"/>
+        <image name="Profile" width="25" height="25"/>
     </resources>
 </document>

@@ -38,22 +38,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             navigationController.followScrollView(view, delay: 50.0)
         }
         
-        let accountTypeCell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! PaymentMethodCell
-        accountTypeCell.paymentMethodSwitch.setOn(UserProfile.getType(), animated: false)
-        accountTypeCell.paymentMethodSwitch.tag = 1
-        
         FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: {(result: [String]) in
             self.paymentPrefs = result
-            dump(self.paymentPrefs)
-            for i in 0..<3 {
-                if let cell = self.paymentMethodTable?.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as? PaymentMethodCell {
-                    print(cell.paymentMethodLabel.text!)
-                    cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
-                }
-//                let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as! PaymentMethodCell
-//                
-//                cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
-            }
+            self.paymentMethodTable.reloadData()
         })
     }
     
@@ -87,6 +74,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         if (indexPath.section == 0) {
             cell.paymentMethodLabel.text = "Do you have plus dollars?"
+            cell.paymentMethodSwitch.setOn(UserProfile.getType(), animated: false)
+            cell.paymentMethodSwitch.tag = 1
         }
         else {
             if (indexPath.row == 0) {
@@ -98,6 +87,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             else {
                 cell.paymentMethodLabel.text = "Cash"
             }
+            
+            cell.paymentMethodSwitch.on = self.paymentPrefs.contains(cell.paymentMethodLabel.text!)
         }
         
         return cell

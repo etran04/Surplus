@@ -44,10 +44,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: {(result: [String]) in
             self.paymentPrefs = result
+            dump(self.paymentPrefs)
             for i in 0..<3 {
-                let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as! PaymentMethodCell
-                
-                cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
+                if let cell = self.paymentMethodTable?.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as? PaymentMethodCell {
+                    print(cell.paymentMethodLabel.text!)
+                    cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
+                }
+//                let cell = self.paymentMethodTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 1)) as! PaymentMethodCell
+//                
+//                cell.paymentMethodSwitch.setOn(self.paymentPrefs.contains(cell.paymentMethodLabel.text!), animated: true)
             }
         })
     }

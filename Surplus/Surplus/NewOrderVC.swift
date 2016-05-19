@@ -49,7 +49,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         // Sets up scroll picker cell for locations
         let locationPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
-        self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory"]
+        self.locationChoices = ["The Avenue", "VG Cafe", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory", "Ciao!", "Red Radish", "Yogurt Creations", "Tacos To-Go Grill", "Jamba Juice", "Einstein Bro Bagels", "Village Market"]
         locationPickerCell.setChoices(self.locationChoices)
         
         let discountPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
@@ -109,9 +109,13 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func verifyAllFields() {
-        let startTime = (cells[1] as! DatePickerCell).date
-        let endTime = NSDate(timeInterval: (cells[2] as! DatePickerCell).datePicker.countDownDuration , sinceDate: (cells[1] as! DatePickerCell).date)
+    func verifyAllFields() -> Bool {
+        for (var i = 0; i < cells.count; i++) {
+            if ((cells[i].rightLabel.text?.containsString("Choose")) == true) {
+                return false
+            }
+        }
+        return true
     }
     
     /* Callback for when the save button is pressed */
@@ -183,7 +187,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         
-        self.saveButton.enabled = true;
+        self.saveButton.enabled = self.verifyAllFields();
     }
     
     /* Called to determine number of sections in tableView */

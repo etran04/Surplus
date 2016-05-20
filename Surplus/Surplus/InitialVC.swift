@@ -12,6 +12,8 @@ class InitialVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FirebaseClient.setPaymentPreferences(["Venmo", "Square Cash", "Cash"])
     }
     
     func transitionToProfile() {
@@ -21,8 +23,6 @@ class InitialVC: UIViewController {
         let toView = tabBarController.viewControllers![3].view
         
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
-        
-        FirebaseClient.setPaymentPreferences(["Venmo", "Square Cash", "Cash"])
         
         UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
             window!!.rootViewController = tabBarController

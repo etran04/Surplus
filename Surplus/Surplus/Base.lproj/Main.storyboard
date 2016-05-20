@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surplus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QC-pz-RbE">
-                                <rect key="frame" x="85" y="195" width="204" height="74"/>
+                                <rect key="frame" x="85" y="146.5" width="204" height="74"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="62"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -26,8 +26,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="5QC-pz-RbE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-150" id="2bf-bz-Ooe"/>
                             <constraint firstItem="5QC-pz-RbE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="72t-q4-iAa"/>
-                            <constraint firstItem="5QC-pz-RbE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="175" id="NO2-lA-aeB"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -586,14 +586,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have plus dollars?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-37-7Na">
-                                <rect key="frame" x="18" y="195" width="340" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-Vm-fiw">
-                                <rect key="frame" x="223" y="497" width="39" height="48"/>
+                                <rect key="frame" x="243" y="497" width="39" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="No">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -603,7 +597,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-vA-zgI">
-                                <rect key="frame" x="109" y="497" width="63" height="48"/>
+                                <rect key="frame" x="89" y="497" width="47" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Yes">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -612,16 +606,25 @@
                                     <action selector="yesPressed:" destination="Sk0-Yh-X7T" eventType="touchUpInside" id="nmi-v4-E5f"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have plus dollars?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-37-7Na">
+                                <rect key="frame" x="13" y="113.5" width="348" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="DVb-kN-d4Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.01176470588" green="0.33725490200000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="byR-Ss-d3I" firstAttribute="top" secondItem="ggL-Vm-fiw" secondAttribute="bottom" constant="122" id="GHK-vm-aFt"/>
-                            <constraint firstItem="byR-Ss-d3I" firstAttribute="top" secondItem="F9X-vA-zgI" secondAttribute="bottom" constant="122" id="dag-Td-VJU"/>
-                            <constraint firstItem="xYh-37-7Na" firstAttribute="top" secondItem="wfh-U3-Jxm" secondAttribute="bottom" constant="175" id="hDh-Wx-c9G"/>
-                            <constraint firstItem="ggL-Vm-fiw" firstAttribute="centerX" secondItem="qUN-AS-sIB" secondAttribute="centerX" constant="55" id="nmm-bU-goi"/>
-                            <constraint firstItem="F9X-vA-zgI" firstAttribute="leading" secondItem="qUN-AS-sIB" secondAttribute="leadingMargin" constant="93" id="sac-m4-XEP"/>
-                            <constraint firstItem="xYh-37-7Na" firstAttribute="centerX" secondItem="qUN-AS-sIB" secondAttribute="centerX" id="skf-vJ-HF1"/>
-                            <constraint firstItem="ggL-Vm-fiw" firstAttribute="leading" secondItem="F9X-vA-zgI" secondAttribute="trailing" constant="51" id="zcc-tf-RBv"/>
+                            <constraint firstItem="ggL-Vm-fiw" firstAttribute="centerX" secondItem="xYh-37-7Na" secondAttribute="centerX" constant="75" id="CZw-oC-wR4"/>
+                            <constraint firstItem="xYh-37-7Na" firstAttribute="leading" secondItem="qUN-AS-sIB" secondAttribute="leadingMargin" constant="-3" id="Fqf-2y-VdR"/>
+                            <constraint firstItem="byR-Ss-d3I" firstAttribute="top" secondItem="F9X-vA-zgI" secondAttribute="bottom" constant="122" id="QgB-go-ajm"/>
+                            <constraint firstItem="F9X-vA-zgI" firstAttribute="centerX" secondItem="xYh-37-7Na" secondAttribute="centerX" constant="-75" id="fuw-YD-u1N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xYh-37-7Na" secondAttribute="trailing" constant="-2" id="kQZ-Ip-Usx"/>
+                            <constraint firstItem="ggL-Vm-fiw" firstAttribute="centerY" secondItem="F9X-vA-zgI" secondAttribute="centerY" id="vtW-rz-BSr"/>
+                            <constraint firstItem="xYh-37-7Na" firstAttribute="centerY" secondItem="qUN-AS-sIB" secondAttribute="centerY" constant="-175" id="xNG-wh-Pv3"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

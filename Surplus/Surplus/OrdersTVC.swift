@@ -91,7 +91,7 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
             //SwiftLoader.hide()
             FirebaseClient.getPaymentPreferences(FBUserInfo.id!, completion: { (result: [String]) -> Void in
                 let myPaymentPrefs = result
-                
+                dump(myPaymentPrefs)
                 var count = 0
                 for item in self.orders {
                     FirebaseClient.getPaymentPreferences(item.ownerId!, completion: { (result2 : [String]) -> Void in

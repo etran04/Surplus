@@ -71,7 +71,7 @@ class IntroTutorialVC: UIViewController, EAIntroDelegate {
     // MARK: - EAIntroDelegate
 
     func introDidFinish(introView: EAIntroView!) {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
+//        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasSeenTutorial")
         self.performSegueWithIdentifier("introToMain", sender: self)
     }
 

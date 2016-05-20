@@ -15,9 +15,11 @@ class FirebaseClient {
     /* Used to save a user's infomation into the Firebase */
     class func saveUser(name: String, id: String) {
         let usersRef = ref.childByAppendingPath("Users/\(id)")
-        let newUser = ["name" : "\(name)", "gcm_token" : "null"]
+        let nameRef = usersRef.childByAppendingPath("name")
+        let gcmRef = usersRef.childByAppendingPath("gcm_token")
         
-        usersRef.setValue(newUser)
+        nameRef.setValue(name)
+        gcmRef.setValue("null")
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -149,10 +151,8 @@ class FirebaseClient {
     }
     
     class func setUserGCMRegistrationToken(token: String) {
-        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)")
-        let updatedUser = ["name" : "\(FBUserInfo.name!)", "gcm_token" : "\(token)"]
-        
-        usersRef.setValue(updatedUser)
+        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/gcm_token")
+        usersRef.setValue(token)
     }
     
     /* Sets the payment preference options in the database for the current user */

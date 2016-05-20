@@ -19,14 +19,13 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         
         if (FBUserInfo.isLoggedIn()) {
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController : UITabBarController = storyboard.instantiateViewControllerWithIdentifier("mainFeedController") as! UITabBarController
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-            // TODO: Set this to false and call it on both conditions
-            FBUserInfo.fetchUserInfo(true, completion: { (success) in
-                if (success) {
-                    appDelegate.window?.rootViewController = viewController
+            FBUserInfo.fetchUserInfo(false, completion: { (success) in
+                if success {
+                    if NSUserDefaults.standardUserDefaults().boolForKey("hasSeenTutorial") {
+                        self.performSegueWithIdentifier("goToMainFeed", sender: self)
+                    } else {
+                        self.performSegueWithIdentifier("goToInitial", sender: self)
+                    }
                 }
             })
         } else {
@@ -37,10 +36,6 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
             facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
             facebookButton.delegate = self
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-
     }
     
     // Facebook Delegate Methods

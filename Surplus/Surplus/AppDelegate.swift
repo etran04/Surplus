@@ -189,7 +189,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
             print("Registration Token: \(registrationToken)")
             
             self.subscribeToTopic()
-            FirebaseClient.setUserGCMRegistrationToken(registrationToken)
         } else {
             print("Registration to GCM failed with error: \(error.localizedDescription)")
         }

@@ -151,14 +151,18 @@ class FirebaseClient {
     }
     
     class func setUserGCMRegistrationToken(token: String) {
-        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/gcm_token")
-        usersRef.setValue(token)
+        if (FBUserInfo.isLoggedIn()) {
+            let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/gcm_token")
+            usersRef.setValue(token)
+        }
     }
     
     /* Sets the payment preference options in the database for the current user */
     class func setPaymentPreferences(paymentPrefs : [String]) {
-        let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/payment_prefs")
-        usersRef.setValue(paymentPrefs)
+        if (FBUserInfo.isLoggedIn()) {
+            let usersRef = ref.childByAppendingPath("Users/\(FBUserInfo.id!)/payment_prefs")
+            usersRef.setValue(paymentPrefs)
+        }
     }
     
     /* Gets the payment preferences for an individual from the database */

@@ -26,6 +26,11 @@ class LoginVC: UIViewController, FBSDKLoginButtonDelegate {
                     } else {
                         self.performSegueWithIdentifier("goToInitial", sender: self)
                     }
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    
+                    if let token = appDelegate.registrationToken {
+                        FirebaseClient.setUserGCMRegistrationToken(token)
+                    }
                 }
             })
         } else {

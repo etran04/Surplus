@@ -65,14 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         
         // set all font for buttons to specified font
 //        UIButton.appearance().font = UIFont(name: "Helvetica-Light", size: 12)!
-
-//        for family in UIFont.familyNames() {
-//            print("\(family)")
-//            
-//            for name in UIFont.fontNamesForFamilyName(family) {
-//                print("   \(name)")
-//            }
-//        }
         
         
         return FBSDKApplicationDelegate.sharedInstance()

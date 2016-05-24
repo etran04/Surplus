@@ -30,7 +30,6 @@ class ListMessagesTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDat
         
         FirebaseClient.getChatrooms({ (result) -> Void in
             self.chatrooms = result
-            self.chatrooms.sortInPlace({ $0.lastTime.compare($1.lastTime) == NSComparisonResult.OrderedDescending })
             self.tableView.reloadData()
         })
         

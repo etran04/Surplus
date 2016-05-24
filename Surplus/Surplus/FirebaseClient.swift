@@ -295,6 +295,7 @@ class FirebaseClient {
                         results.append(tempChatroom)
                     }
                 }
+                results.sortInPlace({ $0.lastTime.compare($1.lastTime) == NSComparisonResult.OrderedDescending })
                 completion(result: results)
             }
             else {

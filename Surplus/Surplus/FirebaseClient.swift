@@ -138,6 +138,17 @@ class FirebaseClient {
     }
     
     /**
+     * Queries for a specific order and determines if it exists.
+     */
+    class func doesOrderExist(id: String, completion: (exists: Bool) -> Void) {
+        let orderRef = ref.childByAppendingPath("Orders/")
+        
+        orderRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
+            completion(exists: snapshot.hasChild(id))
+        })
+    }
+    
+    /**
      * Turns an in progress order to complete.
      * Used primarily to complete in progress orders.
      */
@@ -200,6 +211,24 @@ class FirebaseClient {
      * Grabs the owner's gcm registration token and sends a message to the owner
      * using the token.
      */
+    class func notifyOwnerOfOrderCancellation(userId: String) {
+        let tokenRef = ref.childByAppendingPath("Users/\(userId)/gcm_token")
+        
+        tokenRef.observeSingleEventOfType(.Value, withBlock: { snapshot -> Void in
+            if snapshot.value is NSString {
+                if let token = snapshot.value as! String? {
+                    if (token != "null") {
+                        GCMClient.sendNotification(token, body: "\(FBUserInfo.name!) has cancelled your order.")
+                    }
+                }
+            }
+        })
+    }
+    
+    /**
+     * Grabs the owner's gcm registration token and sends a message to the owner
+     * using the token.
+     */
     class func notifyUserOfMessage(userId: String, message: String) {
         let tokenRef = ref.childByAppendingPath("Users/\(userId)/gcm_token")
         
@@ -230,6 +259,7 @@ class FirebaseClient {
                     let chatroom = value as! NSDictionary
                     let ownerId = chatroom["owner_id"] as! String
                     let recepId = chatroom["recepient_id"] as! String
+                    let lastTime = chatroom["last_time"] as! String
                     let id = key as! String
                     var messages = [Message]()
                     
@@ -251,11 +281,13 @@ class FirebaseClient {
                     }
                     
                     var tempChatroom: Chatroom
+                    let lastTimeDate = dateFormatter.dateFromString(lastTime)
+                    
                     if (ownerId == FBUserInfo.id) {
-                        tempChatroom = Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages)
+                        tempChatroom = Chatroom(ownerId: ownerId, recepientId: recepId, messages: messages, lastTime: lastTimeDate!)
                     }
                     else {
-                        tempChatroom = Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages)
+                        tempChatroom = Chatroom(ownerId: recepId, recepientId: ownerId, messages: messages, lastTime: lastTimeDate!)
                     }
                     tempChatroom.id = id
                     
@@ -276,6 +308,9 @@ class FirebaseClient {
     class func makeChatroom(chatroom: Chatroom, completion: (madeNewChatroom: Bool) -> Void) {
         let chatRef = ref.childByAppendingPath("Chatrooms/")
         let uniqueRef = chatRef.childByAutoId()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+        
         var messages = [NSDictionary]()
         var alreadyExists = false
         
@@ -291,6 +326,7 @@ class FirebaseClient {
                     let currentChatroom = value as! NSDictionary
                     let ownerId = currentChatroom["owner_id"] as! String
                     let recepId = currentChatroom["recepient_id"] as! String
+                    let date = currentChatroom["last_time"] as! String
                     
                     if ((chatroom.ownerId == ownerId || chatroom.ownerId == recepId) &&
                         (chatroom.recepientId == ownerId || chatroom.recepientId == recepId))
@@ -306,7 +342,8 @@ class FirebaseClient {
             
             let chat = ["owner_id": chatroom.ownerId,
                 "recepient_id": chatroom.recepientId,
-                "messages": messages]
+                "messages": messages,
+                "last_time": dateFormatter.stringFromDate(chatroom.lastTime)]
             
             if (!alreadyExists) {
                 uniqueRef.setValue(chat)
@@ -320,7 +357,11 @@ class FirebaseClient {
     class func sendMessage(chatroom: Chatroom, message: Message) {
         let chatRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/messages")
         let messageObj: NSDictionary = ["sender_id": message.senderId, "text": message.text]
+        let lastTimeRef = ref.childByAppendingPath("Chatrooms/\(chatroom.id)/last_time")
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
         
         chatRef.childByAutoId().setValue(messageObj)
+        lastTimeRef.setValue(String(NSDate()))
     }
 }

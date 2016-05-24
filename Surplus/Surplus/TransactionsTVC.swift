@@ -107,18 +107,22 @@ class TransactionsTVC: UITableViewController {
                         }
                         break
                     case .Completed:
-                        self.completedOrders.append(curOrder)
+                        if (FBUserInfo.id == curOrder.ownerId || FBUserInfo.id == curOrder.recepientId) {
+                            self.completedOrders.append(curOrder)
+                        }
                         break
                     default:
                         break
                 }
             }
+            self.completedOrders.sortInPlace({ $0.endTime!.compare($1.endTime!) == NSComparisonResult.OrderedDescending })
             
             // array to hold all orders by section
-            self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
-            
             if (UserProfile.getType()) {
                 self.tableData = [self.progressOrders, self.completedOrders]
+            }
+            else {
+                self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
             }
             
             // finished loading, so hide spinner
@@ -312,10 +316,10 @@ class TransactionsTVC: UITableViewController {
         var msg = ""
         
         if (status == .Pending) {
-            titleMsg = "Are you sure?"
+            titleMsg = "Order Cancellation"
             msg = "Are you sure you want to cancel your current request?"
         } else if (status == .InProgress) {
-            titleMsg = "Are you sure?"
+            titleMsg = "Order Cancellation"
             msg = "Are you sure you want to cancel this transaction?"
         }
         
@@ -329,8 +333,12 @@ class TransactionsTVC: UITableViewController {
             } else if (status == .InProgress) {
                 // changes type of order from firebase and then the table
                 FirebaseClient.cancelProgressOrder(self.progressOrders[row].id)
-                if (self.progressOrders[row].id == FBUserInfo.id) {
+                if (self.progressOrders[row].ownerId == FBUserInfo.id) {
                     self.pendingOrders.append(self.progressOrders[row])
+                    FirebaseClient.notifyOwnerOfOrderCancellation(self.progressOrders[row].recepientId!)
+                }
+                else {
+                    FirebaseClient.notifyOwnerOfOrderCancellation(self.progressOrders[row].ownerId!)
                 }
                 
                 // cancels the local notification
@@ -340,7 +348,13 @@ class TransactionsTVC: UITableViewController {
             }
             
             // array to hold all orders by section
-            self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
+            if (UserProfile.getType()) {
+                self.tableData = [self.progressOrders, self.completedOrders]
+            }
+            else {
+                self.tableData = [self.pendingOrders, self.progressOrders, self.completedOrders]
+            }
+            
             self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -353,7 +367,23 @@ class TransactionsTVC: UITableViewController {
 
     /* Will need to fix to act upon a delegate rather than passing as an instance directly */
     func completeTransaction(row: Int) {
-        self.performSegueWithIdentifier("goToInputCharge", sender: row)
+        FirebaseClient.doesOrderExist(self.progressOrders[row].id) { (exists) in
+            if (exists) {
+                self.performSegueWithIdentifier("goToInputCharge", sender: row)
+            }
+            else {
+                let alertTitle = "Sorry!"
+                let alertMessage = "The order was canceled."
+                let confirmDialog = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                
+                confirmDialog.addAction(okAction)
+                
+                self.presentViewController(confirmDialog, animated: true, completion: nil)
+                
+                self.tableView.reloadData()
+            }
+        }
     }
     
     /* Callback function for when the message button is pressed on the cell.
@@ -373,22 +403,14 @@ class TransactionsTVC: UITableViewController {
         let chatroom = Chatroom(ownerId: FBUserInfo.id!, recepientId: recepientId, messages: msgs)
         
         FirebaseClient.makeChatroom(chatroom) { (madeNewChatroom) in
+            // Switches tab to the Messages tab
+            let fromView = self.view
+            let toView = self.tabBarController?.viewControllers![2].view
             
-            // TODO: Alert user of a new conversation on Messages tab
-            // TODO: Alert user that new conversation cannot be made, because once already exists 
-            
-            let titleMsg = "New Message"
-            let msg = "A new conversation between you and () has been created."
-            let confirmDialog = UIAlertController(title: titleMsg, message: msg, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Confirm", style: .Default, handler: nil)
-            confirmDialog.addAction(okAction)
-            if (madeNewChatroom) {
-                self.presentViewController(confirmDialog, animated: true, completion: nil)
-            }
+            UIView.transitionFromView(fromView, toView: toView!, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
+                self.tabBarController?.selectedIndex = 2
+            })
         }
-        
-        // Switches tab to the Messages tab
-        self.tabBarController?.selectedIndex = 2
     }
     
     

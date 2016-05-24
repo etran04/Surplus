@@ -33,10 +33,10 @@ class MainTabBarController: UITabBarController {
 //                }
                 print("message received \(aps["alert"] as! NSDictionary)")
                 
-                let tabArray = self.tabBar.items as NSArray!
-                let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-                self.newMessages += 1
-                tabItem.badgeValue = "\(self.newMessages)"
+//                let tabArray = self.tabBar.items as NSArray!
+//                let tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
+//                self.newMessages += 1
+//                tabItem.badgeValue = "\(self.newMessages)"
             }
         }
         else {

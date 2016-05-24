@@ -14,7 +14,6 @@ class GCMClient {
     static let apiKey = "AIzaSyCSomLjShjLpDKW_Yqm4lhCDA36HkkCYEM"
     
     class func sendNotification(token: String, body: String) {
-        print("Got here for surplus!")
         let postURL: String = "https://gcm-http.googleapis.com/gcm/send"
         let reqURL = NSURL(string: postURL)
         let request = NSMutableURLRequest(URL: reqURL!)

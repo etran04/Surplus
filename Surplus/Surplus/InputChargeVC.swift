@@ -57,7 +57,11 @@ class InputChargeVC: UIViewController, UITextFieldDelegate {
     @IBAction func donePressed(sender: UIBarButtonItem) {
         if (currentCharge != "") {
             if let navController = self.navigationController {
-                FirebaseClient.completeOrder(curOrder!.id)
+                FirebaseClient.doesOrderExist(self.curOrder!.id, completion: { (exists) in
+                    if (exists) {
+                        FirebaseClient.completeOrder(self.curOrder!.id)
+                    }
+                })
                 navController.popViewControllerAnimated(true)
             }
         }

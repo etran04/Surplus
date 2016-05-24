@@ -268,18 +268,13 @@ class OrdersTVC: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDe
         
         // Sets up local reminder for set to 10 minutes prior to the end of the order for current user
         self.scheduleLocal(index)
+
+        let fromView = self.view
+        let toView = self.tabBarController?.viewControllers![1].view
         
-        let window = UIApplication.sharedApplication().delegate?.window
-        
-        if window!!.rootViewController as? UITabBarController != nil {
-            let tabbarController = window!!.rootViewController as! UITabBarController
-            let fromView = tabbarController.selectedViewController!.view
-            let toView = tabbarController.viewControllers![1].view
-            
-            UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
-                tabbarController.selectedIndex = 1
-            })
-        }
+        UIView.transitionFromView(fromView, toView: toView!, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: { (finished) -> Void in
+            self.tabBarController?.selectedIndex = 1
+        })
     }
     
     // MARK: DZNEmptySet Delegate methods

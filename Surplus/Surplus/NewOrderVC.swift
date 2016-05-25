@@ -49,7 +49,7 @@ class NewOrderVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         // Sets up scroll picker cell for locations
         let locationPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
-        self.locationChoices = ["The Avenue", "VG Cafe", "Starbucks UU", "Starbucks Campus Market", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory", "Ciao!", "Red Radish", "Yogurt Creations", "Tacos To-Go Grill", "Jamba Juice", "Einstein Bro Bagels", "Subway"]
+        self.locationChoices = ["The Avenue", "VG Cafe", "Starbucks UU", "Starbucks Campus Market", "Campus Market", "Village Market", "19 Metro Station", "Sandwich Factory", "Ciao!", "Red Radish", "Yogurt Creations", "Tacos To-Go Grill", "Jamba Juice", "Einstein Bro Bagels", "Subway", "Julian's Café"]
         locationPickerCell.setChoices(self.locationChoices)
         
         let discountPickerCell = ScrollPickerCell(style: .Default, reuseIdentifier: nil)
